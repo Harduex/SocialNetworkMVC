@@ -5,7 +5,7 @@ const Layout = require('./layout');
 function Index(props) {
   return (
    <Layout title={props.title}>
-     <div>Hi {props.text}</div>
+     <div>Hello {props.text}!</div>
    </Layout>
   )
 }
