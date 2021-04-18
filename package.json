@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node dist/index.js",
-    "clean": "rimraf dist",
-    "build": "npm run clean && mkdir -p dist && babel src -s -D -d dist",
+    "start": "nodemon --exec babel-node ./bin/www",
+    "gulp": "npx gulp && npx gulp watch",
     "start:dev": "nodemon --exec babel-node ./bin/www"
   },
   "dependencies": {
@@ -18,7 +17,18 @@
     "mongoose": "^5.7.10",
     "morgan": "~1.9.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "live-server": "^1.2.1",
+    "panini": "^1.7.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",

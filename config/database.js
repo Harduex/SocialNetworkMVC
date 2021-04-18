@@ -4,7 +4,7 @@ const database = () => {
     // credentials
     const dbUrl = 'localhost';
     const dbPort = '27017';
-    const database = 'testdb';
+    const database = 'SocialNetwork';
 
     // connection
     mongoose.connect(`mongodb://${dbUrl}:${dbPort}/${database}`, { useNewUrlParser: true, useUnifiedTopology: true });

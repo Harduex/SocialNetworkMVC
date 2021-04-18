@@ -1,0 +1,14 @@
+//Plugins
+@import "./plugins/normalize.scss";
+
+//Variables
+@import "./variables.scss";
+
+//Variables
+@import "./mixins.scss";
+
+//Global
+@import "./global.scss";
+
+//Imports
+@import "./imports/**/**.scss";

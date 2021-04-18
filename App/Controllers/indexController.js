@@ -1,15 +1,15 @@
-// Test model
-import Test from '../Models/testSchema';
+// Users model
+import User from '../Models/usersSchema';
 
-const home = (req, res) => {
-    const test = new Test({text: 'text message'});
-    const promise = test.save();
+const Index = (req, res) => {
+    const user = new User({username: 'user123'});
+    const promise = user.save();
 
     promise.then((data) => {
-        res.render('index', { title: 'Express', text: data.text });
+        res.render('index', { title: 'Express', text: data.username });
     }).catch((err) => {
         res.render('index', { title: 'Express', text: 'Error text messsage' });
     });
 };
 
-export default home
+export default Index;

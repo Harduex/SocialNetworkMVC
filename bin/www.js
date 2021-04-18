@@ -5,7 +5,7 @@
  */
 
 import app from '../app' ;
-const debug = require('debug')('express-mvc-starter:server');
+const debug = require('debug')('express-mvc:server');
 import http from 'http';
 
 /**

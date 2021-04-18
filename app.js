@@ -3,7 +3,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from'morgan';
 
-// database
+// Database
 import database from './config/database';
 
 // Router import
