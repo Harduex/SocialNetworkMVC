@@ -1,20 +1,23 @@
 import express from 'express';
+
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from'morgan';
 
-// Datebase
-import datebase from './config/datebase';
+// Database
+import database from './config/database';
 
 // Router import
 import routers from'./routes';
 
 const app = express();
-datebase();
+database();
 
 // view engine
 app.set('views', path.join(__dirname, '/App/Views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'jsx');
+const viewEngineOptions = { beautify: true };
+app.engine('jsx', require('express-react-views').createEngine(viewEngineOptions));
 
 // Cookie
 app.use(logger('dev'));

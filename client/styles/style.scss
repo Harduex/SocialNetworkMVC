@@ -1,0 +1,19 @@
+//Plugins
+
+/* Default bootstrap */
+/* @import "../../node_modules/bootstrap/scss/bootstrap.scss"; */
+
+// Bootstrap theme
+@import "./plugins/bootstrap.min.scss";
+
+//Variables
+@import "./variables.scss";
+
+//Variables
+@import "./mixins.scss";
+
+//Global
+@import "./global.scss";
+
+//Imports
+@import "./imports/**/**.scss";
