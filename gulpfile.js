@@ -46,11 +46,11 @@ gulp.task('js:clean', function () {
 
 gulp.task('js:build', function () {
     return gulp.src(['client/js/plugins/*.js', 'client/js/main.js', 'client/js/components/**/*.js'])
-        .pipe(babel({
-            presets: ['@babel/preset-env'],
-        }))
+        // .pipe(babel({
+        //     presets: ['@babel/preset-env'],
+        // }))
         .pipe(concat('public.js'))
-        .pipe(uglify({ compress: { hoist_funs: false, hoist_vars: false } }))
+        // .pipe(uglify({ compress: { hoist_funs: false, hoist_vars: false } }))
         .pipe(rename('main.js'))
         .pipe(gulp.dest('public/js'));
 });

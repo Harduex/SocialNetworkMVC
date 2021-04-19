@@ -3,22 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon --exec babel-node ./bin/www",
+    "start": "babel-node ./bin/www",
     "gulp": "npx gulp && npx gulp watch",
-    "start:dev": "nodemon --exec babel-node ./bin/www"
+    "server": "nodemon --exec babel-node ./bin/www",
+    "develop": "concurrently \"npm run gulp\" \"npm run server\""
   },
   "dependencies": {
+    "concurrently": "^6.0.2",
     "cookie-parser": "~1.4.4",
     "debug": "~4.1.1",
-    "express": "~4.17.1",
-    "express-react-views": "^0.11.0",
-    "http-errors": "~1.7.3",
-    "jade": "~1.11.0",
-    "mongoose": "^5.7.10",
-    "morgan": "~1.9.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
     "del": "^6.0.0",
+    "express": "^4.17.1",
+    "express-react-views": "^0.11.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
@@ -27,14 +23,16 @@
     "gulp-sass-glob": "^1.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
-    "live-server": "^1.2.1",
-    "panini": "^1.7.1"
+    "http-errors": "~1.7.3",
+    "mongoose": "^5.7.10",
+    "morgan": "~1.9.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.0",
-    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
     "@babel/node": "^7.7.0",
-    "@babel/preset-env": "^7.7.1",
     "nodemon": "^1.19.4"
   }
 }

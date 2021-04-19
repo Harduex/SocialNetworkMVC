@@ -1,5 +1,10 @@
 //Plugins
-@import "./plugins/normalize.scss";
+
+/* Default bootstrap */
+/* @import "../../node_modules/bootstrap/scss/bootstrap.scss"; */
+
+// Bootstrap theme
+@import "./plugins/bootstrap.min.scss";
 
 //Variables
 @import "./variables.scss";
