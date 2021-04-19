@@ -1,6 +1,6 @@
 var bcrypt = require('bcrypt');
 import passport from 'passport';
-import User from '../Models/usersSchema';
+import { User } from '../Models/usersModel';
 
 
 const RegisterView = (req, res) => {
