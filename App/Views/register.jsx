@@ -5,15 +5,27 @@ import Layout from './layouts/layout';
 function Register(props) {
     return (
         <Layout title={props.message}>
-            <div class="form-container">
-                <h1 class="mobile">{props.message}</h1>
+            <div class="container">
                 <form action="/auth/register" method="post">
-                    <input class="mobile input-div" placeholder="Username" type="text" name="username" />
-                    <input class="mobile input-div" placeholder="Password" type="password" name="password" />
-                    <input class="mobile input-div" type="submit" value="Register" />
+                    <fieldset>
+                        <legend>{props.message}</legend>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" class="form-control" id="username" aria-describedby="username" placeholder="Enter Username" />
+                        </div>
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" name="fullName" class="form-control" id="username" aria-describedby="full-name" placeholder="Firstname Lastname" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Password" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registration</button>
+                    </fieldset>
                 </form>
+                <a href="/auth/login">Sign in</a>
             </div>
-            <a href="/auth/login" type="button" class="btn btn-primary">Login</a>
         </Layout>
     )
 }
