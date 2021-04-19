@@ -1,5 +1,5 @@
-const React = require('react');
-const Layout = require('./layout');
+import React from 'react';
+import Layout from './layout';
 
 
 function Index(props) {
@@ -12,4 +12,4 @@ function Index(props) {
 }
 
 
-module.exports = Index;
+export default Index;

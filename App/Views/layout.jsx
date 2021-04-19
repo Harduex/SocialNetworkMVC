@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 
 function Layout(props) {
@@ -22,4 +22,4 @@ function Layout(props) {
 }
 
 
-module.exports = Layout;
+export default Layout;

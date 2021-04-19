@@ -27,7 +27,7 @@ gulp.task('css:clean', function () {
 
 gulp.task('sass:compile', function (done) {
 
-    return gulp.src('source/styles/style.scss')
+    return gulp.src('client/styles/style.scss')
         .pipe(sourcemaps.init())
         .pipe(sassGlob())
         .pipe(sass())
@@ -45,7 +45,7 @@ gulp.task('js:clean', function () {
 });
 
 gulp.task('js:build', function () {
-    return gulp.src(['source/js/plugins/*.js', 'source/js/main.js', 'source/js/components/**/*.js'])
+    return gulp.src(['client/js/plugins/*.js', 'client/js/main.js', 'client/js/components/**/*.js'])
         .pipe(babel({
             presets: ['@babel/preset-env'],
         }))
@@ -59,8 +59,8 @@ gulp.task('js', gulp.series('js:clean', 'js:build'));
 
 //Watch
 gulp.task('watch', function () {
-    gulp.watch(['source/styles/**/*.scss', 'source/styles/imports/**/*.scss'], gulp.series('sass'));
-    gulp.watch(['source/js/**/*.js'], gulp.series('js'));
+    gulp.watch(['client/styles/**/*.scss', 'client/styles/imports/**/*.scss'], gulp.series('sass'));
+    gulp.watch(['client/js/**/*.js'], gulp.series('js'));
 });
 
 //Default

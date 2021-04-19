@@ -15,8 +15,8 @@ database();
 // view engine
 app.set('views', path.join(__dirname, '/App/Views'));
 app.set('view engine', 'jsx');
-var options = { beautify: true };
-app.engine('jsx', require('express-react-views').createEngine(options));
+const viewEngineOptions = { beautify: true };
+app.engine('jsx', require('express-react-views').createEngine(viewEngineOptions));
 
 // Cookie
 app.use(logger('dev'));

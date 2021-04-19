@@ -1,16 +1,24 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
+const options = { timestamps: true }
 
 const usersSchema = new Schema({
     username: {
         type: String,
-        required: true
+        required: true,
+        unique : true
     },
     password: {
         type: String,
         required: true
+    },
+    fullName: {
+        type: String
     }
-});
+}, options);
 
 const tableName = 'users';
-export default mongoose.model(tableName, usersSchema);
+const User = mongoose.model(tableName, usersSchema)
+
+
+export default User;

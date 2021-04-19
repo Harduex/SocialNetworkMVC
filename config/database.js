@@ -6,8 +6,15 @@ const database = () => {
     const dbPort = '27017';
     const database = 'SocialNetwork';
 
+    // options
+    const options = {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+    }
+
     // connection
-    mongoose.connect(`mongodb://${dbUrl}:${dbPort}/${database}`, { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect(`mongodb://${dbUrl}:${dbPort}/${database}`, options);
     // if mongoose runs
     mongoose.connection.on('open', () => {
         console.log('Mongodb Connected');
