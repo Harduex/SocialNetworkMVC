@@ -16,6 +16,7 @@ const Register = async (req, res) => {
 
     const user = new User({
         username: req.body.username,
+        fullName: req.body.fullName,
         password: hashedPassword,
     });
 
