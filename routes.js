@@ -31,7 +31,6 @@ router.post('/auth/register', checkNotAuthenticated, Register);
 router.get('/auth/login', checkNotAuthenticated, LoginView);
 router.post('/auth/login', checkNotAuthenticated, Login);
 
-// router.get('/auth/logout', checkNotAuthenticated, LoginView);
 router.get('/auth/logout', checkAuthenticated, Logout);
 
 

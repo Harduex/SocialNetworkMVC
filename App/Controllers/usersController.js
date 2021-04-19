@@ -1,57 +1,53 @@
 // Users model
-import User from '../Models/usersSchema';
+import {
+    addUser as add,
+    getAllUsers as getAll,
+    getUserByUsername as getByUsername,
+    editUser as edit,
+    deleteUserByUsername as remove,
+    deleteAllUsers as removeAll
+} from '../Models/usersModel';
 
-const addUser = (req, res) => {
+import bcrypt from 'bcrypt';
 
-    const user = new User({
-        username: req.query.username,
-        password: req.query.password,
-        fullName: req.query.fullName
-    });
 
-    user.save()
+const addUser = async (req, res) => {
+    const hashedPassword = await bcrypt.hash(req.query.password, 10);
+
+    add(req.query.username, hashedPassword, req.query.fullName)
         .then((data) => {
             res.send(data);
         })
         .catch((err) => {
             res.send(err);
         });
-
 };
 
 const getAllUsers = (req, res) => {
-    User.find()
-        .sort({ createdAt: -1 })
+    getAll()
         .then((data) => {
             res.send(data);
         })
         .catch((err) => {
             res.send(err);
         });
-
 };
 
 const getUserByUsername = (req, res) => {
-    const username = req.params.username;
-
-    User.findOne({ username: username })
+    getByUsername(req.params.username)
         .then((data) => {
             res.send(data);
         })
         .catch((err) => {
             res.send(err);
         });
-
 };
-
 
 const editUser = (req, res) => {
     const username = req.params.username;
-    const updates = {
-        fullName: req.query.fullName
-    }
+    const updates = req.query;
 
-    User.updateOne({ username: username }, updates)
+    edit(username, updates)
         .then((data) => {
             res.send(data);
         })
@@ -61,29 +57,23 @@ const editUser = (req, res) => {
 };
 
 const deleteUser = (req, res) => {
-
-    const username = req.params.username;
-
-    User.deleteOne({ username: username })
+    remove(req.params.username)
         .then((data) => {
             res.send(data);
         })
         .catch((err) => {
             res.send(err);
         });
-
 };
 
 const deleteAllUsers = (req, res) => {
-
-    User.deleteMany({})
+    removeAll()
         .then((data) => {
             res.send(data);
         })
         .catch((err) => {
             res.send(err);
         });
-
 };
 
 
