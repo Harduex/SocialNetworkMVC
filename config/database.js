@@ -1,18 +1,25 @@
 import mongoose from 'mongoose';
 
-const datebase = () => {
-    //db info
+const database = () => {
+    // credentials
     const dbUrl = 'localhost';
     const dbPort = '27017';
-    const datebase = 'testdb';
+    const database = 'SocialNetwork';
 
-    // mongoose connect
-    mongoose.connect(`mongodb://${dbUrl}:${dbPort}/${datebase}`, { useNewUrlParser: true, useUnifiedTopology: true });
+    // options
+    const options = {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+    }
+
+    // connection
+    mongoose.connect(`mongodb://${dbUrl}:${dbPort}/${database}`, options);
     // if mongoose runs
     mongoose.connection.on('open', () => {
         console.log('Mongodb Connected');
     });
-    // if mongoose doesn't runs
+    // error
     mongoose.connection.on('error', (error) => {
         console.log(`Mongoose error: ${error}`);
     });
@@ -20,4 +27,4 @@ const datebase = () => {
     mongoose.Promise = global.Promise;
 }
 
-export default datebase;
+export default database;
