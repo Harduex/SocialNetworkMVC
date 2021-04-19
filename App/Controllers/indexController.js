@@ -1,5 +1,6 @@
-const Index = (req, res) => {
-    res.render('index', { title: 'Home', text: "Home" });
+const Index = async (req, res) => {
+    const user = await req.user;
+    res.render('index', { title: 'Home', user: user.username });
 };
 
 export default Index;
