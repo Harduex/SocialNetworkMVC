@@ -7679,37 +7679,8 @@ a.text-dark:focus, a.text-dark:hover {
 * {
   box-sizing: border-box; }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
+html {
   font-family: sans-serif, Arial, Helvetica; }
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 24px 0;
-  min-height: calc(100vh - 180px); }
-
-.wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  margin: 0 auto;
-  padding: 24px 0; }
-
-.link {
-  color: #00b7ff;
-  font-size: 18px;
-  transition: 0.3s color; }
-  .link:hover {
-    color: #01a5e6; }
-
-.index {
-  background-color: white; }
 
 .footer {
   background-color: aquamarine; }
