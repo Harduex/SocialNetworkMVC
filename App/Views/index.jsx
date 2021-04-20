@@ -4,9 +4,8 @@ import Layout from './layouts/layout';
 
 function Index(props) {
   return (
-    <Layout title={props.title}>      
-      <h1>Hello {props.user}</h1>
-      <a href="/auth/logout" type="button" class="btn btn-primary">Logout</a>
+    <Layout title={props.title}>
+      <h1>{props.user}'s Feed</h1>
     </Layout>
   )
 }
