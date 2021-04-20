@@ -49,7 +49,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Routers
-app.use(routers);
+// app.use(routers);
+routers(app);
 
 
 export default app;
