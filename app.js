@@ -4,6 +4,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import { v4 as uuidv4 } from 'uuid';
+import createError from 'http-errors';
 
 // Authentication
 import passport from 'passport';
@@ -11,16 +12,16 @@ import session from "express-session";
 import flash from "express-flash";
 
 // Database
-import database from './config/database';
+import useDatabase from './config/database';
 
 // Router import
-import routers from './routes';
+import useRouters from './routes';
 
 // Express app
 const app = express();
 
 // Connect to db
-database();
+useDatabase();
 
 // Init user auth
 import initializePassport from './config/passport-config';
@@ -50,7 +51,24 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Routers
-routers(app);
+useRouters(app);
+
+// catch 404 and forward to error handler
+app.use(function (req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function (err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
 
 
 export default app;
