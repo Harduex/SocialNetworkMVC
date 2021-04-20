@@ -3,6 +3,7 @@ import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import { v4 as uuidv4 } from 'uuid';
 
 // Authentication
 import passport from 'passport';
@@ -37,7 +38,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
 app.use(session({
-  secret: 'jFJhJsh7hSfh78h78t6bg6b67bJJYNdfjFg896Fedrc5fdl',
+  secret: uuidv4(),
   resave: false,
   saveUninitialized: false
 }));
@@ -49,7 +50,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Routers
-// app.use(routers);
 routers(app);
 
 
