@@ -6,7 +6,7 @@
     "start": "babel-node ./bin/www",
     "gulp": "npx gulp && npx gulp watch",
     "server": "nodemon --exec babel-node ./bin/www",
-    "develop": "concurrently \"npm run gulp\" \"npm run server\""
+    "dev": "concurrently \"npm run gulp\" \"npm run server\""
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
