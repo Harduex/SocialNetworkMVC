@@ -15,9 +15,6 @@ const usersSchema = new Schema({
     },
     fullName: {
         type: String
-    },
-    profilePic: {
-        type: Buffer
     }
 }, options);
 

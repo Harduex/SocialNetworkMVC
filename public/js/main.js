@@ -4769,6 +4769,15 @@
 //# sourceMappingURL=bootstrap.min.js.map
 console.log('Document Loaded');
 $(document).ready(function () {
+    var commentButton = $(".comment-button");
+    var commentBox = $(".comment-box");
+    commentButton.click(function () {
+        $(this).closest('div').next(commentBox).toggle()
+    });
+
+});
+
+$(document).ready(function () {
     var submitIcon = $('.searchbar-icon');
     var inputBox = $('.searchbar-input');
     var searchbar = $('.searchbar');
