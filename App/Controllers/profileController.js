@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     const user = await req.user;
-    res.render('index', { title: 'Feed', user: user?.fullName || 'User' });
+    res.render('profile', { title: 'Profile', user: user?.username || 'User' });
 });
 
 
