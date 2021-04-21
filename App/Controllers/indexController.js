@@ -6,6 +6,7 @@ import { checkAuthenticated } from '../../config/middlewares/authenticate';
 
 router.get('/', checkAuthenticated, async (req, res) => {
     const user = await req.user;
+    // console.log(user);
     res.render('index', { title: 'Home', user: user?.username || 'User' });
 });
 
