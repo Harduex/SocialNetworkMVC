@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from './layouts/layout';
 
 
-function Index(props) {
+function Profile(props) {
   return (
     <Layout title={props.title}>
       <h1>{props.user}'s Profile</h1>
@@ -11,4 +11,4 @@ function Index(props) {
 }
 
 
-export default Index;
+export default Profile;
