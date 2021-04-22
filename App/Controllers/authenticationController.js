@@ -14,9 +14,12 @@ router.get('/register', checkNotAuthenticated, (req, res) => {
 router.post('/register', checkNotAuthenticated, async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
+    console.log(req.body);
+
     const user = new User({
         username: req.body.username,
         fullName: req.body.fullName,
+        email: req.body.email,
         password: hashedPassword,
     });
 

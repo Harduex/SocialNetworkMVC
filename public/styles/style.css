@@ -7680,6 +7680,9 @@ a.text-dark:focus, a.text-dark:hover {
 html {
   font-family: sans-serif, Arial, Helvetica; }
 
+.container {
+  padding-top: 20px; }
+
 .footer {
   background-color: aquamarine; }
 
@@ -8149,6 +8152,10 @@ select.form-control:not([size]):not([multiple]) {
 
 .userimage {
   margin-right: 10px; }
+  .userimage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
 
 .timeline-header .username {
   font-size: 16px;
@@ -8250,11 +8257,21 @@ select.form-control:not([size]):not([multiple]) {
   color: #ff5b57 !important; }
 
 .post-image {
-  margin: 0;
-  width: 100%; }
+  margin: 0; }
 
 .text-inverse-lighter {
   margin-right: 10px; }
+
+.change-profile-pic__button {
+  position: relative;
+  overflow: hidden; }
+
+.change-profile-pic__input {
+  position: absolute;
+  font-size: 50px;
+  opacity: 0;
+  right: 0;
+  top: 0; }
 
 .searchbar {
   position: relative;
