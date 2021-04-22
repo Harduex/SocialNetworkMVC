@@ -4767,7 +4767,11 @@
     })
 });
 //# sourceMappingURL=bootstrap.min.js.map
-console.log('Document Loaded');
+
+$(window).on("load", function () {
+    $(".loader-wrapper").addClass('hide');
+});
+
 $(document).ready(function () {
     var commentButton = $(".comment-button");
     var commentBox = $(".comment-box");

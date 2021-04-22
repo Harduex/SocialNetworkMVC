@@ -434,7 +434,6 @@ select.form-control:not([size]):not([multiple]) {
 .timeline > li {
     position: relative;
     min-height: 50px;
-    padding: 20px 0;
 }
 
 .timeline .timeline-time {
@@ -498,16 +497,6 @@ select.form-control:not([size]):not([multiple]) {
     }
 }
 
-// .timeline .timeline-body:before {
-//     content: "";
-//     display: block;
-//     position: absolute;
-//     border: 10px solid transparent;
-//     border-right-color: #4e5d6c;
-//     left: -20px;
-//     top: 20px;
-// }
-
 .timeline .timeline-body > div + div {
     margin-top: 15px;
 }
@@ -520,10 +509,10 @@ select.form-control:not([size]):not([multiple]) {
 
 .timeline-header {
     padding-bottom: 20px;
-    border-bottom: 1px solid #e2e7eb;
+    border-bottom: 1px solid rgb(163, 163, 163);
     line-height: 30px;
-    padding-left: 25px;
-    padding-right: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 .timeline-header .userimage {
@@ -580,10 +569,10 @@ select.form-control:not([size]):not([multiple]) {
 
 .timeline-footer {
     background: #4e5d6c;
-    border-top: 1px solid #e2e7ec;
+    border-top: 1px solid rgb(163, 163, 163);
     padding-top: 15px;
-    padding-left: 25px;
-    padding-right: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 .timeline-footer a:not(.btn) {
@@ -696,4 +685,13 @@ select.form-control:not([size]):not([multiple]) {
 .comment-button {
     float: right;
     margin-right: 0;
+}
+
+.fa-thumbs-up,
+.fa-comments,
+.stats-text-num {
+    margin-right: 5px;
+}
+.add-post-button {
+    padding-bottom: 0;
 }
