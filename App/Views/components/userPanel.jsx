@@ -36,9 +36,9 @@ function UserPanel(props) {
 
                 {/* BEGIN profile-header-tab */}
                 <ul className="profile-header-tab nav nav-tabs">
-                  <li className="nav-item"><a href="#profile-post" className="nav-link" data-toggle="tab">Posts</a></li>
-                  <li className="nav-item"><a href="#profile-photos" className="nav-link" data-toggle="tab">Followers</a></li>
-                  <li className="nav-item"><a href="#profile-videos" className="nav-link" data-toggle="tab">Following</a></li>
+                  <li className="nav-item"><a href="#profile-post" className="nav-link text-white" data-toggle="tab">Posts</a></li>
+                  <li className="nav-item"><a href="#profile-photos" className="nav-link text-white" data-toggle="tab">Followers</a></li>
+                  <li className="nav-item"><a href="#profile-videos" className="nav-link text-white" data-toggle="tab">Following</a></li>
                 </ul>
                 {/* END profile-header-tab */}
 

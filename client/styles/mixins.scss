@@ -2,3 +2,7 @@
     background: black;
     filter: invert(1) hue-rotate(180deg);
 }
+
+@mixin responsive($width) {
+    @media (max-width: $width) { @content; }
+}

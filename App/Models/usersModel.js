@@ -64,8 +64,8 @@ async function getUserByUsername(username) {
     return user;
 };
 
-async function editUser(username, updates) {
-    const result = await User.updateOne({ username: username }, updates);
+async function editUser(id, updates) {
+    const result = await User.updateOne({ _id: id }, updates);
     return result;
 };
 

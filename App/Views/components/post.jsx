@@ -5,19 +5,6 @@ function Post(props) {
 
   return (
     <li>
-      {/* begin timeline-time */}
-      {/* <div className="timeline-time">
-        <span className="date">today</span>
-        <span className="time">04:20</span>
-      </div> */}
-      {/* end timeline-time */}
-
-      {/* begin timeline-icon */}
-      <div className="timeline-icon">
-        <a href="javascript:;">&nbsp;</a>
-      </div>
-      {/* end timeline-icon */}
-
       {/* begin timeline-body */}
       <div className="timeline-body">
         <div className="timeline-header">
@@ -25,9 +12,11 @@ function Post(props) {
           <span className="username"><a href="javascript:;">{props?.user || 'user'}</a> <small /></span>
         </div>
         <div className="timeline-content">
-          {props?.post?.body &&
-            <p class="text-dark">{props?.post?.body || 'post body'}</p>
-          }
+          <div className="timeline-content__body">
+            {props?.post?.body &&
+              <p class="text-white">{props?.post?.body || 'post body'}</p>
+            }
+          </div>
           {props?.post?.image &&
             <img className="post-image" src={`data:image/jpeg;base64,${props?.post?.image || ''}`} alt="" />
           }

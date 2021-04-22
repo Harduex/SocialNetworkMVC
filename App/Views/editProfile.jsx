@@ -25,7 +25,7 @@ function Profile(props) {
               <div className="col mb-3">
                 <div className="card">
                   <div className="card-body">
-                    <div className="e-profile">
+                    <form method="POST" enctype="multipart/form-data" className="e-profile form" noValidate >
                       <div className="row">
                         <div className="col-12 col-sm-auto mb-3">
                           <div className="mx-auto" style={{ width: '140px' }}>
@@ -43,7 +43,7 @@ function Profile(props) {
                               <button className="btn btn-primary change-profile-pic__button" type="button">
                                 <i className="fa fa-fw fa-camera" />
                                 <span>Change Photo</span>
-                                <input type="file" name="file" className="change-profile-pic__input" />
+                                <input type="file" name="profilePic" accept="image/*" className="change-profile-pic__input" />
                               </button>
                             </div>
                           </div>
@@ -58,7 +58,7 @@ function Profile(props) {
                       </ul>
                       <div className="tab-content pt-3">
                         <div className="tab-pane active">
-                          <form className="form" noValidate>
+                          {/* <form method="POST" className="form" noValidate> */}
                             <div className="row">
                               <div className="col">
                                 <div className="row">
@@ -79,7 +79,7 @@ function Profile(props) {
                                   <div className="col">
                                     <div className="form-group">
                                       <label>Email</label>
-                                      <input className="form-control" type="text" placeholder="user@example.com" defaultValue={props?.user?.email} />
+                                      <input className="form-control" type="text" placeholder="user@example.com" defaultValue={props?.user?.email} name="email" />
                                     </div>
                                   </div>
                                 </div>
@@ -87,7 +87,7 @@ function Profile(props) {
                                   <div className="col mb-3">
                                     <div className="form-group">
                                       <label>Bio</label>
-                                      <textarea className="form-control" rows={5} placeholder="My Bio" defaultValue={props?.user?.bio} />
+                                      <textarea className="form-control" rows={5} placeholder="My Bio" defaultValue={props?.user?.bio} name="bio" />
                                     </div>
                                   </div>
                                 </div>
@@ -100,7 +100,7 @@ function Profile(props) {
                                   <div className="col">
                                     <div className="form-group">
                                       <label>Current Password</label>
-                                      <input className="form-control" type="password" placeholder="••••••" />
+                                      <input className="form-control" type="password" placeholder="••••••" name="currentPassword"/>
                                     </div>
                                   </div>
                                 </div>
@@ -108,7 +108,7 @@ function Profile(props) {
                                   <div className="col">
                                     <div className="form-group">
                                       <label>New Password</label>
-                                      <input className="form-control" type="password" placeholder="••••••" />
+                                      <input className="form-control" type="password" placeholder="••••••" name="newPassword"/>
                                     </div>
                                   </div>
                                 </div>
@@ -116,7 +116,7 @@ function Profile(props) {
                                   <div className="col">
                                     <div className="form-group">
                                       <label>Confirm <span className="d-none d-xl-inline">Password</span></label>
-                                      <input className="form-control" type="password" placeholder="••••••" /></div>
+                                      <input className="form-control" type="password" placeholder="••••••" name="newPasswordConfirm"/></div>
                                   </div>
                                 </div>
                               </div>
@@ -139,10 +139,10 @@ function Profile(props) {
                                 <button className="btn btn-primary" type="submit">Save Changes</button>
                               </div>
                             </div>
-                          </form>
+                          {/* </form> */}
                         </div>
                       </div>
-                    </div>
+                    </form>
                   </div>
                 </div>
               </div>
