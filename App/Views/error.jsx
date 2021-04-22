@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from './layouts/layout';
 
 
-function Index(props) {
+function Error(props) {
   return (
     <Layout title={props.title}>
       <h1>{props.message}</h1>
@@ -12,4 +12,4 @@ function Index(props) {
 }
 
 
-export default Index;
+export default Error;
