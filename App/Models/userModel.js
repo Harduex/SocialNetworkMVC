@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const options = { timestamps: true }
 
-// Users schema
-const usersSchema = new Schema({
+// User schema
+const userSchema = new Schema({
     username: {
         type: String,
         required: true,
@@ -19,9 +19,9 @@ const usersSchema = new Schema({
 }, options);
 
 const tableName = 'users';
-const User = mongoose.model(tableName, usersSchema)
+const User = mongoose.model(tableName, userSchema)
 
-// Users model operations
+// User model operations
 async function addUser(username, password, fullName) {
     const user = new User({
         username: username,
