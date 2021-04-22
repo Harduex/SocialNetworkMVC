@@ -3,7 +3,7 @@ const router = express.Router();
 
 import bcrypt from 'bcrypt';
 import passport from 'passport';
-import { User } from '../Models/usersModel';
+import { User } from '../Models/userModel';
 
 import { checkAuthenticated, checkNotAuthenticated } from '../../config/middlewares/authenticate';
 
