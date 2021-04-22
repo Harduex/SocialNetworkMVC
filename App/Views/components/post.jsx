@@ -8,8 +8,8 @@ function Post(props) {
       {/* begin timeline-body */}
       <div className="timeline-body">
         <div className="timeline-header">
-          <span className="userimage"><img src={`data:image/jpeg;base64,${props?.usr?.profilePic || ''}`} alt="" /></span>
-          <span className="username"><a href="javascript:;">{props?.user || 'user'}</a> <small /></span>
+          <span className="userimage"><img src={`data:image/jpeg;base64,${props?.user?.profilePic || ''}`} alt="" /></span>
+          <span className="username"><a href="javascript:;">{props?.user.username || 'user'}</a> <small /></span>
         </div>
         <div className="timeline-content">
           <div className="timeline-content__body">

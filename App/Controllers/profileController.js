@@ -9,7 +9,7 @@ import { editUser } from '../Models/usersModel';
 
 router.get('/', async (req, res) => {
     const user = await req.user;
-    res.render('profile', { title: 'Edit Profile', user: user });
+    res.render('profile', { title: `${user.username}'s Profile`, user: user });
 });
 
 router.get('/edit', async (req, res) => {

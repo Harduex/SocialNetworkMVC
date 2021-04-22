@@ -2,26 +2,29 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const options = { timestamps: true }
 
-// Users schema
-const usersSchema = new Schema({
-    username: {
+// Post model operations
+const postSchema = new Schema({
+    body: {
         type: String,
-        required: true,
-        unique: true
     },
-    password: {
+    user: {
         type: String,
-        required: true
     },
-    fullName: {
-        type: String
-    }
+    comments: {
+        type: Array,
+    },
+    likes: {
+        type: Array,
+    },
+    image: {
+        type: Buffer,
+    },
 }, options);
 
-const tableName = 'users';
-const User = mongoose.model(tableName, usersSchema)
+const tableName = 'posts';
+const Post = mongoose.model(tableName, postSchema)
 
-// Users model operations
+// Post model operations
 async function addUser(username, password, fullName) {
     const user = new User({
         username: username,
