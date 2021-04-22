@@ -4,7 +4,7 @@ import UserPanel from './components/userPanel';
 import Timeline from './components/timeline';
 
 function Profile(props) {
-  
+
   const posts = [
     {
       user: 'pesho',
@@ -32,7 +32,7 @@ function Profile(props) {
   return (
     <Layout title={props.title}>
       <UserPanel user={props.user} />
-      <Timeline posts={posts} user={props.user}/>
+      <Timeline posts={posts} user={props.user} currentUser={props.user} />
     </Layout>
   )
 }
