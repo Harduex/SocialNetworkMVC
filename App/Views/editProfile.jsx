@@ -59,86 +59,89 @@ function Profile(props) {
                       <div className="tab-content pt-3">
                         <div className="tab-pane active">
                           {/* <form method="POST" className="form" noValidate> */}
-                            <div className="row">
-                              <div className="col">
-                                <div className="row">
-                                  <div className="col">
-                                    <div className="form-group">
-                                      <label>Full Name</label>
-                                      <input className="form-control" type="text" name="name" placeholder="John Smith" defaultValue={props?.user?.fullName} />
-                                    </div>
-                                  </div>
-                                  <div className="col">
-                                    <div className="form-group">
-                                      <label>Username</label>
-                                      <input className="form-control" type="text" name="username" placeholder="johnny.s" defaultValue={props?.user?.username} />
-                                    </div>
+                          <div className="row">
+                            <div className="col">
+                              <div className="row">
+                                <div className="col">
+                                  <div className="form-group">
+                                    <label>Full Name</label>
+                                    <input className="form-control" type="text" name="fullName" placeholder="Two Names" defaultValue={props?.user?.fullName} />
                                   </div>
                                 </div>
-                                <div className="row">
-                                  <div className="col">
-                                    <div className="form-group">
-                                      <label>Email</label>
-                                      <input className="form-control" type="text" placeholder="user@example.com" defaultValue={props?.user?.email} name="email" />
-                                    </div>
+                                <div className="col">
+                                  <div className="form-group">
+                                    <label>Username</label>
+                                    <input className="form-control" type="text" name="username" placeholder="username" defaultValue={props?.user?.username} />
                                   </div>
                                 </div>
-                                <div className="row">
-                                  <div className="col mb-3">
-                                    <div className="form-group">
-                                      <label>Bio</label>
-                                      <textarea className="form-control" rows={5} placeholder="My Bio" defaultValue={props?.user?.bio} name="bio" />
-                                    </div>
+                              </div>
+                              <div className="row">
+                                <div className="col">
+                                  <div className="form-group">
+                                    <label>Email</label>
+                                    <input className="form-control" type="text" placeholder="user@example.com" defaultValue={props?.user?.email} name="email" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="row">
+                                <div className="col mb-3">
+                                  <div className="form-group">
+                                    <label>Bio</label>
+                                    <textarea className="form-control" rows={5} placeholder="My Bio" defaultValue={props?.user?.bio} name="bio" />
                                   </div>
                                 </div>
                               </div>
                             </div>
-                            <div className="row">
-                              <div className="col-12 col-sm-6 mb-3">
-                                <div className="mb-2"><b>Change Password</b></div>
-                                <div className="row">
-                                  <div className="col">
-                                    <div className="form-group">
-                                      <label>Current Password</label>
-                                      <input className="form-control" type="password" placeholder="••••••" name="currentPassword"/>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="row">
-                                  <div className="col">
-                                    <div className="form-group">
-                                      <label>New Password</label>
-                                      <input className="form-control" type="password" placeholder="••••••" name="newPassword"/>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="row">
-                                  <div className="col">
-                                    <div className="form-group">
-                                      <label>Confirm <span className="d-none d-xl-inline">Password</span></label>
-                                      <input className="form-control" type="password" placeholder="••••••" name="newPasswordConfirm"/></div>
+                          </div>
+                          <div className="row">
+                            <div className="col-12 col-sm-6 mb-3">
+                              <div className="mb-2"><b>Change Password</b></div>
+                              {props?.passwordError &&
+                                <div className="mb-2 text-danger"><b>{props?.passwordError}</b></div>
+                              }
+                              <div className="row">
+                                <div className="col">
+                                  <div className="form-group">
+                                    <label>Current Password</label>
+                                    <input className="form-control" type="password" placeholder="••••••" name="currentPassword" />
                                   </div>
                                 </div>
                               </div>
+                              <div className="row">
+                                <div className="col">
+                                  <div className="form-group">
+                                    <label>New Password</label>
+                                    <input className="form-control" type="password" placeholder="••••••" name="newPassword" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="row">
+                                <div className="col">
+                                  <div className="form-group">
+                                    <label>Confirm <span className="d-none d-xl-inline">Password</span></label>
+                                    <input className="form-control" type="password" placeholder="••••••" name="newPasswordConfirm" /></div>
+                                </div>
+                              </div>
+                            </div>
 
-                              <div className="col-12 col-sm-5 offset-sm-1 mb-3">
-                                <div className="row">
-                                  <div className="col">
-                                    <div className="custom-controls-stacked px-2">
-                                      <h6 className="card-title font-weight-bold">Support</h6>
-                                      <p className="card-text">Get fast, free help from our friendly assistants.</p>
-                                      <a href="/contact" type="button" className="btn btn-primary">Contact Us</a>
-                                    </div>
+                            <div className="col-12 col-sm-5 offset-sm-1 mb-3">
+                              <div className="row">
+                                <div className="col">
+                                  <div className="custom-controls-stacked px-2">
+                                    <h6 className="card-title font-weight-bold">Support</h6>
+                                    <p className="card-text">Get fast, free help from our friendly assistants.</p>
+                                    <a href="/contact" type="button" className="btn btn-primary">Contact Us</a>
                                   </div>
                                 </div>
                               </div>
+                            </div>
 
+                          </div>
+                          <div className="row">
+                            <div className="col d-flex justify-content-end">
+                              <button className="btn btn-primary" type="submit">Save Changes</button>
                             </div>
-                            <div className="row">
-                              <div className="col d-flex justify-content-end">
-                                <button className="btn btn-primary" type="submit">Save Changes</button>
-                              </div>
-                            </div>
+                          </div>
                           {/* </form> */}
                         </div>
                       </div>

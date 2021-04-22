@@ -9,12 +9,12 @@ import { editUser } from '../Models/usersModel';
 
 router.get('/', async (req, res) => {
     const user = await req.user;
-    res.render('profile', { title: 'Profile', user: user });
+    res.render('profile', { title: 'Edit Profile', user: user });
 });
 
 router.get('/edit', async (req, res) => {
     const user = await req.user;
-    res.render('editProfile', { title: 'Profile', user: user });
+    res.render('editProfile', { title: 'Edit Profile', user: user });
 });
 
 router.post('/edit', upload.single('profilePic'), async (req, res) => {
@@ -25,7 +25,7 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
 
     const {
         // profilePic,
-        name,
+        fullName,
         username,
         email,
         bio,
@@ -47,12 +47,18 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
 
     // Update password
     if (currentPassword !== '' && newPassword !== '' && newPasswordConfirm !== '') {
-        if (await bcrypt.compare(currentPassword, currentUserPassword) && newPassword === newPasswordConfirm) {
+        if (await bcrypt.compare(currentPassword, currentUserPassword)) {
+
+            if (newPassword !== newPasswordConfirm) {;
+                res.render('editProfile', { title: 'Edit Profile',passwordError: `Passwords don't match!`, user: user });
+                return;
+            }
+
             const NewHashedPassword = await bcrypt.hash(newPassword, 10);
             const updates = {
                 profilePic: profilePic,
                 username: username,
-                fullName: name,
+                fullName: fullName,
                 email: email,
                 password: NewHashedPassword,
                 bio: bio,
@@ -63,21 +69,21 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
             res.redirect('/auth/logout');
 
         } else {
-            res.send('wrong password');
+            res.render('editProfile', { title: 'Edit Profile',passwordError: `Wrong password!`, user: user });
         }
     } else {
-
+        // Update only user info
         const updates = {
             profilePic: profilePic,
             username: username,
-            fullName: name,
+            fullName: fullName,
             email: email,
             bio: bio,
         }
 
         editUser(currentUserId, updates);
 
-        res.redirect('/profile');
+        res.redirect('/profile/edit');
     }
 
 
