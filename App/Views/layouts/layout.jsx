@@ -1,5 +1,6 @@
 import React from 'react';
-import Header from '../components/header'
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 
 function Layout(props) {
@@ -21,10 +22,8 @@ function Layout(props) {
         <Header title={props?.title} />
         <div className="container">
           {props.children}
-          <div class="loader-wrapper" style={{ display: 'none' }}>
-            <span class="loader"><span class="loader-inner"></span></span>
-          </div>
         </div>
+        <Footer />
       </body>
     </html >
   )
