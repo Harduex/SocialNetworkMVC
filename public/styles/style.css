@@ -7700,7 +7700,6 @@ header {
   justify-content: center;
   align-items: center;
   visibility: visible;
-  transition: 0.1s;
   z-index: 100; }
   .loader-wrapper.hide {
     background-color: transparent;
