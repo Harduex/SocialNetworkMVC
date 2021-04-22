@@ -25,7 +25,9 @@ function Post(props) {
         <div className="timeline-likes">
           <div className="stats-right">
             {/* <span className="stats-text">259 Shares</span> */}
-            <span className="stats-text">{(props?.post?.comments?.length || 0) + ' Comments'}</span>
+            
+            <span className="stats-text-num">{(props?.post?.comments?.length || 0) + ''}</span>
+            <span className="stats-text">Comments</span>
           </div>
           <div className="stats">
             <span className="fa-stack fa-fw stats-icon">

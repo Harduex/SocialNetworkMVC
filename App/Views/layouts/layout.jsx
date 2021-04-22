@@ -21,9 +21,12 @@ function Layout(props) {
         <Header title={props?.title} />
         <div className="container">
           {props.children}
+          <div class="loader-wrapper">
+            <span class="loader"><span class="loader-inner"></span></span>
+          </div>
         </div>
       </body>
-    </html>
+    </html >
   )
 }
 

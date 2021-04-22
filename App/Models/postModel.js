@@ -25,56 +25,47 @@ const tableName = 'posts';
 const Post = mongoose.model(tableName, postSchema)
 
 // Post model operations
-async function addUser(username, password, fullName) {
-    const user = new User({
-        username: username,
-        password: password,
-        fullName: fullName
+async function addPost(body, user, comments, likes, image) {
+    const post = new Post({
+        body: body,
+        user: user,
+        comments: comments,
+        likes: likes,
+        image: image,
     });
 
-    const result = await user.save();
+    const result = await post.save();
     return result;
 };
 
-async function getAllUsers() {
-    const users = await User.find().sort({ createdAt: -1 });
-    return users;
+async function getAllPosts() {
+    const posts = await Post.find().sort({ createdAt: -1 });
+    return posts;
 };
 
 
-async function getUserById(id) {
-    const user = await User.findOne({ _id: id });
-    return user;
+async function getPostByUsername(username) {
+    const post = await Post.findOne({ user: username });
+    return post;
 };
 
-
-async function getUserByUsername(username) {
-    const user = await User.findOne({ username: username });
-    return user;
-};
-
-async function editUser(username, updates) {
-    const result = await User.updateOne({ username: username }, updates);
+async function editPost(id, updates) {
+    const result = await User.updateOne({ _id: id }, updates);
     return result;
 };
 
 
-async function deleteUserById(id) {
-    const result = await User.deleteOne({ _id: id });
+async function deletePostById(id) {
+    const result = await Post.deleteOne({ _id: id });
     return result;
 };
 
-async function deleteUserByUsername(username) {
-    const result = await User.deleteOne({ username: username });
-    return result;
-};
-
-async function deleteAllUsers() {
-    const result = await User.deleteMany({});
+async function deleteAllPosts() {
+    const result = await Post.deleteMany({});
     return result;
 };
 
 
-export { User, addUser, getAllUsers, getUserByUsername, getUserById, editUser, deleteUserById, deleteUserByUsername, deleteAllUsers };
+export { Post, addPost, getAllPosts, getPostByUsername, editPost, deletePostById, deleteAllPosts };
 
 

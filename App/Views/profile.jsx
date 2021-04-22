@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from './layouts/layout';
 import UserPanel from './components/userPanel';
+import NewPostPanel from './components/newPostPanel';
 import Timeline from './components/timeline';
 
 function Profile(props) {
@@ -27,6 +28,7 @@ function Profile(props) {
   return (
     <Layout title={props.title}>
       <UserPanel user={props.user} />
+      <NewPostPanel />
       <Timeline posts={posts} user={props.user} currentUser={props.user} />
     </Layout>
   )

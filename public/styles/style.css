@@ -7680,14 +7680,70 @@ a.text-dark:focus, a.text-dark:hover {
 html {
   font-family: sans-serif, Arial, Helvetica; }
 
-.container {
-  padding-top: 20px; }
+header {
+  margin-bottom: 30px; }
 
 .footer {
   background-color: aquamarine; }
 
 .header {
   background-color: blueviolet; }
+
+.loader-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #242f3f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+  transition: 0.1s;
+  z-index: 100; }
+  .loader-wrapper.hide {
+    background-color: transparent;
+    visibility: hidden; }
+
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #fff;
+  animation: loader 2s infinite ease; }
+
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in; }
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg); }
+  25% {
+    transform: rotate(180deg); }
+  50% {
+    transform: rotate(180deg); }
+  75% {
+    transform: rotate(360deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+@keyframes loader-inner {
+  0% {
+    height: 0%; }
+  25% {
+    height: 0%; }
+  50% {
+    height: 100%; }
+  75% {
+    height: 100%; }
+  100% {
+    height: 0%; } }
 
 .profile-header {
   position: relative;
@@ -8071,8 +8127,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .timeline > li {
   position: relative;
-  min-height: 50px;
-  padding: 20px 0; }
+  min-height: 50px; }
 
 .timeline .timeline-time {
   position: absolute;
@@ -8137,10 +8192,10 @@ select.form-control:not([size]):not([multiple]) {
 
 .timeline-header {
   padding-bottom: 20px;
-  border-bottom: 1px solid #e2e7eb;
+  border-bottom: 1px solid #a3a3a3;
   line-height: 30px;
-  padding-left: 25px;
-  padding-right: 25px; }
+  margin-left: 25px;
+  margin-right: 25px; }
 
 .timeline-header .userimage {
   float: left;
@@ -8187,10 +8242,10 @@ select.form-control:not([size]):not([multiple]) {
 
 .timeline-footer {
   background: #4e5d6c;
-  border-top: 1px solid #e2e7ec;
+  border-top: 1px solid #a3a3a3;
   padding-top: 15px;
-  padding-left: 25px;
-  padding-right: 25px; }
+  margin-left: 25px;
+  margin-right: 25px; }
 
 .timeline-footer a:not(.btn) {
   color: #dddddd; }
@@ -8281,6 +8336,14 @@ select.form-control:not([size]):not([multiple]) {
 .comment-button {
   float: right;
   margin-right: 0; }
+
+.fa-thumbs-up,
+.fa-comments,
+.stats-text-num {
+  margin-right: 5px; }
+
+.add-post-button {
+  padding-bottom: 0; }
 
 .searchbar {
   position: relative;
