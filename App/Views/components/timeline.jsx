@@ -16,7 +16,7 @@ function Timeline(props) {
                   <ul className="timeline">
 
                     {props?.posts.map((post) => {
-                      return <Post post={post} currentUser={props.user} />
+                      return <Post post={post} currentUser={props.user} usr={props.user}/>
                     })}
 
                   </ul>
