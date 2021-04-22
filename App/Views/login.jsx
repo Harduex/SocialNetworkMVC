@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from './layouts/layout';
 
 
-function Register(props) {
+function Login(props) {
     return (
         <Layout title={props.message}>
             <div className="container">
@@ -28,4 +28,4 @@ function Register(props) {
 }
 
 
-export default Register;
+export default Login;
