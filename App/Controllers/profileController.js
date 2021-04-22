@@ -5,7 +5,7 @@ import multer from 'multer';
 import fs from 'fs';
 const upload = multer({ dest: './public/temp' });
 
-import { editUser } from '../Models/usersModel';
+import { editUser } from '../Models/userModel';
 
 router.get('/', async (req, res) => {
     const user = await req.user;
