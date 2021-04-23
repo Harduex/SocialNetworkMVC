@@ -688,6 +688,7 @@ select.form-control:not([size]):not([multiple]) {
     width: 115px;
     height: 115px;
     object-fit: cover;
+    border-radius: 4px;
 }
 .user-full-name {
     margin: 0;

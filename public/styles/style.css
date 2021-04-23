@@ -8333,7 +8333,8 @@ select.form-control:not([size]):not([multiple]) {
 .profile-header-img img {
   width: 115px;
   height: 115px;
-  object-fit: cover; }
+  object-fit: cover;
+  border-radius: 4px; }
 
 .user-full-name {
   margin: 0;

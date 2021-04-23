@@ -35,27 +35,33 @@ function UserPanel(props) {
                       </a>
                     </div>
                     :
-                    <div className="profile-options">
-                      <a href={`/user/follow/${props?.user?.username}`} className="btn btn-sm btn-primary mb-2">{props?.follow}</a>
-                    </div>
+                    !props.hideFollowButton && (
+                      <div className="profile-options">
+                        <a href={`/user/follow/${props?.user?.username}`} className="btn btn-sm btn-primary mb-2">{props?.follow}</a>
+                      </div>
+                    )
                   }
                   {/* END profile-header-info */}
                 </div>
                 {/* END profile-header-content */}
 
               </div>
+
               {/* BEGIN profile-header-tab */}
-              <ul className="profile-header-tab nav nav-tabs">
-                <li className="nav-item"><a href="#posts" className="nav-link text-white" data-toggle="tab">Posts {(props?.posts?.length || 0)}</a></li>
-                <li className="nav-item"><a href="#followers" className="nav-link text-white" data-toggle="tab">Followers {(props?.user?.followers?.length || 0)}</a></li>
-                <li className="nav-item"><a href="#following" className="nav-link text-white" data-toggle="tab">Following {(props?.user?.following?.length || 0)}</a></li>
-              </ul>
+              {props?.mainPanel &&
+                < ul className="profile-header-tab nav nav-tabs">
+                  <li className="nav-item"><a href="#posts" className="nav-link text-white" data-toggle="tab">Posts {(props?.posts?.length || 0)}</a></li>
+                  <li className="nav-item"><a href="#followers" className="nav-link text-white" data-toggle="tab">Followers {(props?.user?.followers?.length || 0)}</a></li>
+                  <li className="nav-item"><a href="#following" className="nav-link text-white" data-toggle="tab">Following {(props?.user?.following?.length || 0)}</a></li>
+                </ul>
+              }
               {/* END profile-header-tab */}
+
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

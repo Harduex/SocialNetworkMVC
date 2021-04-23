@@ -5,15 +5,24 @@ import multer from 'multer';
 import fs from 'fs';
 const upload = multer({ dest: './public/temp' });
 
-import { editUser } from '../Models/userModel';
+import { editUser, getUsersByArray } from '../Models/userModel';
 
 router.get('/', async (req, res) => {
     const user = await req.user;
+
+    const followers = user.followers;
+    const followersFull = await getUsersByArray(followers);
+
+    const following = user.following;
+    const followingFull = await getUsersByArray(following);
+
     res.render('profile', {
         title: `${user.username}'s Profile`,
         user: user,
         currentUser: user,
-        loggedIn: true
+        loggedIn: true,
+        followers: followersFull,
+        following: followingFull,
     });
 });
 
@@ -91,8 +100,6 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
 
         res.redirect('/profile/edit');
     }
-
-
 });
 
 
