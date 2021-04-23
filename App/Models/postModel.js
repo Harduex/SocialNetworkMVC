@@ -71,7 +71,21 @@ async function deleteAllPosts() {
     return result;
 };
 
+async function getPostsByArray(arr) {
+    const posts = await Post.find({ 'user': { $in: arr } }).sort({ createdAt: -1 });
+    return posts;
+};
 
-export { Post, addPost, getAllPosts, getPostById, editPost, deletePostById, deleteAllPosts, getAllPostsByUser };
+export {
+    Post,
+    addPost,
+    getAllPosts,
+    getPostById,
+    editPost,
+    deletePostById,
+    deleteAllPosts,
+    getAllPostsByUser,
+    getPostsByArray
+};
 
 

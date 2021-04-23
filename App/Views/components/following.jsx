@@ -14,13 +14,9 @@ function Following(props) {
               <div className="tab-content p-0">
                 <div className="tab-pane fade active show" id="profile-post">
                   <ul className="timeline">
-                    {props?.following.map((user) => {
-                      if (user.following.includes(props.currentUser.username)) {
-                        return <UserPanel user={user} follow={'unfollow'} hideFollowButton={props.hideFollowButton} />
-                      } else {
-                        return <UserPanel user={user} follow={'follow'} hideFollowButton={props.hideFollowButton} />
-                      }
-                    })}
+                    {props?.following.map((user) => (
+                      <UserPanel user={user} follow={'unfollow'} hideFollowButton={props.hideFollowButton} />
+                    ))}
                   </ul>
                 </div>
               </div>

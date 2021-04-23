@@ -5,7 +5,7 @@ function UserPanel(props) {
 
 
   return (
-    <div className="container">
+    <div className="container user-panel">
       <div className="row">
         <div className="col-md-12">
           <div id="content" className="content content-full-width">

@@ -8160,7 +8160,8 @@ select.form-control:not([size]):not([multiple]) {
   background: #4e5d6c;
   position: relative;
   padding: 20px 0;
-  border-radius: 6px; }
+  border-radius: 6px;
+  margin-bottom: 30px; }
   @media (max-width: 1000px) {
     .timeline .timeline-body {
       margin-left: 0;
@@ -8382,6 +8383,9 @@ select.form-control:not([size]):not([multiple]) {
   display: flex;
   align-items: center;
   justify-content: center; }
+
+.timeline .user-panel {
+  margin-bottom: 2em; }
 
 .searchbar {
   position: relative;
