@@ -477,6 +477,7 @@ select.form-control:not([size]):not([multiple]) {
     position: relative;
     padding: 20px 0;
     border-radius: 6px;
+    margin-bottom: 30px;
 
     @include responsive(1000px) {
         margin-left: 0;
@@ -743,4 +744,9 @@ select.form-control:not([size]):not([multiple]) {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.timeline {
+    .user-panel {
+        margin-bottom: 2em;
+    }
 }

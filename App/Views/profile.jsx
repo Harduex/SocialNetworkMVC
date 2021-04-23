@@ -14,26 +14,16 @@ function Profile(props) {
     <Layout title={props.title}>
       <UserPanel user={props.user} loggedIn={props.loggedIn} follow={props.follow} mainPanel />
 
-
       <div className="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-        <div className="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="nav-home-tab">
-          {props.loggedIn ?
-            <>
+        {props.loggedIn ?
+          <>
+            <div className="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="nav-home-tab">
               <BigButtonPanel route="javascript:;" dataTarget="#new-post-modal">
                 New Post
               </BigButtonPanel>
               <NewPost />
               <Timeline posts={props.posts} user={props.user} currentUser={props.currentUser} loggedIn={props.loggedIn} />
-            </>
-            :
-            <Timeline posts={props.posts} user={props.user} currentUser={props.currentUser} loggedIn={props.loggedIn} />
-          }
-        </div>
-
-
-        {/* for debugging -> TO DO */}
-        {props.loggedIn ?
-          <>
+            </div>
             <div className="tab-pane fade" id="followers" role="tabpanel" aria-labelledby="nav-profile-tab">
               <Followers followers={props.followers} currentUser={props.currentUser} />
             </div>
@@ -43,6 +33,9 @@ function Profile(props) {
           </>
           :
           <>
+            <div className="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="nav-home-tab">
+              <Timeline posts={props.posts} user={props.user} currentUser={props.currentUser} loggedIn={props.loggedIn} />
+            </div>
             <div className="tab-pane fade" id="followers" role="tabpanel" aria-labelledby="nav-profile-tab">
               <Followers followers={props.followers} currentUser={props.user} hideFollowButton />
             </div>
@@ -51,9 +44,7 @@ function Profile(props) {
             </div>
           </>
         }
-
       </div>
-
     </Layout>
   );
 }

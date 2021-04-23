@@ -8,11 +8,13 @@ function Post(props) {
       {/* begin timeline-body */}
       <div className="timeline-body">
         <div className="timeline-header">
-          <span className="userimage"><img src={`data:image/jpeg;base64,${props?.user?.profilePic || ''}`} alt="" /></span>
-
+          {/* TO DO: figure out how to get users profile pics in timeline too */}
+          {props?.user?.profilePic &&
+            <span className="userimage"><img src={`data:image/jpeg;base64,${props?.user?.profilePic || ''}`} alt="" /></span>
+          }
           <div className="post-user-details">
-            <div className="username"><a href={`/user?username=${props?.user.username}`}>{props?.user.username || 'user'}</a> <small /></div>
-            <div className="text-muted post-date"><small>{props?.post?.createdAt.toDateString()}</small></div>
+            <div className="username"><a href={`/user?username=${props?.user?.username}`}>{props?.user?.username || 'user'}</a> <small /></div>
+            <div className="text-muted post-date"><small>{props?.post?.createdAt?.toDateString()}</small></div>
           </div>
 
         </div>

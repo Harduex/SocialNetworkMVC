@@ -97,7 +97,6 @@ async function getUserByUsername(username) {
 };
 
 async function getUsersByArray(arr) {
-    // const user = await User.find().where(clause).in(arr).exec();
     const user = await User.find({ 'username': { $in: arr } });
     return user;
 };

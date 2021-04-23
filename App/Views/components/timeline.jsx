@@ -14,11 +14,13 @@ function Timeline(props) {
               <div className="tab-content p-0">
                 <div className="tab-pane fade active show" id="profile-post">
                   <ul className="timeline">
-
                     {props?.posts.map((post) => (
-                      <Post post={post} currentUser={props.currentUser} user={props.user} />
+                      (props?.feed ?
+                        <Post post={post} currentUser={props.currentUser} user={{ username: post.user }} />
+                        :
+                        <Post post={post} currentUser={props.currentUser} user={props.user} />
+                      )
                     ))}
-
                   </ul>
                 </div>
               </div>
