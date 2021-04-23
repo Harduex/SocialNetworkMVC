@@ -96,6 +96,13 @@ async function getUserByUsername(username) {
     return user;
 };
 
+// [], 'Followers'
+async function getUsersByArray(arr) {
+    // const user = await User.find().where(clause).in(arr).exec();
+    const user = await User.find({ 'username': { $in: arr } });
+    return user;
+};
+
 async function editUser(id, updates) {
     const result = await User.updateOne({ _id: id }, updates);
     return result;
@@ -130,4 +137,5 @@ export {
     deleteAllUsers,
     follow,
     unfollow,
+    getUsersByArray,
 };

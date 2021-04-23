@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import { getUserByUsername, follow, unfollow } from '../Models/userModel';
+import { getUserByUsername, getUsersByArray, follow, unfollow } from '../Models/userModel';
 
 
 router.get('/', async (req, res) => {
@@ -11,7 +11,13 @@ router.get('/', async (req, res) => {
     const loggedIn = (loggedUser.username === searchedUser.username);
     let followText;
 
-    if (searchedUser.followers.includes(loggedUser.username)) {
+    const followers = searchedUser.followers;
+    const followersFull = await getUsersByArray(followers);
+
+    const following = searchedUser.following;
+    const followingFull = await getUsersByArray(following);
+
+    if (followers.includes(loggedUser.username)) {
         followText = 'unfollow';
     } else {
         followText = 'follow';
@@ -28,6 +34,8 @@ router.get('/', async (req, res) => {
         currentUser: loggedUser,
         loggedIn: loggedIn,
         follow: followText,
+        followers: followersFull,
+        following: followingFull,
     });
 
 });
@@ -42,7 +50,7 @@ router.get('/follow/:username', async (req, res) => {
         await follow(userToFollow.username, loggedUser.username);
     }
 
-    res.redirect(`/user?username=${userToFollow.username}`);
+    res.redirect('back');
 });
 
 

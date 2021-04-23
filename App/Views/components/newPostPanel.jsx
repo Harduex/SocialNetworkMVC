@@ -4,7 +4,6 @@ import React from 'react';
 function NewPostPanel(props) {
 
   return (
-
     <div className="container">
       <div className="row">
         <div className="col-md-12">
@@ -24,12 +23,6 @@ function NewPostPanel(props) {
         </div>
       </div>
     </div>
-
-
-
-
-
-
   )
 }
 
