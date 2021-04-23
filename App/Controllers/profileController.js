@@ -9,7 +9,12 @@ import { editUser } from '../Models/userModel';
 
 router.get('/', async (req, res) => {
     const user = await req.user;
-    res.render('profile', { title: `${user.username}'s Profile`, user: user });
+    res.render('profile', {
+        title: `${user.username}'s Profile`,
+        user: user,
+        currentUser: user,
+        loggedIn: true
+    });
 });
 
 router.get('/edit', async (req, res) => {
@@ -49,8 +54,9 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
     if (currentPassword !== '' && newPassword !== '' && newPasswordConfirm !== '') {
         if (await bcrypt.compare(currentPassword, currentUserPassword)) {
 
-            if (newPassword !== newPasswordConfirm) {;
-                res.render('editProfile', { title: 'Edit Profile',passwordError: `Passwords don't match!`, user: user });
+            if (newPassword !== newPasswordConfirm) {
+                ;
+                res.render('editProfile', { title: 'Edit Profile', passwordError: `Passwords don't match!`, user: user });
                 return;
             }
 
@@ -69,7 +75,7 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
             res.redirect('/auth/logout');
 
         } else {
-            res.render('editProfile', { title: 'Edit Profile',passwordError: `Wrong password!`, user: user });
+            res.render('editProfile', { title: 'Edit Profile', passwordError: `Wrong password!`, user: user });
         }
     } else {
         // Update only user info

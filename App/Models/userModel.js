@@ -27,7 +27,13 @@ const userSchema = new Schema({
     },
     bio: {
         type: String,
-    }
+    },
+    followers: {
+        type: Array
+    },
+    following: {
+        type: Array
+    },
 }, options);
 
 const tableName = 'users';
@@ -46,6 +52,32 @@ async function addUser(username, password, fullName, email, bio) {
     const result = await user.save();
     return result;
 };
+
+async function follow(username, follower) {
+    const update1 = await User.updateOne(
+        { username: username },
+        { $push: { followers: follower } }
+    );
+    const update2 = await User.updateOne(
+        { username: follower },
+        { $push: { following: username } }
+    );
+    return [update1, update2];
+};
+
+async function unfollow(username, follower) {
+
+    const update1 = await User.updateOne(
+        { username: username },
+        { $pull: { followers: follower } }
+    );
+    const update2 = await User.updateOne(
+        { username: follower },
+        { $pull: { following: username } }
+    );
+    return [update1, update2];
+};
+
 
 async function getAllUsers() {
     const users = await User.find().sort({ createdAt: -1 });
@@ -86,4 +118,16 @@ async function deleteAllUsers() {
 };
 
 
-export { User, addUser, getAllUsers, getUserByUsername, getUserById, editUser, deleteUserById, deleteUserByUsername, deleteAllUsers };
+export {
+    User,
+    addUser,
+    getAllUsers,
+    getUserByUsername,
+    getUserById,
+    editUser,
+    deleteUserById,
+    deleteUserByUsername,
+    deleteAllUsers,
+    follow,
+    unfollow,
+};

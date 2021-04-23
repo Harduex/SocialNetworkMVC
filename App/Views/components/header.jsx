@@ -5,7 +5,9 @@ function Header(props) {
     return (
         <header>
             <div class="loader-wrapper">
-                <span class="loader"><span class="loader-inner"></span></span>
+                <span class="loader">
+                    <span class="loader-inner"></span>
+                </span>
             </div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a className="navbar-brand" href="javascript:;">{props?.title || 'Home'}</a>

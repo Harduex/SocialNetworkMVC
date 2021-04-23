@@ -16,6 +16,8 @@
     "del": "^6.0.0",
     "express": "^4.17.1",
     "express-flash": "0.0.2",
+    "express-pjax": "0.0.1",
+    "express-pjax-redirect": "0.0.2",
     "express-react-views": "^0.11.0",
     "express-session": "^1.17.1",
     "gulp": "^4.0.2",
