@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 import { getUserByUsername, getUsersByArray, follow, unfollow } from '../Models/userModel';
+import { getAllPostsByUser } from '../Models/postModel';
 
 
 router.get('/', async (req, res) => {
@@ -28,6 +29,8 @@ router.get('/', async (req, res) => {
         return;
     }
 
+    const posts = await getAllPostsByUser(searchedUser.username);
+
     res.render('profile', {
         title: `${searchedUser.username}'s Profile`,
         user: searchedUser,
@@ -36,6 +39,7 @@ router.get('/', async (req, res) => {
         follow: followText,
         followers: followersFull,
         following: followingFull,
+        posts: posts,
     });
 
 });

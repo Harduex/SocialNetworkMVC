@@ -9,23 +9,30 @@ function Post(props) {
       <div className="timeline-body">
         <div className="timeline-header">
           <span className="userimage"><img src={`data:image/jpeg;base64,${props?.user?.profilePic || ''}`} alt="" /></span>
-          <span className="username"><a href="javascript:;">{props?.user.username || 'user'}</a> <small /></span>
+
+          <div className="post-user-details">
+            <div className="username"><a href={`/user?username=${props?.user.username}`}>{props?.user.username || 'user'}</a> <small /></div>
+            <div className="text-muted post-date"><small>{props?.post?.createdAt.toDateString()}</small></div>
+          </div>
+
         </div>
         <div className="timeline-content">
-          <div className="timeline-content__body">
-            {props?.post?.body &&
-              <p class="text-white">{props?.post?.body || 'post body'}</p>
+          <a href={`/post/get/${props?.post?._id}`}>
+            <div className="timeline-content__body">
+              {props?.post?.body &&
+                <p class="text-white">{props?.post?.body || 'post body'}</p>
+              }
+            </div>
+            {props?.post?.image &&
+              <img className="post-image" src={`data:image/jpeg;base64,${props?.post?.image || ''}`} alt="" />
             }
-          </div>
-          {props?.post?.image &&
-            <img className="post-image" src={`data:image/jpeg;base64,${props?.post?.image || ''}`} alt="" />
-          }
+          </a>
         </div>
 
         <div className="timeline-likes">
           <div className="stats-right">
             {/* <span className="stats-text">259 Shares</span> */}
-            
+
             <span className="stats-text-num">{(props?.post?.comments?.length || 0) + ''}</span>
             <span className="stats-text">Comments</span>
           </div>
