@@ -8344,6 +8344,13 @@ select.form-control:not([size]):not([multiple]) {
 .add-post-button {
   padding-bottom: 0; }
 
+.user-full-name {
+  margin: 0; }
+
+.user-username {
+  display: block;
+  margin-bottom: 2.5em; }
+
 .searchbar {
   position: relative;
   min-width: 35px;
