@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function NewPostPanel(props) {
+function BigButtonPanel(props) {
 
   return (
     <div className="container">
@@ -13,7 +13,15 @@ function NewPostPanel(props) {
                 <div className="tab-pane fade active show" id="profile-post">
                   <div className="timeline">
                     <div className="timeline-body hover-button">
-                      <a href="/post/new" type="button" class="btn btn-secondary btn-lg btn-block">New Post</a>
+                      {props?.dataTarget ?
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target={props?.dataTarget}>
+                          {props?.children}
+                        </button>
+                        :
+                        <a href={props?.route} type="button" class="btn btn-secondary btn-lg btn-block">
+                          {props?.children}
+                        </a>
+                      }
                     </div>
                   </div>
                 </div>
@@ -27,4 +35,4 @@ function NewPostPanel(props) {
 }
 
 
-export default NewPostPanel;
+export default BigButtonPanel;

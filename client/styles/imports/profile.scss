@@ -496,11 +496,18 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .timeline-header {
-    padding-bottom: 20px;
     border-bottom: 1px solid rgb(163, 163, 163);
-    line-height: 30px;
     margin-left: 25px;
     margin-right: 25px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 1em;
+}
+
+.post-user-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .timeline-header .userimage {

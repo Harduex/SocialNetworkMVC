@@ -6,6 +6,7 @@ import fs from 'fs';
 const upload = multer({ dest: './public/temp' });
 
 import { editUser, getUsersByArray } from '../Models/userModel';
+import { getAllPostsByUser } from '../Models/postModel';
 
 router.get('/', async (req, res) => {
     const user = await req.user;
@@ -16,6 +17,8 @@ router.get('/', async (req, res) => {
     const following = user.following;
     const followingFull = await getUsersByArray(following);
 
+    const posts = await getAllPostsByUser(user.username);
+
     res.render('profile', {
         title: `${user.username}'s Profile`,
         user: user,
@@ -23,6 +26,7 @@ router.get('/', async (req, res) => {
         loggedIn: true,
         followers: followersFull,
         following: followingFull,
+        posts: posts,
     });
 });
 

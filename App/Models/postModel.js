@@ -44,10 +44,16 @@ async function getAllPosts() {
 };
 
 
-async function getPostByUsername(username) {
-    const post = await Post.findOne({ user: username });
+async function getPostById(id) {
+    const post = await Post.findOne({ _id: id });
     return post;
 };
+
+async function getAllPostsByUser(username) {
+    const post = await Post.find({ user: username }).sort({ createdAt: -1 });
+    return post;
+};
+
 
 async function editPost(id, updates) {
     const result = await User.updateOne({ _id: id }, updates);
@@ -66,6 +72,6 @@ async function deleteAllPosts() {
 };
 
 
-export { Post, addPost, getAllPosts, getPostByUsername, editPost, deletePostById, deleteAllPosts };
+export { Post, addPost, getAllPosts, getPostById, editPost, deletePostById, deleteAllPosts, getAllPostsByUser };
 
 
