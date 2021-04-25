@@ -2,12 +2,12 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const options = { timestamps: true }
 
+import { User, editUser } from '../Models/userModel';
+
+
 // Post model operations
 const postSchema = new Schema({
     body: {
-        type: String,
-    },
-    user: {
         type: String,
     },
     comments: {
@@ -19,6 +19,10 @@ const postSchema = new Schema({
     image: {
         type: Buffer,
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: User
+    }
 }, options);
 
 const tableName = 'posts';
@@ -28,7 +32,7 @@ const Post = mongoose.model(tableName, postSchema)
 async function addPost(body, user, comments, likes, image) {
     const post = new Post({
         body: body,
-        user: user,
+        user: user._id,
         comments: comments,
         likes: likes,
         image: image,
@@ -39,24 +43,34 @@ async function addPost(body, user, comments, likes, image) {
 };
 
 async function getAllPosts() {
-    const posts = await Post.find().sort({ createdAt: -1 });
+    const posts = await Post
+        .find()
+        .populate('user')
+        .sort({ createdAt: -1 });
     return posts;
 };
 
 
 async function getPostById(id) {
-    const post = await Post.findOne({ _id: id });
+    const post = await Post
+        .findOne({ _id: id })
+        .populate('user');
     return post;
 };
 
-async function getAllPostsByUser(username) {
-    const post = await Post.find({ user: username }).sort({ createdAt: -1 });
+async function getAllPostsByUser(user) {
+    const post = await Post
+        .find({ user: user._id })
+        .populate('user')
+        .sort({ createdAt: -1 });
+
     return post;
 };
 
 
 async function editPost(id, updates) {
-    const result = await User.updateOne({ _id: id }, updates);
+    const result = await User
+        .updateOne({ _id: id }, updates);
     return result;
 };
 
@@ -72,7 +86,10 @@ async function deleteAllPosts() {
 };
 
 async function getPostsByArray(arr) {
-    const posts = await Post.find({ 'user': { $in: arr } }).sort({ createdAt: -1 });
+    const posts = await Post
+        .find({ 'user': { $in: arr } })
+        .populate('user')
+        .sort({ createdAt: -1 });
     return posts;
 };
 

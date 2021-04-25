@@ -13,8 +13,16 @@ function Post(props) {
             <span className="userimage"><img src={`data:image/jpeg;base64,${props?.user?.profilePic || ''}`} alt="" /></span>
           }
           <div className="post-user-details">
-            <div className="username"><a href={`/user?username=${props?.user?.username}`}>{props?.user?.username || 'user'}</a> <small /></div>
-            <div className="text-muted post-date"><small>{props?.post?.createdAt?.toDateString()}</small></div>
+            <div className="username">
+              <a href={`/user?username=${props?.user?.username}`}>
+                {props?.user?.username || 'user'}
+              </a>
+            </div>
+            <div className="text-muted post-date">
+              <small>
+                {props?.post?.createdAt?.toDateString()}
+              </small>
+            </div>
           </div>
 
         </div>

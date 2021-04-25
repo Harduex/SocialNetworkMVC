@@ -40,7 +40,7 @@ function NewPost(props) {
                   </grammarly-extension>
                   <form method="POST" action="post/create" enctype="multipart/form-data" id="create-post-form">
                     <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Recipient:</label>
+                      <label for="recipient-name" class="col-form-label">Photo:</label>
                       <div className="mt-2">
                         <button className="btn btn-primary change-profile-pic__button" type="button">
                           <i className="fa fa-fw fa-camera" />

@@ -29,7 +29,10 @@ router.get('/', async (req, res) => {
         return;
     }
 
-    const posts = await getAllPostsByUser(searchedUser.username);
+    const posts = await getAllPostsByUser(searchedUser);
+
+    console.log(loggedUser);
+
 
     res.render('profile', {
         title: `${searchedUser.username}'s Profile`,

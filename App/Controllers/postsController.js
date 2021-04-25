@@ -5,13 +5,13 @@ const upload = multer({ dest: './public/temp' });
 import fs from 'fs';
 
 
-import { Post, addPost, getAllPosts, getPostById, editPost, deletePostById, deleteAllPosts } from '../Models/postModel';
+import { addPost, getPostById } from '../Models/postModel';
 import { getUserByUsername } from '../Models/userModel';
 
 
 router.get('/get/:id', async (req, res) => {
     const post = await getPostById(req.params.id);
-    const postUser = await getUserByUsername(post.user);
+    const postUser = await getUserByUsername(post.user.username);
     const currentUser = await req.user;
 
     res.render('post', {
@@ -39,7 +39,7 @@ router.post('/create', upload.single('postImage'), async (req, res) => {
         fs.unlinkSync(req.file.path);
     }
 
-    const post = await addPost(req.body.body, user.username, req.body.comments, req.body.likes, image);
+    const post = await addPost(req.body.body, user, req.body.comments, req.body.likes, image);
 
     res.redirect(`/post/get/${post._id}`);
 });
