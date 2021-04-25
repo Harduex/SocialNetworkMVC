@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import { getUserByUsername, getUsersByArray, follow, unfollow } from '../Models/userModel';
+import { getUserByUsername, getUserById, getUsersByArray, follow, unfollow } from '../Models/userModel';
 import { getAllPostsByUser } from '../Models/postModel';
 
 
@@ -30,8 +30,6 @@ router.get('/', async (req, res) => {
     }
 
     const posts = await getAllPostsByUser(searchedUser);
-
-    console.log(loggedUser);
 
 
     res.render('profile', {
