@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
     const following = searchedUser.following;
     const followingFull = await getUsersByArray(following);
 
-    if (followers.includes(loggedUser.username)) {
+    if (followers.includes(loggedUser._id)) {
         followText = 'unfollow';
     } else {
         followText = 'follow';
@@ -49,10 +49,11 @@ router.get('/follow/:username', async (req, res) => {
     const loggedUser = await req.user;
     const userToFollow = await getUserByUsername(req.params.username);
 
-    if (userToFollow.followers.includes(loggedUser.username)) {
-        await unfollow(userToFollow.username, loggedUser.username);
+
+    if (userToFollow.followers.includes(loggedUser._id)) {
+        await unfollow(userToFollow._id, loggedUser._id);
     } else {
-        await follow(userToFollow.username, loggedUser.username);
+        await follow(userToFollow._id, loggedUser._id);
     }
 
     res.redirect('back');

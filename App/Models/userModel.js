@@ -60,31 +60,55 @@ async function addUser(username, password, fullName, email, bio) {
     return result;
 };
 
-async function follow(username, follower) {
+// async function follow(username, follower) {
+//     const update1 = await User.updateOne(
+//         { username: username },
+//         { $push: { followers: follower } }
+//     );
+//     const update2 = await User.updateOne(
+//         { username: follower },
+//         { $push: { following: username } }
+//     );
+//     return [update1, update2];
+// };
+
+// async function unfollow(username, follower) {
+
+//     const update1 = await User.updateOne(
+//         { username: username },
+//         { $pull: { followers: follower } }
+//     );
+//     const update2 = await User.updateOne(
+//         { username: follower },
+//         { $pull: { following: username } }
+//     );
+//     return [update1, update2];
+// };
+
+async function follow(id, follower) {
     const update1 = await User.updateOne(
-        { username: username },
+        { _id: id },
         { $push: { followers: follower } }
     );
     const update2 = await User.updateOne(
-        { username: follower },
-        { $push: { following: username } }
+        { _id: follower },
+        { $push: { following: id } }
     );
     return [update1, update2];
 };
 
-async function unfollow(username, follower) {
+async function unfollow(id, follower) {
 
     const update1 = await User.updateOne(
-        { username: username },
+        { _id: id },
         { $pull: { followers: follower } }
     );
     const update2 = await User.updateOne(
-        { username: follower },
-        { $pull: { following: username } }
+        { _id: follower },
+        { $pull: { following: id } }
     );
     return [update1, update2];
 };
-
 
 async function getAllUsers() {
     const users = await User
@@ -106,7 +130,7 @@ async function getUserByUsername(username) {
 };
 
 async function getUsersByArray(arr) {
-    const user = await User.find({ 'username': { $in: arr } })
+    const user = await User.find({ '_id': { $in: arr } })
     return user;
 };
 

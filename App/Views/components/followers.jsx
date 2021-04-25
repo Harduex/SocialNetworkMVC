@@ -17,7 +17,7 @@ function Followers(props) {
 
                     {props?.followers.map((user) => {
 
-                      if (user.followers.includes(props.currentUser.username)) {
+                      if (user.followers.includes(props.currentUser._id)) {
                         return <UserPanel user={user} follow={'unfollow'} hideFollowButton={props.hideFollowButton} />
                       } else {
                         return <UserPanel user={user} follow={'follow'} hideFollowButton={props.hideFollowButton} />
