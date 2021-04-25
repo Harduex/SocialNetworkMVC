@@ -1,4 +1,5 @@
 import React from 'react';
+import Comment from './comment';
 
 
 function Post(props) {
@@ -55,26 +56,37 @@ function Post(props) {
           </div>
         </div>
         <div className="timeline-footer">
-          <a href="javascript:;" className="m-r-15 text-inverse-lighter">
-            <i className="fa fa-thumbs-up fa-fw fa-lg m-r-3" />Like</a>
+          <a href={`/post/like/${props?.post?._id}`} className="m-r-15 text-inverse-lighter">
+            <i className="fa fa-thumbs-up fa-fw fa-lg m-r-3" />Like
+          </a>
           <a href="javascript:;" className="m-r-15 text-inverse-lighter comment-button">
             <i className="fa fa-comments fa-fw fa-lg m-r-3" />Comments
-            </a>
+          </a>
           {/* <a href="javascript:;" className="m-r-15 text-inverse-lighter"><i className="fa fa-share fa-fw fa-lg m-r-3" /> Share</a> */}
         </div>
+
         <div className="timeline-comment-box comment-box" style={{ display: 'none' }}>
-          <div className="user"><img src={`data:image/jpeg;base64,${props?.currentUser?.profilePic || ''}`} /></div>
-          <div className="input">
-            <form action>
-              <div className="input-group">
-                <input type="text" className="form-control rounded-corner" placeholder="Write a comment..." />
-                <span className="input-group-btn p-l-10">
-                  <button className="btn btn-primary f-s-12 rounded-corner" type="button">Comment</button>
-                </span>
-              </div>
-            </form>
+
+          <div className="new-comment">
+            <div className="user"><img src={`data:image/jpeg;base64,${props?.currentUser?.profilePic || ''}`} /></div>
+            <div className="input">
+              <form action={`/post/comment/${props?.post?._id}`} method="POST">
+                <div className="input-group">
+                  <input type="text" className="form-control rounded-corner" placeholder="Write a comment..." name="comment" />
+                  <span className="input-group-btn p-l-10">
+                    <button className="btn btn-primary f-s-12 rounded-corner" type="submit">Comment</button>
+                  </span>
+                </div>
+              </form>
+            </div>
           </div>
+
+          {props?.post?.comments.map((comment) => (
+            <Comment comment={comment} />
+          ))}
+
         </div>
+
       </div>
       {/* end timeline-body */}
     </li>
