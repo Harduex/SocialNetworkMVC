@@ -10,9 +10,18 @@ const postSchema = new Schema({
     body: {
         type: String,
     },
-    comments: {
-        type: Array,
-    },
+    // comments: {
+    //     type: Array,
+    // },
+    comments: [{
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: User
+        },
+        comment: {
+            type: String,
+        }
+    }],
     likes: {
         type: Array,
     },
@@ -54,7 +63,8 @@ async function getAllPosts() {
 async function getPostById(id) {
     const post = await Post
         .findOne({ _id: id })
-        .populate('user');
+        .populate('user')
+        .populate('comments.user');
     return post;
 };
 
@@ -69,7 +79,7 @@ async function getAllPostsByUser(user) {
 
 
 async function editPost(id, updates) {
-    const result = await User
+    const result = await Post
         .updateOne({ _id: id }, updates);
     return result;
 };
@@ -89,9 +99,37 @@ async function getPostsByArray(arr) {
     const posts = await Post
         .find({ 'user': { $in: arr } })
         .populate('user')
+        .populate('comments.user')
         .sort({ createdAt: -1 });
     return posts;
 };
+
+async function likePost(postId, userId) {
+    const result = await Post.updateOne(
+        { _id: postId },
+        { $push: { likes: userId } }
+    );
+    return result;
+};
+
+async function dislikePost(postId, userId) {
+
+    const result = await Post.updateOne(
+        { _id: postId },
+        { $pull: { likes: userId } }
+    );
+    return result;
+};
+
+async function commentPost(postId, userId, comment) {
+
+    const result = await Post.updateOne(
+        { _id: postId },
+        { $push: { comments: { user: userId, comment: comment } } }
+    );
+    return result;
+};
+
 
 export {
     Post,
@@ -102,7 +140,10 @@ export {
     deletePostById,
     deleteAllPosts,
     getAllPostsByUser,
-    getPostsByArray
+    getPostsByArray,
+    likePost,
+    dislikePost,
+    commentPost,
 };
 
 

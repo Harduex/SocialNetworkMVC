@@ -5,7 +5,7 @@ const upload = multer({ dest: './public/temp' });
 import fs from 'fs';
 
 
-import { addPost, getPostById } from '../Models/postModel';
+import { addPost, getPostById, likePost, dislikePost, commentPost } from '../Models/postModel';
 import { getUserByUsername } from '../Models/userModel';
 
 
@@ -20,6 +20,32 @@ router.get('/get/:id', async (req, res) => {
         user: postUser,
         currentUser: currentUser,
     });
+});
+
+router.get('/like/:id', async (req, res) => {
+    const post = await getPostById(req.params.id);
+    const user = await req.user;
+
+    let text;
+
+    if (post.likes.includes(user._id)) {
+        dislikePost(post._id, user._id);
+        text = 'dislike';
+    } else {
+        likePost(post._id, user._id);
+        text = 'like';
+    }
+
+    res.redirect('/');
+});
+
+router.post('/comment/:id', async (req, res) => {
+    const post = await getPostById(req.params.id);
+    const user = await req.user;
+
+    commentPost(post._id, user._id, req.body.comment);
+
+    res.redirect('/');
 });
 
 router.get('/new', async (req, res) => {
