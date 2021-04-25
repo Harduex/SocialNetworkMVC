@@ -15,7 +15,7 @@ function Comment(props) {
                         </a>
                     </div>
                     <div className="text-white post-comment"><small>{props?.comment?.comment}</small></div>
-                    <div className="text-muted post-date"><small>{props?.comment?.createdAt}</small></div>
+                    <div className="text-muted post-date"><small>{props?.comment?.createdAt.toDateString()}</small></div>
                 </div>
             </div>
         </div>

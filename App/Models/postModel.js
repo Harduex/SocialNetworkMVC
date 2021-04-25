@@ -10,9 +10,6 @@ const postSchema = new Schema({
     body: {
         type: String,
     },
-    // comments: {
-    //     type: Array,
-    // },
     comments: [{
         user: {
             type: Schema.Types.ObjectId,
@@ -20,6 +17,10 @@ const postSchema = new Schema({
         },
         comment: {
             type: String,
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
         }
     }],
     likes: {
@@ -72,6 +73,7 @@ async function getAllPostsByUser(user) {
     const post = await Post
         .find({ user: user._id })
         .populate('user')
+        .populate('comments.user')
         .sort({ createdAt: -1 });
 
     return post;
