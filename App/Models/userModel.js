@@ -2,6 +2,9 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const options = { timestamps: true }
 
+import { Post } from '../Models/postModel';
+
+
 // User schema
 const userSchema = new Schema({
     username: {
@@ -34,6 +37,10 @@ const userSchema = new Schema({
     following: {
         type: Array
     },
+    posts: [{
+        type: Schema.Types.ObjectId,
+        ref: Post
+    }]
 }, options);
 
 const tableName = 'users';
@@ -80,45 +87,58 @@ async function unfollow(username, follower) {
 
 
 async function getAllUsers() {
-    const users = await User.find().sort({ createdAt: -1 });
+    const users = await User
+    .find()
+    .populate('posts')
+    .sort({ createdAt: -1 });
     return users;
 };
 
 
 async function getUserById(id) {
-    const user = await User.findOne({ _id: id });
+    const user = await User
+    .findOne({ _id: id })
+    .populate('posts');
     return user;
 };
 
 
 async function getUserByUsername(username) {
-    const user = await User.findOne({ username: username });
+    const user = await User
+        .findOne({ username: username })
+        .populate('posts');
     return user;
 };
 
 async function getUsersByArray(arr) {
-    const user = await User.find({ 'username': { $in: arr } });
+    const user = await User
+        .find({ 'username': { $in: arr } })
+        .populate('posts');
     return user;
 };
 
 async function editUser(id, updates) {
-    const result = await User.updateOne({ _id: id }, updates);
+    const result = await User
+    .updateOne({ _id: id }, updates);
     return result;
 };
 
 
 async function deleteUserById(id) {
-    const result = await User.deleteOne({ _id: id });
+    const result = await User
+    .deleteOne({ _id: id });
     return result;
 };
 
 async function deleteUserByUsername(username) {
-    const result = await User.deleteOne({ username: username });
+    const result = await User
+    .deleteOne({ username: username });
     return result;
 };
 
 async function deleteAllUsers() {
-    const result = await User.deleteMany({});
+    const result = await User
+    .deleteMany({});
     return result;
 };
 

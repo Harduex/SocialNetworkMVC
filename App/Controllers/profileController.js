@@ -17,7 +17,8 @@ router.get('/', async (req, res) => {
     const following = user.following;
     const followingFull = await getUsersByArray(following);
 
-    const posts = await getAllPostsByUser(user.username);
+    const posts = await getAllPostsByUser(user);
+
 
     res.render('profile', {
         title: `${user.username}'s Profile`,
