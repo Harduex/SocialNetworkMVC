@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const options = { timestamps: true }
 
-import { User, editUser } from '../Models/userModel';
+import { User } from '../Models/userModel';
 
 
 // Post model operations
@@ -32,10 +32,10 @@ const Post = mongoose.model(tableName, postSchema)
 async function addPost(body, user, comments, likes, image) {
     const post = new Post({
         body: body,
-        user: user._id,
         comments: comments,
         likes: likes,
         image: image,
+        user: user._id,
     });
 
     const result = await post.save();
@@ -45,7 +45,7 @@ async function addPost(body, user, comments, likes, image) {
 async function getAllPosts() {
     const posts = await Post
         .find()
-        .populate('user')
+        .populate('user', '-password')
         .sort({ createdAt: -1 });
     return posts;
 };

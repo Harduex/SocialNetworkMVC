@@ -88,57 +88,50 @@ async function unfollow(username, follower) {
 
 async function getAllUsers() {
     const users = await User
-    .find()
-    .populate('posts')
-    .sort({ createdAt: -1 });
+        .find()
+        .sort({ createdAt: -1 });
     return users;
 };
 
 
 async function getUserById(id) {
-    const user = await User
-    .findOne({ _id: id })
-    .populate('posts');
+    const user = await User.findOne({ _id: id })
     return user;
 };
 
 
 async function getUserByUsername(username) {
-    const user = await User
-        .findOne({ username: username })
-        .populate('posts');
+    const user = await User.findOne({ username: username })
     return user;
 };
 
 async function getUsersByArray(arr) {
-    const user = await User
-        .find({ 'username': { $in: arr } })
-        .populate('posts');
+    const user = await User.find({ 'username': { $in: arr } })
     return user;
 };
 
 async function editUser(id, updates) {
     const result = await User
-    .updateOne({ _id: id }, updates);
+        .updateOne({ _id: id }, updates);
     return result;
 };
 
 
 async function deleteUserById(id) {
     const result = await User
-    .deleteOne({ _id: id });
+        .deleteOne({ _id: id });
     return result;
 };
 
 async function deleteUserByUsername(username) {
     const result = await User
-    .deleteOne({ username: username });
+        .deleteOne({ username: username });
     return result;
 };
 
 async function deleteAllUsers() {
     const result = await User
-    .deleteMany({});
+        .deleteMany({});
     return result;
 };
 

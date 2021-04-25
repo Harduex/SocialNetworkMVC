@@ -43,7 +43,6 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
     const currentUserProfilePic = user.profilePic;
 
     const {
-        // profilePic,
         fullName,
         username,
         email,
