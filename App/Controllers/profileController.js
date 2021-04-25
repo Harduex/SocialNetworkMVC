@@ -66,13 +66,10 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
     // Update password
     if (currentPassword !== '' && newPassword !== '' && newPasswordConfirm !== '') {
         if (await bcrypt.compare(currentPassword, currentUserPassword)) {
-
             if (newPassword !== newPasswordConfirm) {
-                ;
                 res.render('editProfile', { title: 'Edit Profile', passwordError: `Passwords don't match!`, user: user });
                 return;
             }
-
             const NewHashedPassword = await bcrypt.hash(newPassword, 10);
             const updates = {
                 profilePic: profilePic,
@@ -84,9 +81,7 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
             }
 
             editUser(currentUserId, updates);
-
             res.redirect('/auth/logout');
-
         } else {
             res.render('editProfile', { title: 'Edit Profile', passwordError: `Wrong password!`, user: user });
         }
