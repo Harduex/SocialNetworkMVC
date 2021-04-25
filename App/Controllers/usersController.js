@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
         title: `${searchedUser.username}'s Profile`,
         user: searchedUser,
         currentUser: loggedUser,
-        loggedIn: loggedIn,
+        loggedIn: false,
         follow: followText,
         followers: followersFull,
         following: followingFull,

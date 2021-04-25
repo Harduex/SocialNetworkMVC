@@ -4,6 +4,7 @@ import UserPanel from './components/userPanel';
 import BigButtonPanel from './components/bigButtonPanel';
 import NewPost from './components/newPost';
 import Timeline from './components/timeline';
+import Post from './components/post';
 import Followers from './components/followers';
 import Following from './components/following';
 
@@ -17,11 +18,13 @@ function Profile(props) {
         {props.loggedIn ?
           <>
             <div className="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="nav-home-tab">
-              <BigButtonPanel route="javascript:;" dataTarget="#new-post-modal">
-                New Post
-              </BigButtonPanel>
+              <BigButtonPanel route="javascript:;" dataTarget="#new-post-modal">New Post</BigButtonPanel>
               <NewPost />
-              <Timeline posts={props.posts} user={props.user} currentUser={props.currentUser} loggedIn={props.loggedIn} />
+              <Timeline>
+                {props?.posts.map((post) => (
+                  <Post post={post} currentUser={props.currentUser} user={props.user} />
+                ))}
+              </Timeline>
             </div>
             <div className="tab-pane fade" id="followers" role="tabpanel" aria-labelledby="nav-profile-tab">
               <Followers followers={props.followers} currentUser={props.currentUser} />
@@ -33,7 +36,11 @@ function Profile(props) {
           :
           <>
             <div className="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="nav-home-tab">
-              <Timeline posts={props.posts} user={props.user} currentUser={props.currentUser} loggedIn={props.loggedIn} />
+              <Timeline>
+                {props?.posts.map((post) => (
+                  <Post post={post} currentUser={props?.currentUser} user={props?.user} />
+                ))}
+              </Timeline>
             </div>
             <div className="tab-pane fade" id="followers" role="tabpanel" aria-labelledby="nav-profile-tab">
               <Followers followers={props.followers} currentUser={props.user} hideFollowButton />
