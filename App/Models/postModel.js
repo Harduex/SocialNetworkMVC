@@ -98,11 +98,12 @@ async function deleteAllPosts() {
     return result;
 };
 
-async function getPostsByArray(arr) {
+async function getPostsByArray(arr, count=1000) {
     const posts = await Post
         .find({ 'user': { $in: arr } })
         .populate('user')
         .populate('comments.user')
+        .limit(count)
         .sort({ createdAt: -1 });
     return posts;
 };

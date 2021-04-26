@@ -12,7 +12,7 @@ router.get('/', checkAuthenticated, async (req, res) => {
     const following = user.following;
     const followingFull = await getUsersByArray(following);
 
-    const posts = await getPostsByArray(followingFull);
+    const posts = await getPostsByArray(followingFull, 10);
 
     res.render('index', {
         title: `${user.username}'s Feed`,
@@ -22,6 +22,23 @@ router.get('/', checkAuthenticated, async (req, res) => {
     });
 
 });
+
+// Ajax
+router.post('/posts', async (req, res) => {
+    const user = await req.user;
+
+    const following = user.following;
+    const followingFull = await getUsersByArray(following);
+
+    const posts = await  getPostsByArray(followingFull, Number(req.body.count));
+
+    res.render('./components/posts',{
+        currentUser: user,
+        posts: posts,
+    });
+
+});
+
 
 
 export default router;
