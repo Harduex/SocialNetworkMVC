@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const Timeline = (props) => (
-  <div className="container">
+  <div className={`container ${props.className}`}>
     <div className="row">
       <div className="col-md-12">
         <div id="content" className="content content-full-width">

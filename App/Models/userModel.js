@@ -130,7 +130,7 @@ async function getUserByUsername(username) {
 };
 
 async function getUsersByArray(arr) {
-    const user = await User.find({ '_id': { $in: arr } })
+    const user = await User.find({ '_id': { $in: arr } });
     return user;
 };
 

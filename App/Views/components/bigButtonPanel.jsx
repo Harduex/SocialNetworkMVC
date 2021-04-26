@@ -14,11 +14,11 @@ function BigButtonPanel(props) {
                   <div className="timeline">
                     <div className="timeline-body hover-button">
                       {props?.dataTarget ?
-                        <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target={props?.dataTarget}>
+                        <button type="button" className="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target={props?.dataTarget}>
                           {props?.children}
                         </button>
                         :
-                        <a href={props?.route} type="button" class="btn btn-secondary btn-lg btn-block">
+                        <a href={props?.route} type="button" className={`btn btn-secondary btn-lg btn-block ${props.className}`}>
                           {props?.children}
                         </a>
                       }
