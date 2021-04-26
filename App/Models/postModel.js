@@ -69,7 +69,7 @@ async function getPostById(id) {
     return post;
 };
 
-async function getAllPostsByUser(user, count=50) {
+async function getAllPostsByUser(user, count=1000) {
     const post = await Post
         .find({ user: user._id })
         .populate('user')
