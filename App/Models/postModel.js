@@ -69,11 +69,12 @@ async function getPostById(id) {
     return post;
 };
 
-async function getAllPostsByUser(user) {
+async function getAllPostsByUser(user, count=50) {
     const post = await Post
         .find({ user: user._id })
         .populate('user')
         .populate('comments.user')
+        .limit(count)
         .sort({ createdAt: -1 });
 
     return post;

@@ -32,11 +32,10 @@ router.get('/', async (req, res) => {
     const posts = await getAllPostsByUser(searchedUser);
 
 
-    res.render('profile', {
+    res.render('userProfile', {
         title: `${searchedUser.username}'s Profile`,
         user: searchedUser,
         currentUser: loggedUser,
-        loggedIn: false,
         follow: followText,
         followers: followersFull,
         following: followingFull,

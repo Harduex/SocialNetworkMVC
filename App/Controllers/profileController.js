@@ -24,12 +24,25 @@ router.get('/', async (req, res) => {
         title: `${user.username}'s Profile`,
         user: user,
         currentUser: user,
-        loggedIn: true,
         followers: followersFull,
         following: followingFull,
         posts: posts,
     });
 });
+
+router.post('/', async (req, res) => {
+    const user = await req.user;
+    const posts = await getAllPostsByUser(user, Number(req.body.count));
+
+    res.send({
+        title: `${user.username}'s Profile`,
+        user: user,
+        currentUser: user,
+        posts: posts,
+    });
+
+});
+
 
 router.get('/edit', async (req, res) => {
     const user = await req.user;
