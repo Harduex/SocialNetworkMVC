@@ -6,17 +6,17 @@ $(document).ready(function () {
     });
 
     // Ajax
-    let count = 5;
-    $(".load-more-posts").click(function () {
-        count += 5;
+    let count = 10;
+    $(".load-more-feed-posts").click(function () {
+        count += 10;
         $.ajax({
-            url: "/profile",
+            url: "/posts",
             method: "POST",
             data: { count: count },
             dataType: "html"
         })
             .done(function (data) {
-                $(".profile-posts").html(data);
+                $(".timeline-posts").html(data);
 
                 var commentButton = $(".comment-button");
                 var commentBox = $(".comment-box");

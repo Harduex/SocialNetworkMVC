@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
     const following = user.following;
     const followingFull = await getUsersByArray(following);
 
-    const posts = await getAllPostsByUser(user);
+    const posts = await getAllPostsByUser(user,5);
 
 
     res.render('profile', {
@@ -31,19 +31,18 @@ router.get('/', async (req, res) => {
 });
 
 // Ajax
-// router.post('/', async (req, res) => {
-//     const user = await req.user;
-//     const posts = await getAllPostsByUser(user, Number(req.body.count));
+router.post('/', async (req, res) => {
+    const user = await req.user;
+    const posts = await getAllPostsByUser(user, Number(req.body.count));
 
-//     res.send({
-//         title: `${user.username}'s Profile`,
-//         user: user,
-//         currentUser: user,
-//         posts: posts,
-//     });
+    res.render('./components/posts',{
+        user: user,
+        currentUser: user,
+        posts: posts,
+    });
 
-// });
-//
+});
+
 
 router.get('/edit', async (req, res) => {
     const user = await req.user;

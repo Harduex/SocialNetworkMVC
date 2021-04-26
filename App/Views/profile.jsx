@@ -3,8 +3,8 @@ import Layout from './layouts/layout';
 import UserPanel from './components/userPanel';
 import BigButtonPanel from './components/bigButtonPanel';
 import NewPost from './components/newPost';
-import Timeline from './components/timeline';
-import Post from './components/post';
+// import Timeline from './components/timeline';
+import Posts from './components/posts';
 import Followers from './components/followers';
 import Following from './components/following';
 
@@ -22,11 +22,7 @@ function Profile(props) {
           <BigButtonPanel route="javascript:;" dataTarget="#new-post-modal">New Post</BigButtonPanel>
           <NewPost />
 
-          <Timeline className={"profile-posts"}>
-            {props?.posts.map((post) => (
-              <Post post={post} currentUser={props.currentUser} user={props.user} />
-            ))}
-          </Timeline>
+          <Posts posts={props.posts} currentUser={props.currentUser} user={props.user} className="profile-posts" />
 
         </div>
 
