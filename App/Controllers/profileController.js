@@ -3,6 +3,7 @@ const router = express.Router();
 import bcrypt from 'bcrypt';
 import multer from 'multer';
 import fs from 'fs';
+import sharp from 'sharp';
 const upload = multer({ dest: './public/temp' });
 
 import { editUser, getUsersByArray } from '../Models/userModel';
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
     const following = user.following;
     const followingFull = await getUsersByArray(following);
 
-    const posts = await getAllPostsByUser(user,5);
+    const posts = await getAllPostsByUser(user, 5);
 
 
     res.render('profile', {
@@ -35,7 +36,7 @@ router.post('/', async (req, res) => {
     const user = await req.user;
     const posts = await getAllPostsByUser(user, Number(req.body.count));
 
-    res.render('./components/posts',{
+    res.render('./components/posts', {
         user: user,
         currentUser: user,
         posts: posts,
@@ -71,8 +72,8 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
     if (!req.file || !req.file.path) {
         profilePic = currentUserProfilePic;
     } else {
-        var img = fs.readFileSync(req.file.path);
-        profilePic = img.toString('base64');
+        const compressedImg = await compressImage(req.file.path);
+        profilePic = compressedImg.toString('base64');
         fs.unlinkSync(req.file.path);
     }
 
@@ -113,6 +114,18 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
         res.redirect('/profile/edit');
     }
 });
+
+function compressImage(img) {
+
+    return sharp(img)
+        .resize({
+            width: 200,
+            height: 200,
+            fit: sharp.fit.cover,
+            position: sharp.strategy.entropy
+        })
+        .toBuffer();
+}
 
 
 export default router;
