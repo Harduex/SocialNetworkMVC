@@ -2,9 +2,7 @@ import React from 'react';
 import Layout from './layouts/layout';
 import UserPanel from './components/userPanel';
 import BigButtonPanel from './components/bigButtonPanel';
-import NewPost from './components/newPost';
-import Timeline from './components/timeline';
-import Post from './components/post';
+import Posts from './components/posts';
 import Followers from './components/followers';
 import Following from './components/following';
 
@@ -18,11 +16,7 @@ function Profile(props) {
       <div className="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
 
         <div className="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="nav-home-tab">
-          <Timeline>
-            {props?.posts.map((post) => (
-              <Post post={post} currentUser={props?.currentUser} user={props?.user} />
-            ))}
-          </Timeline>
+          <Posts posts={props.posts} currentUser={props.currentUser} user={props.user} className="profile-posts" />
         </div>
 
         <div className="tab-pane fade" id="followers" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -34,6 +28,11 @@ function Profile(props) {
         </div>
 
       </div>
+
+      <form action="/user/load-more-posts" method="POST" id="load-more-user-posts-form">
+        <input type="text" name="username" value={props?.user?.username} hidden />
+        <BigButtonPanel type="submit" className={"load-more-user-posts"}>Load more</BigButtonPanel>
+      </form>
 
     </Layout>
   );

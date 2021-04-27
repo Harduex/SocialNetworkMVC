@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
         return;
     }
 
-    const posts = await getAllPostsByUser(searchedUser);
+    const posts = await getAllPostsByUser(searchedUser, 5);
 
 
     res.render('userProfile', {
@@ -42,6 +42,21 @@ router.get('/', async (req, res) => {
         posts: posts,
     });
 
+});
+
+// Ajax
+router.post('/load-more-posts', async (req, res) => {
+    const searchedUser = await getUserByUsername(req.body.username);
+    const posts = await getAllPostsByUser(searchedUser, Number(req.body.count));
+    const loggedUser = await req.user;
+
+    console.log(req.body);
+
+    res.render('./components/posts', {
+        user: searchedUser,
+        currentUser: loggedUser,
+        posts: posts,
+    });
 });
 
 router.get('/follow/:username', async (req, res) => {
