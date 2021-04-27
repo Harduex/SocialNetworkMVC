@@ -74,7 +74,8 @@ function Post(props) {
           </form>
 
           <button className="btn btn-secondary m-r-15 text-inverse-lighter comment-button">
-            <i className="fa fa-comments fa-fw fa-lg m-r-3" />Comments
+            <i className="fa fa-comments fa-fw fa-lg m-r-3" />
+            <span className="show-comment-button-text">Comments</span>
           </button>
 
           {/* <a href="javascript:;" className="m-r-15 text-inverse-lighter"><i className="fa fa-share fa-fw fa-lg m-r-3" /> Share</a> */}
