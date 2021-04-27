@@ -22,10 +22,10 @@ router.get('/get/:id', async (req, res) => {
     });
 });
 
-router.get('/likes/:id', async (req, res) => {
+router.post('/likes/:id', async (req, res) => {
     const post = await getPostByIdFull(req.params.id);
 
-    res.render('postLikes', {
+    res.render('./components/postLikesContent', {
         title: 'Post Likes',
         post: post
     });
@@ -48,10 +48,15 @@ router.post('/like/:id', async (req, res) => {
     // Get updated post
     post = await getPostById(req.params.id);
 
-    res.render('./components/likesCounter',
-        {
-            post: post
-        });
+    // res.render('./components/likesCounter',
+    //     {
+    //         post: post
+    //     });
+
+    res.json({
+        likesCount: post.likes.length,
+        id: post._id
+    });
 
 
 });

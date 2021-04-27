@@ -13,31 +13,6 @@ function NewPost(props) {
                   <h5 class="modal-title" id="ModalLabel">Create New Post</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
                 </div>
                 <div class="modal-body">
-                  <grammarly-extension >
-                    <div data-grammarly-part="highlights" >
-                      <div>
-                        <div >
-                          <div ></div>
-                          <div ></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div data-grammarly-part="button" >
-                      <div >
-                        <div >
-                          <div >
-                            <div class="_3-ITD">
-                              <div class="_5WizN aN9_b _1QzSN">
-                                <div class="_3YmQx">
-                                  <div title="Protected by Grammarly" class="_3QdKe">&nbsp;</div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </grammarly-extension>
                   <form method="POST" action="post/create" enctype="multipart/form-data" id="create-post-form">
                     <div class="form-group">
                       <label for="recipient-name" class="col-form-label">Photo:</label>
