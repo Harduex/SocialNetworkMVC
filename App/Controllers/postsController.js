@@ -3,7 +3,7 @@ import multer from 'multer';
 const router = express.Router();
 const upload = multer({ dest: './public/temp' });
 import fs from 'fs';
-
+import sharp from 'sharp';
 
 import { addPost, getPostById, likePost, dislikePost, commentPost, getPostByIdFull } from '../Models/postModel';
 import { getUserByUsername } from '../Models/userModel';
@@ -88,8 +88,12 @@ router.post('/create', upload.single('postImage'), async (req, res) => {
     if (!req.file || !req.file.path) {
         image = '';
     } else {
-        let img = fs.readFileSync(req.file.path);
-        image = img.toString('base64');
+        // let img = fs.readFileSync(req.file.path);
+        // image = img.toString('base64');
+        // fs.unlinkSync(req.file.path);
+
+        const compressedImg = await compressImage(req.file.path);
+        image = compressedImg.toString('base64');
         fs.unlinkSync(req.file.path);
     }
 
@@ -97,5 +101,18 @@ router.post('/create', upload.single('postImage'), async (req, res) => {
 
     res.redirect(`/post/get/${post._id}`);
 });
+
+
+function compressImage(img) {
+
+    return sharp(img)
+        .resize({
+            height: 720,
+            fit: sharp.fit.contain,
+            position: sharp.strategy.entropy
+        })
+        .toBuffer();
+}
+
 
 export default router;
