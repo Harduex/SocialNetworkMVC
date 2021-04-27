@@ -10,11 +10,8 @@ function Index(props) {
   return (
     <Layout title={props.title}>
       <Timeline>
-        {/* {props?.posts.map((post) => ( */}
-        {/* <Post post={post} currentUser={props.currentUser} user={post.user} /> */}
         <Posts posts={props.posts} currentUser={props.currentUser} className="timeline-posts" />
         <BigButtonPanel route="javascript:;" className={"load-more-feed-posts"}>Load more</BigButtonPanel>
-        {/* ))} */}
       </Timeline>
     </Layout>
   )

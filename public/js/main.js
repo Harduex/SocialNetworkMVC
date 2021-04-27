@@ -4871,6 +4871,7 @@ $(document).ready(function () {
             });
     })
 
+    // Likes
     $(".like-post-form").submit(function (e) {
         e.preventDefault();
         var form = $(this);
@@ -4881,21 +4882,41 @@ $(document).ready(function () {
             dataType: "html",
             data: form.serialize(),
             success: function (data) {
-                // console.log(data);
                 let id = (/(id="(.*?)(\"))/g.exec(data)[2])
-                console.log(id);
                 $(`#${id}`).replaceWith(data);
             }
         })
-        // .done(function (data) {
-        //     $(".profile-posts").html(data);
-
-        //     var commentButton = $(".comment-button");
-        //     var commentBox = $(".comment-box");
-        //     commentButton.click(function () {
-        //         $(this).closest('div').next(commentBox).toggle();
-        //     });
-        // });
     })
+
+    // Comments
+    $(".comment-post-form").submit(function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action');
+        $.ajax({
+            type: "POST",
+            url: url,
+            dataType: "html",
+            data: form.serialize(),
+            success: function (data) {
+                let id = (/(id="(.*?)(\"))/g.exec(data)[2])
+                $(`#${id}`).replaceWith(data);
+                $('.comment-post-form')[0].reset();
+            }
+        })
+    })
+
+    // Like text
+    $(".like-post-button").click(function () {
+        let text = $(this).find('span').text().trim();
+
+        if (text === 'Like') {
+            text = 'Dislike';
+        } else {
+            text = 'Like';
+        }
+
+        $(this).find('span').text(text);
+    });
 
 });
