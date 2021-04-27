@@ -23,9 +23,13 @@ const postSchema = new Schema({
             default: Date.now,
         }
     }],
-    likes: {
-        type: Array,
-    },
+    // likes: {
+    //     type: Array,
+    // },
+    likes: [{
+        type: Schema.Types.ObjectId,
+        ref: User
+    }],
     image: {
         type: Buffer,
     },
@@ -65,11 +69,21 @@ async function getPostById(id) {
     const post = await Post
         .findOne({ _id: id })
         .populate('user')
-        .populate('comments.user');
+        .populate('comments.user')
     return post;
 };
 
-async function getAllPostsByUser(user, count=1000) {
+async function getPostByIdFull(id) {
+    const post = await Post
+        .findOne({ _id: id })
+        .populate('user')
+        .populate('comments.user')
+        .populate('likes');
+    return post;
+};
+
+
+async function getAllPostsByUser(user, count = 1000) {
     const post = await Post
         .find({ user: user._id })
         .populate('user')
@@ -98,7 +112,7 @@ async function deleteAllPosts() {
     return result;
 };
 
-async function getPostsByArray(arr, count=1000) {
+async function getPostsByArray(arr, count = 1000) {
     const posts = await Post
         .find({ 'user': { $in: arr } })
         .populate('user')
@@ -148,6 +162,7 @@ export {
     likePost,
     dislikePost,
     commentPost,
+    getPostByIdFull,
 };
 
 
