@@ -7680,8 +7680,8 @@ a.text-dark:focus, a.text-dark:hover {
 html {
   font-family: sans-serif, Arial, Helvetica; }
 
-header {
-  margin-bottom: 30px; }
+.main {
+  padding-top: 80px; }
 
 .footer {
   background-color: aquamarine; }

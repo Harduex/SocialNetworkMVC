@@ -5,7 +5,7 @@ const upload = multer({ dest: './public/temp' });
 import fs from 'fs';
 
 
-import { addPost, getPostById, likePost, dislikePost, commentPost } from '../Models/postModel';
+import { addPost, getPostById, likePost, dislikePost, commentPost, getPostByIdFull } from '../Models/postModel';
 import { getUserByUsername } from '../Models/userModel';
 
 
@@ -22,11 +22,22 @@ router.get('/get/:id', async (req, res) => {
     });
 });
 
+router.get('/likes/:id', async (req, res) => {
+    const post = await getPostByIdFull(req.params.id);
+
+    res.render('postLikes', {
+        title: 'Post Likes',
+        post: post
+    });
+
+});
+
 // Ajax
 router.post('/like/:id', async (req, res) => {
     let post = await getPostById(req.params.id);
     const user = await req.user;
 
+    // console.log(post.likes);
 
     if (post.likes.includes(user._id)) {
         await dislikePost(post._id, user._id);
