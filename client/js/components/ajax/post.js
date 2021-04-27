@@ -53,6 +53,10 @@ $(document).ready(function () {
                 let id = (/(id="(.*?)(\"))/g.exec(data)[2])
                 $(`#${id}`).replaceWith(data);
                 $('.comment-post-form')[0].reset();
+
+                let count = Number($(`#${id}_counter`).text().trim());
+                count++;
+                $(`#${id}_counter`).text(count);
             }
         })
     })
