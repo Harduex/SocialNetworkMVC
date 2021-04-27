@@ -4851,11 +4851,11 @@ $(document).ready(function () {
                     $.ajax({
                         type: "POST",
                         url: url,
-                        dataType: "html",
+                        dataType: "json",
                         data: form.serialize(),
                         success: function (data) {
-                            let id = (/(id="(.*?)(\"))/g.exec(data)[2])
-                            $(`#${id}`).replaceWith(data);
+                            let id = (`${data.id}_likes`);
+                            $(`#${id}`).text(data.likesCount);
                         }
                     })
                 })
@@ -4894,9 +4894,26 @@ $(document).ready(function () {
 
                     $(this).find('span').text(text);
                 });
-                
+
+                // Post Likes Modal
+                $(".post-likes-form").submit(function (e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var url = form.attr('action');
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        dataType: "html",
+                        data: form.serialize(),
+                        success: function (data) {
+                            e.preventDefault();
+                            $(`#post-likes-modal-body`).html(data);
+                        }
+                    })
+                });
+
             });
-    })
+    });
 
 });
 
@@ -4930,11 +4947,11 @@ $(document).ready(function () {
                     $.ajax({
                         type: "POST",
                         url: url,
-                        dataType: "html",
+                        dataType: "json",
                         data: form.serialize(),
                         success: function (data) {
-                            let id = (/(id="(.*?)(\"))/g.exec(data)[2])
-                            $(`#${id}`).replaceWith(data);
+                            let id = (`${data.id}_likes`);
+                            $(`#${id}`).text(data.likesCount);
                         }
                     })
                 })
@@ -4974,6 +4991,23 @@ $(document).ready(function () {
                     $(this).find('span').text(text);
                 });
 
+                // Post Likes Modal
+                $(".post-likes-form").submit(function (e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var url = form.attr('action');
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        dataType: "html",
+                        data: form.serialize(),
+                        success: function (data) {
+                            e.preventDefault();
+                            $(`#post-likes-modal-body`).html(data);
+                        }
+                    })
+                });
+
             });
     })
 
@@ -4985,11 +5019,11 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: url,
-            dataType: "html",
+            dataType: "json",
             data: form.serialize(),
             success: function (data) {
-                let id = (/(id="(.*?)(\"))/g.exec(data)[2])
-                $(`#${id}`).replaceWith(data);
+                let id = (`${data.id}_likes`);
+                $(`#${id}`).text(data.likesCount);
             }
         })
     })
@@ -5027,6 +5061,23 @@ $(document).ready(function () {
         }
 
         $(this).find('span').text(text);
+    });
+
+    // Post Likes Modal
+    $(".post-likes-form").submit(function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action');
+        $.ajax({
+            type: "POST",
+            url: url,
+            dataType: "html",
+            data: form.serialize(),
+            success: function (data) {
+                e.preventDefault();
+                $(`#post-likes-modal-body`).html(data);
+            }
+        })
     });
 
 });

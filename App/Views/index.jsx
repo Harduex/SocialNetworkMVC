@@ -1,7 +1,6 @@
 import React from 'react';
 import Layout from './layouts/layout';
 import Timeline from './components/timeline';
-import Post from './components/post';
 import Posts from './components/posts';
 import BigButtonPanel from './components/bigButtonPanel';
 

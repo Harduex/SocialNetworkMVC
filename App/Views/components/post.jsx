@@ -70,7 +70,6 @@ function Post(props) {
                 :
                 <span>Like</span>
               }
-
             </button>
           </form>
 
