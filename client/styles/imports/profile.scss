@@ -756,3 +756,8 @@ select.form-control:not([size]):not([multiple]) {
 .likes-counter {
     padding: 0;
 }
+.show-comment-button-text {
+    @include responsive(425px) {
+        display: none;
+    }
+}

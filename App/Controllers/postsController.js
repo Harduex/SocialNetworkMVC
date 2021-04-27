@@ -108,8 +108,6 @@ function compressImage(img) {
     return sharp(img)
         .resize({
             height: 720,
-            fit: sharp.fit.contain,
-            position: sharp.strategy.entropy
         })
         .toBuffer();
 }

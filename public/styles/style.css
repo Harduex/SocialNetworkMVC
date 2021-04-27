@@ -8393,6 +8393,10 @@ select.form-control:not([size]):not([multiple]) {
 .likes-counter {
   padding: 0; }
 
+@media (max-width: 425px) {
+  .show-comment-button-text {
+    display: none; } }
+
 .searchbar {
   position: relative;
   min-width: 35px;

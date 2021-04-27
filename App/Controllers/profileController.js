@@ -122,7 +122,6 @@ function compressImage(img) {
             width: 200,
             height: 200,
             fit: sharp.fit.cover,
-            position: sharp.strategy.entropy
         })
         .toBuffer();
 }
