@@ -48,7 +48,7 @@ function Post(props) {
           <div className="stats-right">
             {/* <span className="stats-text">259 Shares</span> */}
 
-            <span className="stats-text-num">{(props?.post?.comments?.length || 0) + ''}</span>
+            <span className="stats-text-num post-comments-counter" id={`${props?.post?._id}_comments_counter`}>{(props?.post?.comments?.length || 0)}</span>
             <span className="stats-text">Comments</span>
           </div>
           <div className="stats">
@@ -90,7 +90,7 @@ function Post(props) {
                 <div className="input-group">
                   <input type="text" className="form-control rounded-corner" placeholder="Write a comment..." name="comment" />
                   <span className="input-group-btn p-l-10">
-                    <button className="btn btn-primary f-s-12 rounded-corner" type="submit">Comment</button>
+                    <button className="btn btn-primary f-s-12 rounded-corner post-comment-button" type="submit">Comment</button>
                   </span>
                 </div>
               </form>
