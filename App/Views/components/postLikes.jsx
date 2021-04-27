@@ -7,7 +7,7 @@ function PostLikes(props) {
       <div class="padding">
         <div class="row container d-flex justify-content-center">
           <div class="modal fade" id="post-likes-modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="ModalLabel">Post Likes</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>

@@ -20,8 +20,8 @@ function Profile(props) {
         <div className="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="nav-home-tab">
           <BigButtonPanel route="javascript:;" dataTarget="#new-post-modal">New Post</BigButtonPanel>
           <NewPost />
-
           <Posts posts={props.posts} currentUser={props.currentUser} user={props.user} className="profile-posts" />
+          <BigButtonPanel route="javascript:;" className={"load-more-posts"}>Load more</BigButtonPanel>
         </div>
 
         <div className="tab-pane fade" id="followers" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -34,7 +34,6 @@ function Profile(props) {
 
       </div>
 
-      <BigButtonPanel route="javascript:;" className={"load-more-posts"}>Load more</BigButtonPanel>
 
     </Layout>
 

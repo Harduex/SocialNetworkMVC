@@ -17,6 +17,10 @@ function Profile(props) {
 
         <div className="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="nav-home-tab">
           <Posts posts={props.posts} currentUser={props.currentUser} user={props.user} className="profile-posts" />
+          <form action="/user/load-more-posts" method="POST" id="load-more-user-posts-form">
+            <input type="text" name="username" value={props?.user?.username} hidden />
+            <BigButtonPanel type="submit" className={"load-more-user-posts"}>Load more</BigButtonPanel>
+          </form>
         </div>
 
         <div className="tab-pane fade" id="followers" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -28,11 +32,6 @@ function Profile(props) {
         </div>
 
       </div>
-
-      <form action="/user/load-more-posts" method="POST" id="load-more-user-posts-form">
-        <input type="text" name="username" value={props?.user?.username} hidden />
-        <BigButtonPanel type="submit" className={"load-more-user-posts"}>Load more</BigButtonPanel>
-      </form>
 
     </Layout>
   );

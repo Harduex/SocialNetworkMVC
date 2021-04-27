@@ -50,8 +50,6 @@ router.post('/load-more-posts', async (req, res) => {
     const posts = await getAllPostsByUser(searchedUser, Number(req.body.count));
     const loggedUser = await req.user;
 
-    console.log(req.body);
-
     res.render('./components/posts', {
         user: searchedUser,
         currentUser: loggedUser,
