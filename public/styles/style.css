@@ -8387,6 +8387,9 @@ select.form-control:not([size]):not([multiple]) {
 .timeline .user-panel {
   margin-bottom: 2em; }
 
+.like-post-form {
+  display: inline; }
+
 .searchbar {
   position: relative;
   min-width: 35px;

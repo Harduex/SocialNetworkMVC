@@ -9,15 +9,15 @@ $(document).ready(function () {
             data: { count: count },
             dataType: "html"
         })
-            .done(function (data) {
-                $(".timeline-posts").html(data);
+        .done(function (data) {
+            $(".timeline-posts").html(data);
 
-                var commentButton = $(".comment-button");
-                var commentBox = $(".comment-box");
-                commentButton.click(function () {
-                    $(this).closest('div').next(commentBox).toggle();
-                });
+            var commentButton = $(".comment-button");
+            var commentBox = $(".comment-box");
+            commentButton.click(function () {
+                $(this).closest('div').next(commentBox).toggle();
             });
+        });
     })
 
 });
