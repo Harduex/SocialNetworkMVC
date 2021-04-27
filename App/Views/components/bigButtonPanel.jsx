@@ -13,12 +13,12 @@ function BigButtonPanel(props) {
                 <div className="tab-pane fade active show" id="profile-post">
                   <div className="timeline">
                     <div className="timeline-body hover-button">
-                      {props?.dataTarget ?
-                        <button type="button" className="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target={props?.dataTarget}>
+                      {props?.dataTarget || props?.type ?
+                        <button type={props?.type || "button"} className="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target={props?.dataTarget}>
                           {props?.children}
                         </button>
                         :
-                        <a href={props?.route} type="button" className={`btn btn-secondary btn-lg btn-block ${props.className}`}>
+                        <a href={props?.route} className={`btn btn-secondary btn-lg btn-block ${props.className}`}>
                           {props?.children}
                         </a>
                       }
