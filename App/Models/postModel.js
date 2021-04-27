@@ -59,7 +59,7 @@ async function addPost(body, user, comments, likes, image) {
 async function getAllPosts() {
     const posts = await Post
         .find()
-        .populate('user', '-password')
+        .populate('user', 'username profilePic')
         .sort({ createdAt: -1 });
     return posts;
 };
@@ -68,17 +68,17 @@ async function getAllPosts() {
 async function getPostById(id) {
     const post = await Post
         .findOne({ _id: id })
-        .populate('user')
-        .populate('comments.user')
+        .populate('user', 'username profilePic')
+        .populate('comments.user', 'username profilePic')
     return post;
 };
 
 async function getPostByIdFull(id) {
     const post = await Post
         .findOne({ _id: id })
-        .populate('user')
-        .populate('comments.user')
-        .populate('likes');
+        .populate('user', 'username profilePic')
+        .populate('comments.user', 'username profilePic')
+        .populate('likes', 'username fullName profilePic');
     return post;
 };
 
@@ -86,8 +86,8 @@ async function getPostByIdFull(id) {
 async function getAllPostsByUser(user, count = 1000) {
     const post = await Post
         .find({ user: user._id })
-        .populate('user')
-        .populate('comments.user')
+        .populate('user', 'username profilePic')
+        .populate('comments.user', 'username profilePic')
         .limit(count)
         .sort({ createdAt: -1 });
 
@@ -115,8 +115,8 @@ async function deleteAllPosts() {
 async function getPostsByArray(arr, count = 1000) {
     const posts = await Post
         .find({ 'user': { $in: arr } })
-        .populate('user')
-        .populate('comments.user')
+        .populate('user', 'username profilePic')
+        .populate('comments.user', 'username profilePic')
         .limit(count)
         .sort({ createdAt: -1 });
     return posts;
