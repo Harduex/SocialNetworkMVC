@@ -1,5 +1,6 @@
 import React from 'react';
 import Comment from './comment';
+import LikesCounter from './likesCounter';
 
 
 function Post(props) {
@@ -52,16 +53,24 @@ function Post(props) {
               <i className="fa fa-circle fa-stack-2x text-info" />
               <i className="fa fa-thumbs-up fa-stack-1x fa-inverse" />
             </span>
-            <span className="stats-total">{props?.post?.likes?.length || 0}</span>
+            <LikesCounter post={props?.post} />
           </div>
         </div>
         <div className="timeline-footer">
-          <a href={`/post/like/${props?.post?._id}`} className="m-r-15 text-inverse-lighter">
+
+          {/* <a href={`/post/like/${props?.post?._id}`} className="m-r-15 text-inverse-lighter">
             <i className="fa fa-thumbs-up fa-fw fa-lg m-r-3" />Like
-          </a>
-          <a href="javascript:;" className="m-r-15 text-inverse-lighter comment-button">
+          </a> */}
+          <form action={`/post/like/${props?.post?._id}`} method="post" className="like-post-form">
+            <button type="submit" className="btn btn-secondary m-r-15 text-inverse-lighter like-post-button">
+              <i className="fa fa-thumbs-up fa-fw fa-lg m-r-3" />Like
+            </button>
+          </form>
+
+          <button className="btn btn-secondary m-r-15 text-inverse-lighter comment-button">
             <i className="fa fa-comments fa-fw fa-lg m-r-3" />Comments
-          </a>
+          </button>
+
           {/* <a href="javascript:;" className="m-r-15 text-inverse-lighter"><i className="fa fa-share fa-fw fa-lg m-r-3" /> Share</a> */}
         </div>
 

@@ -22,21 +22,27 @@ router.get('/get/:id', async (req, res) => {
     });
 });
 
-router.get('/like/:id', async (req, res) => {
-    const post = await getPostById(req.params.id);
+// Ajax
+router.post('/like/:id', async (req, res) => {
+    let post = await getPostById(req.params.id);
     const user = await req.user;
 
-    let text;
 
     if (post.likes.includes(user._id)) {
-        dislikePost(post._id, user._id);
-        text = 'dislike';
+        await dislikePost(post._id, user._id);
     } else {
-        likePost(post._id, user._id);
-        text = 'like';
+        await likePost(post._id, user._id);
     }
 
-    res.redirect('/');
+    // Get updated post
+    post = await getPostById(req.params.id);
+
+    res.render('./components/likesCounter',
+        {
+            post: post
+        });
+
+
 });
 
 router.post('/comment/:id', async (req, res) => {
