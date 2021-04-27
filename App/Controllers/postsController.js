@@ -46,12 +46,18 @@ router.post('/like/:id', async (req, res) => {
 });
 
 router.post('/comment/:id', async (req, res) => {
-    const post = await getPostById(req.params.id);
+    let post = await getPostById(req.params.id);
     const user = await req.user;
 
-    commentPost(post._id, user._id, req.body.comment);
+    await commentPost(post._id, user._id, req.body.comment);
 
-    res.redirect('/');
+    // Get updated post
+    post = await getPostById(req.params.id);
+
+    res.render('./components/comments',
+        {
+            post: post
+        });
 });
 
 router.get('/new', async (req, res) => {

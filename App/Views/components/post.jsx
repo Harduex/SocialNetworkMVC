@@ -1,9 +1,12 @@
 import React from 'react';
-import Comment from './comment';
+import Comments from './comments';
 import LikesCounter from './likesCounter';
 
 
 function Post(props) {
+
+  let d = props?.post?.createdAt;
+  let dateString = d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
 
   return (
     <li>
@@ -22,7 +25,7 @@ function Post(props) {
             </div>
             <div className="text-muted post-date">
               <small>
-                {props?.post?.createdAt?.toDateString()}
+                {dateString}
               </small>
             </div>
           </div>
@@ -58,12 +61,16 @@ function Post(props) {
         </div>
         <div className="timeline-footer">
 
-          {/* <a href={`/post/like/${props?.post?._id}`} className="m-r-15 text-inverse-lighter">
-            <i className="fa fa-thumbs-up fa-fw fa-lg m-r-3" />Like
-          </a> */}
           <form action={`/post/like/${props?.post?._id}`} method="post" className="like-post-form">
             <button type="submit" className="btn btn-secondary m-r-15 text-inverse-lighter like-post-button">
-              <i className="fa fa-thumbs-up fa-fw fa-lg m-r-3" />Like
+              <i className="fa fa-thumbs-up fa-fw fa-lg m-r-3" />
+
+              {props?.post?.likes?.includes(props.currentUser._id) ?
+                <span>Dislike</span>
+                :
+                <span>Like</span>
+              }
+
             </button>
           </form>
 
@@ -79,7 +86,7 @@ function Post(props) {
           <div className="new-comment">
             <div className="user"><img src={`data:image/jpeg;base64,${props?.currentUser?.profilePic || ''}`} /></div>
             <div className="input">
-              <form action={`/post/comment/${props?.post?._id}`} method="POST">
+              <form action={`/post/comment/${props?.post?._id}`} method="POST" className="comment-post-form">
                 <div className="input-group">
                   <input type="text" className="form-control rounded-corner" placeholder="Write a comment..." name="comment" />
                   <span className="input-group-btn p-l-10">
@@ -90,9 +97,7 @@ function Post(props) {
             </div>
           </div>
 
-          {props?.post?.comments.map((comment) => (
-            <Comment comment={comment} />
-          ))}
+          <Comments post={props?.post} />
 
         </div>
 

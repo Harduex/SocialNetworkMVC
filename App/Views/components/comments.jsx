@@ -1,0 +1,20 @@
+import React from 'react';
+import Comment from './comment';
+
+
+function Comments(props) {
+    return (
+        <div className="post-comments-list" id={`${props?.post?._id}_comments`}>
+            {props?.post?.comments.map((comment) => (
+                <Comment comment={comment} />
+            ))}
+        </div>
+    )
+}
+
+
+export default Comments;
+
+
+
+
