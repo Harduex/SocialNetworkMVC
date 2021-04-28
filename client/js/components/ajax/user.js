@@ -18,7 +18,7 @@ $(document).ready(function () {
             success: function (data) {
                 $(".profile-posts").html(data);
 
-                $(".profile-posts").html(data);
+                // $(".profile-posts").html(data);
 
                 var commentButton = $(".comment-button");
                 var commentBox = $(".comment-box");
