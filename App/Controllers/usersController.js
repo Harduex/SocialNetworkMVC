@@ -57,18 +57,17 @@ router.post('/load-more-posts', async (req, res) => {
     });
 });
 
-router.get('/follow/:username', async (req, res) => {
+router.post('/follow/:username', async (req, res) => {
     const loggedUser = await req.user;
     const userToFollow = await getUserByUsername(req.params.username);
 
-
     if (userToFollow.followers.includes(loggedUser._id)) {
-        await unfollow(userToFollow._id, loggedUser._id);
+        const result = await unfollow(userToFollow._id, loggedUser._id);
+        res.send(result);
     } else {
-        await follow(userToFollow._id, loggedUser._id);
+        const result = await follow(userToFollow._id, loggedUser._id);
+        res.send(result);
     }
-
-    res.redirect('back');
 });
 
 

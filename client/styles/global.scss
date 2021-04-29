@@ -3,8 +3,11 @@
     box-sizing: border-box;
 }
 
-html {
+html,
+body {
     font-family: sans-serif, Arial, Helvetica;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .main {

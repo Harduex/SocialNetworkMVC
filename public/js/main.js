@@ -4824,6 +4824,32 @@ function buttonUp() {
     }
 }
 $(document).ready(function () {
+
+    $("#follow-user-form").submit(function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action');
+
+        $.ajax({
+            url: url,
+            method: "POST",
+            dataType: "html",
+            success: function (data) {
+                // $(".profile-posts").html(data);
+
+                if ($(".follow-user-button").text() === 'follow') {
+                    $(".follow-user-button").text('unfollow');
+                } else {
+                    $(".follow-user-button").text('follow');
+                }
+            }
+        })
+    });
+
+});
+
+
+$(document).ready(function () {
     // Ajax
     let count = 10;
     $(".load-more-feed-posts").click(function () {
@@ -5102,7 +5128,7 @@ $(document).ready(function () {
             success: function (data) {
                 $(".profile-posts").html(data);
 
-                $(".profile-posts").html(data);
+                // $(".profile-posts").html(data);
 
                 var commentButton = $(".comment-button");
                 var commentBox = $(".comment-box");
