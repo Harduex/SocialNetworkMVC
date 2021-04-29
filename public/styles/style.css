@@ -7686,6 +7686,20 @@ body {
 .main {
   padding-top: 80px; }
 
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #395670; }
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #2b3e50; }
+
+::-webkit-scrollbar-thumb {
+  background-color: #7a8fa3;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+
 .footer {
   background-color: aquamarine; }
 
