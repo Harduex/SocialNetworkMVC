@@ -7677,8 +7677,11 @@ a.text-dark:focus, a.text-dark:hover {
 * {
   box-sizing: border-box; }
 
-html {
-  font-family: sans-serif, Arial, Helvetica; }
+html,
+body {
+  font-family: sans-serif, Arial, Helvetica;
+  max-width: 100%;
+  overflow-x: hidden; }
 
 .main {
   padding-top: 80px; }

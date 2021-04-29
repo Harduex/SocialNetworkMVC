@@ -37,7 +37,11 @@ function UserPanel(props) {
                     :
                     !props.hideFollowButton && (
                       <div className="profile-options">
-                        <a href={`/user/follow/${props?.user?.username}`} className="btn btn-sm btn-primary mb-2">{props?.follow}</a>
+                        {/* <a href={`/user/follow/${props?.user?.username}`} className="btn btn-sm btn-primary mb-2">{props?.follow}</a> */}
+                        <form action={`/user/follow/${props?.user?.username}`} method="post" id="follow-user-form">
+                          <button type="submit" className="btn btn-sm btn-primary mb-2 follow-user-button">{props?.follow}</button>
+                        </form>
+
                       </div>
                     )
                   }
