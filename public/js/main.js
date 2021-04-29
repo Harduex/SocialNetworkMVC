@@ -5013,15 +5013,17 @@ $(document).ready(function () {
                     var form = $(this);
                     var url = form.attr('action');
 
-                    $.ajax({
-                        url: url,
-                        method: "POST",
-                        data: form.serialize(),
-                        dataType: "json",
-                        success: function (data) {
-                            $(`#post_${data?._id}`).remove();
-                        }
-                    });;
+                    if (confirm("Are you sure you want to delete this post?")) {
+                        $.ajax({
+                            url: url,
+                            method: "POST",
+                            data: form.serialize(),
+                            dataType: "json",
+                            success: function (data) {
+                                $(`#post_${data?._id}`).remove();
+                            }
+                        });
+                    }
                 });
 
 
@@ -5104,26 +5106,18 @@ $(document).ready(function () {
         var form = $(this);
         var url = form.attr('action');
 
-        $.ajax({
-            url: url,
-            method: "POST",
-            data: form.serialize(),
-            dataType: "json",
-            success: function (data) {
-                $(`#post_${data?._id}`).remove();
-            }
-        });;
-    });
-
-    function GoBackWithRefresh(event) {
-        if ('referrer' in document) {
-            window.location = document.referrer;
-            /* OR */
-            //location.replace(document.referrer);
-        } else {
-            window.history.back();
+        if (confirm("Are you sure you want to delete this post?")) {
+            $.ajax({
+                url: url,
+                method: "POST",
+                data: form.serialize(),
+                dataType: "json",
+                success: function (data) {
+                    $(`#post_${data?._id}`).remove();
+                }
+            });
         }
-    }
+    });
 
 });
 
