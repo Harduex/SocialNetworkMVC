@@ -5,7 +5,7 @@ function UserPanel(props) {
 
 
   return (
-    <div className="container user-panel">
+    <div className="container user-panel" id={`user_${props?.user?.username}`}>
       <div className="row">
         <div className="col-md-12">
           <div id="content" className="content content-full-width">
@@ -38,7 +38,7 @@ function UserPanel(props) {
                     !props.hideFollowButton && (
                       <div className="profile-options">
                         {/* <a href={`/user/follow/${props?.user?.username}`} className="btn btn-sm btn-primary mb-2">{props?.follow}</a> */}
-                        <form action={`/user/follow/${props?.user?.username}`} method="post" id="follow-user-form">
+                        <form action={`/user/follow/${props?.user?.username}`} method="post" className="follow-user-form">
                           <button type="submit" className="btn btn-sm btn-primary mb-2 follow-user-button">{props?.follow}</button>
                         </form>
 

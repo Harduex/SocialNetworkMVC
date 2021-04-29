@@ -4824,32 +4824,6 @@ function buttonUp() {
     }
 }
 $(document).ready(function () {
-
-    $("#follow-user-form").submit(function (e) {
-        e.preventDefault();
-        var form = $(this);
-        var url = form.attr('action');
-
-        $.ajax({
-            url: url,
-            method: "POST",
-            dataType: "html",
-            success: function (data) {
-                // $(".profile-posts").html(data);
-
-                if ($(".follow-user-button").text() === 'follow') {
-                    $(".follow-user-button").text('unfollow');
-                } else {
-                    $(".follow-user-button").text('follow');
-                }
-            }
-        })
-    });
-
-});
-
-
-$(document).ready(function () {
     // Ajax
     let count = 10;
     $(".load-more-feed-posts").click(function () {
@@ -4944,7 +4918,6 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    // Ajax
 
     // Posts
     let count = 5;
@@ -5034,6 +5007,25 @@ $(document).ready(function () {
                     })
                 });
 
+                // Delete post
+                $(".delete-post-form").submit(function (e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var url = form.attr('action');
+
+                    $.ajax({
+                        url: url,
+                        method: "POST",
+                        data: form.serialize(),
+                        dataType: "json",
+                        success: function (data) {
+                            $(`#post_${data?._id}`).remove();
+                        }
+                    });;
+                });
+
+
+
             });
     })
 
@@ -5106,6 +5098,33 @@ $(document).ready(function () {
         })
     });
 
+    // Delete post
+    $(".delete-post-form").submit(function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action');
+
+        $.ajax({
+            url: url,
+            method: "POST",
+            data: form.serialize(),
+            dataType: "json",
+            success: function (data) {
+                $(`#post_${data?._id}`).remove();
+            }
+        });;
+    });
+
+    function GoBackWithRefresh(event) {
+        if ('referrer' in document) {
+            window.location = document.referrer;
+            /* OR */
+            //location.replace(document.referrer);
+        } else {
+            window.history.back();
+        }
+    }
+
 });
 
 $(document).ready(function () {
@@ -5127,8 +5146,6 @@ $(document).ready(function () {
             dataType: "html",
             success: function (data) {
                 $(".profile-posts").html(data);
-
-                // $(".profile-posts").html(data);
 
                 var commentButton = $(".comment-button");
                 var commentBox = $(".comment-box");
@@ -5204,6 +5221,52 @@ $(document).ready(function () {
                         }
                     })
                 });
+
+                // Follow user
+                $(".follow-user-form").submit(function (e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var url = form.attr('action');
+
+                    $.ajax({
+                        url: url,
+                        method: "POST",
+                        dataType: "json",
+                        success: function (data) {
+                            let currentButton = form.find('.follow-user-button');
+
+                            if (currentButton.text() === 'follow') {
+                                currentButton.text('unfollow');
+                            } else {
+                                currentButton.text('follow');
+                            }
+                        }
+                    })
+                });
+
+            }
+        })
+
+    });
+
+    // Follow user
+    $(".follow-user-form").submit(function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action');
+
+        $.ajax({
+            url: url,
+            method: "POST",
+            dataType: "json",
+            success: function (data) {
+                let currentButton = form.find('.follow-user-button');
+
+                if (currentButton.text() === 'follow') {
+                    currentButton.text('unfollow');
+                } else {
+                    currentButton.text('follow');
+                }
             }
         })
     });

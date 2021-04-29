@@ -62,11 +62,13 @@ router.post('/follow/:username', async (req, res) => {
     const userToFollow = await getUserByUsername(req.params.username);
 
     if (userToFollow.followers.includes(loggedUser._id)) {
-        const result = await unfollow(userToFollow._id, loggedUser._id);
-        res.send(result);
+        unfollow(userToFollow._id, loggedUser._id).then(() => {
+            res.json({ username: userToFollow.username });
+        })
     } else {
-        const result = await follow(userToFollow._id, loggedUser._id);
-        res.send(result);
+        follow(userToFollow._id, loggedUser._id).then(() => {
+            res.json({ username: userToFollow.username });
+        })
     }
 });
 

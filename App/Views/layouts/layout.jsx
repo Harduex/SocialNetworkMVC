@@ -20,7 +20,7 @@ function Layout(props) {
       </head>
       <body>
         <Header title={props?.title} />
-        <div className="container main">
+        <div className="container main" id="root">
           {props.children}
         </div>
         <Footer />

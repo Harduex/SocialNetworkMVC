@@ -9,7 +9,7 @@ function Comment(props) {
     return (
         <div className="comment">
             <br />
-            <div className="timeline-header">
+            <div className="timeline-header timeline-header-comments">
                 <span className="userimage">
                     <img src={`data:image/jpeg;base64,${props?.comment?.user?.profilePic || ''}`} />
                 </span>
