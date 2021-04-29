@@ -40,6 +40,7 @@ router.post('/', async (req, res) => {
         user: user,
         currentUser: user,
         posts: posts,
+        loggedIn: true,
     });
 
 });

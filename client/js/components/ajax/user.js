@@ -18,8 +18,6 @@ $(document).ready(function () {
             success: function (data) {
                 $(".profile-posts").html(data);
 
-                // $(".profile-posts").html(data);
-
                 var commentButton = $(".comment-button");
                 var commentBox = $(".comment-box");
                 commentButton.click(function () {
@@ -94,6 +92,52 @@ $(document).ready(function () {
                         }
                     })
                 });
+
+                // Follow user
+                $(".follow-user-form").submit(function (e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var url = form.attr('action');
+
+                    $.ajax({
+                        url: url,
+                        method: "POST",
+                        dataType: "json",
+                        success: function (data) {
+                            let currentButton = form.find('.follow-user-button');
+
+                            if (currentButton.text() === 'follow') {
+                                currentButton.text('unfollow');
+                            } else {
+                                currentButton.text('follow');
+                            }
+                        }
+                    })
+                });
+
+            }
+        })
+
+    });
+
+    // Follow user
+    $(".follow-user-form").submit(function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action');
+
+        $.ajax({
+            url: url,
+            method: "POST",
+            dataType: "json",
+            success: function (data) {
+                let currentButton = form.find('.follow-user-button');
+
+                if (currentButton.text() === 'follow') {
+                    currentButton.text('unfollow');
+                } else {
+                    currentButton.text('follow');
+                }
             }
         })
     });

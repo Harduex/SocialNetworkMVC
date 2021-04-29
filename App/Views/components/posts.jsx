@@ -10,7 +10,7 @@ function Posts(props) {
       {props?.user ?
         <>
           {props?.posts.map((post) => (
-            <Post post={post} currentUser={props.currentUser} user={props.user} />
+            <Post post={post} currentUser={props.currentUser} user={props.user} loggedIn={props.loggedIn}/>
           ))}
         </>
         :

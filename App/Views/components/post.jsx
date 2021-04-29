@@ -9,27 +9,36 @@ function Post(props) {
   let dateString = d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
 
   return (
-    <li>
+    <li id={`post_${props?.post?._id}`}>
       {/* begin timeline-body */}
       <div className="timeline-body">
         <div className="timeline-header">
-          {/* TO DO: figure out how to get users profile pics in timeline too */}
-          {props?.user?.profilePic &&
-            <span className="userimage"><img src={`data:image/jpeg;base64,${props?.user?.profilePic || ''}`} alt="" /></span>
-          }
-          <div className="post-user-details">
-            <div className="username">
-              <a href={`/user?username=${props?.user?.username}`}>
-                {props?.user?.username || 'user'}
-              </a>
-            </div>
-            <div className="text-muted post-date">
-              <small>
-                {dateString}
-              </small>
+
+          <div>
+            {props?.user?.profilePic &&
+              <span className="userimage"><img src={`data:image/jpeg;base64,${props?.user?.profilePic || ''}`} alt="" /></span>
+            }
+            <div className="post-user-details">
+              <div className="username">
+                <a href={`/user?username=${props?.user?.username}`}>
+                  {props?.user?.username || 'user'}
+                </a>
+              </div>
+              <div className="text-muted post-date">
+                <small>
+                  {dateString}
+                </small>
+              </div>
             </div>
           </div>
 
+          {props.loggedIn && (
+            <form action={`/post/delete/${props?.post?._id}`} method="POST" className="delete-post-form">
+              <button type="submit" className="btn btn-secondary m-r-15 text-inverse-lighter delete-post-button">
+                <i className="fa fa-times-circle fa-fw fa-lg m-r-3" />
+              </button>
+            </form>
+          )}
         </div>
         <div className="timeline-content">
           <a href={`/post/get/${props?.post?._id}`}>

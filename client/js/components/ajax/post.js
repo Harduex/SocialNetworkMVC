@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    // Ajax
 
     // Posts
     let count = 5;
@@ -89,6 +88,25 @@ $(document).ready(function () {
                     })
                 });
 
+                // Delete post
+                $(".delete-post-form").submit(function (e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var url = form.attr('action');
+
+                    $.ajax({
+                        url: url,
+                        method: "POST",
+                        data: form.serialize(),
+                        dataType: "json",
+                        success: function (data) {
+                            $(`#post_${data?._id}`).remove();
+                        }
+                    });;
+                });
+
+
+
             });
     })
 
@@ -160,5 +178,32 @@ $(document).ready(function () {
             }
         })
     });
+
+    // Delete post
+    $(".delete-post-form").submit(function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action');
+
+        $.ajax({
+            url: url,
+            method: "POST",
+            data: form.serialize(),
+            dataType: "json",
+            success: function (data) {
+                $(`#post_${data?._id}`).remove();
+            }
+        });;
+    });
+
+    function GoBackWithRefresh(event) {
+        if ('referrer' in document) {
+            window.location = document.referrer;
+            /* OR */
+            //location.replace(document.referrer);
+        } else {
+            window.history.back();
+        }
+    }
 
 });

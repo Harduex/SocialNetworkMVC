@@ -5,7 +5,7 @@ const upload = multer({ dest: './public/temp' });
 import fs from 'fs';
 import sharp from 'sharp';
 
-import { addPost, getPostById, likePost, dislikePost, commentPost, getPostByIdFull } from '../Models/postModel';
+import { addPost, getPostById, likePost, dislikePost, commentPost, getPostByIdFull, deletePostById } from '../Models/postModel';
 import { getUserByUsername } from '../Models/userModel';
 
 
@@ -48,11 +48,6 @@ router.post('/like/:id', async (req, res) => {
     // Get updated post
     post = await getPostById(req.params.id);
 
-    // res.render('./components/likesCounter',
-    //     {
-    //         post: post
-    //     });
-
     res.json({
         likesCount: post.likes.length,
         id: post._id
@@ -88,9 +83,6 @@ router.post('/create', upload.single('postImage'), async (req, res) => {
     if (!req.file || !req.file.path) {
         image = '';
     } else {
-        // let img = fs.readFileSync(req.file.path);
-        // image = img.toString('base64');
-        // fs.unlinkSync(req.file.path);
 
         const compressedImg = await compressImage(req.file.path);
         image = compressedImg.toString('base64');
@@ -99,9 +91,13 @@ router.post('/create', upload.single('postImage'), async (req, res) => {
 
     const post = await addPost(req.body.body, user, req.body.comments, req.body.likes, image);
 
-    res.redirect(`/post/get/${post._id}`);
+    res.redirect(`/profile`);
 });
 
+router.post('/delete/:id', async (req, res) => {
+    const result = await deletePostById(req.params.id);
+    res.json({ _id: req.params.id });
+});
 
 function compressImage(img) {
 

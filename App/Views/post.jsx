@@ -11,12 +11,10 @@ function PostPreview(props) {
       <Timeline>
         <Post post={props?.post} currentUser={props?.currentUser} user={props?.user} />
       </Timeline>
-      <BigButtonPanel route="/profile">Back</BigButtonPanel>
+      <BigButtonPanel route="javascript:history.back()">Back</BigButtonPanel>
     </Layout>
   )
 }
-
-
 
 
 export default PostPreview;
