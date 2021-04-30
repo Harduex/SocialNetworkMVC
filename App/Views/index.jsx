@@ -10,8 +10,8 @@ function Index(props) {
     <Layout title={props.title}>
       <Timeline>
         <Posts posts={props.posts} currentUser={props.currentUser} className="timeline-posts" />
-        <BigButtonPanel route="javascript:;" className={"load-more-feed-posts"}>Load more</BigButtonPanel>
       </Timeline>
+      <BigButtonPanel route="javascript:;" className={"load-more-feed-posts"}>Load more</BigButtonPanel>
     </Layout>
   )
 }

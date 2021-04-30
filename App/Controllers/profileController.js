@@ -34,7 +34,10 @@ router.get('/', async (req, res) => {
 // Ajax
 router.post('/', async (req, res) => {
     const user = await req.user;
-    const posts = await getAllPostsByUser(user, Number(req.body.count));
+    const limit = 5;
+    let page = req.body.page;
+
+    const posts = await getAllPostsByUser(user, limit * 1, (page - 1) * limit);
 
     res.render('./components/posts', {
         user: user,

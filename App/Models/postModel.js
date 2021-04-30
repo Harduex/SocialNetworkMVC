@@ -83,12 +83,13 @@ async function getPostByIdFull(id) {
 };
 
 
-async function getAllPostsByUser(user, count = 1000) {
+async function getAllPostsByUser(user, limit = 1000, skip = 0) {
     const post = await Post
         .find({ user: user._id })
         .populate('user', 'username profilePic')
         .populate('comments.user', 'username profilePic')
-        .limit(count)
+        .limit(limit)
+        .skip(skip)
         .sort({ createdAt: -1 });
 
     return post;
@@ -110,7 +111,7 @@ async function deletePostById(id) {
 async function deletePostComment(postId, commentId) {
     const result = await Post.updateOne(
         { _id: postId },
-        { $pull: { comments: { _id: commentId }} }
+        { $pull: { comments: { _id: commentId } } }
     );
     return result;
 };
@@ -120,12 +121,13 @@ async function deleteAllPosts() {
     return result;
 };
 
-async function getPostsByArray(arr, count = 1000) {
+async function getPostsByArray(arr, count = 1000, skip = 0) {
     const posts = await Post
         .find({ 'user': { $in: arr } })
         .populate('user', 'username profilePic')
         .populate('comments.user', 'username profilePic')
         .limit(count)
+        .skip(skip)
         .sort({ createdAt: -1 });
     return posts;
 };

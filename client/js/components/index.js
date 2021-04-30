@@ -1,18 +1,17 @@
 $(document).ready(function () {
     // Ajax
-    let count = 10;
+    let page = 1;
     $(document).on('click', '.load-more-feed-posts', function () {
-        count += 10;
+        page++;
         $.ajax({
             url: "/posts",
             method: "POST",
-            data: { count: count },
+            data: { page: page },
             dataType: "html"
         })
             .done(function (data) {
-                $(".timeline-posts").html(data);
+                $(".posts-container").append(data);
             });
     });
 
 });
-
