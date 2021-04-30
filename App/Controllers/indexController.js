@@ -12,7 +12,7 @@ router.get('/', checkAuthenticated, async (req, res) => {
     const following = user.following;
     const followingFull = await getUsersByArray(following);
 
-    const posts = await getPostsByArray(followingFull, 10);
+    const posts = await getPostsByArray(followingFull, 5);
 
     res.render('index', {
         title: `${user.username}'s Feed`,
@@ -30,7 +30,10 @@ router.post('/posts', async (req, res) => {
     const following = user.following;
     const followingFull = await getUsersByArray(following);
 
-    const posts = await  getPostsByArray(followingFull, Number(req.body.count));
+    const limit = 5;
+    let page = req.body.page;
+
+    const posts = await getPostsByArray(followingFull, limit * 1, (page - 1) * limit);
 
     res.render('./components/posts',{
         currentUser: user,

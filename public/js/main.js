@@ -4774,22 +4774,21 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 
 $(document).ready(function () {
     // Ajax
-    let count = 10;
+    let page = 1;
     $(document).on('click', '.load-more-feed-posts', function () {
-        count += 10;
+        page++;
         $.ajax({
             url: "/posts",
             method: "POST",
-            data: { count: count },
+            data: { page: page },
             dataType: "html"
         })
             .done(function (data) {
-                $(".timeline-posts").html(data);
+                $(".posts-container").append(data);
             });
     });
 
 });
-
 
 $(window).on("load", function () {
     $(".loader-wrapper").addClass('hide');
@@ -4798,17 +4797,17 @@ $(window).on("load", function () {
 $(document).ready(function () {
 
     // Posts
-    let count = 5;
+    let page = 1;
     $(document).on('click', '.load-more-posts', function () {
-        count += 5;
+        page++;
         $.ajax({
             url: "/profile",
             method: "POST",
-            data: { count: count },
+            data: { page: page },
             dataType: "html"
         })
             .done(function (data) {
-                $(".profile-posts").html(data);
+                $(".posts-container").append(data);
             });
     })
 
@@ -4877,7 +4876,7 @@ $(document).ready(function () {
             success: function (data) {
                 let id = (/(id="(.*?)(\"))/g.exec(data)[2])
                 $(`#${id}`).replaceWith(data);
-                $('.comment-post-form')[0].reset();
+                $('.comment-body-input').val('');
 
                 let count = Number($(`#${id}_counter`).text().trim());
                 count++;
@@ -4967,21 +4966,21 @@ function buttonUp() {
 }
 $(document).ready(function () {
     // Posts
-    let count = 5;
-    $(document).on('submit', 'load-more-user-posts-form', function (e) {
+    let page = 1;
+    $(document).on('submit', '#load-more-user-posts-form', function (e) {
         e.preventDefault();
         var form = $(this);
         var url = form.attr('action');
 
-        count += 5;
+        page++;
 
         $.ajax({
             url: url,
             method: "POST",
-            data: `${form.serialize()}&count=${count}`,
+            data: `${form.serialize()}&page=${page}`,
             dataType: "html",
             success: function (data) {
-                $(".profile-posts").html(data);
+                $(".posts-container").append(data);
             }
         })
 

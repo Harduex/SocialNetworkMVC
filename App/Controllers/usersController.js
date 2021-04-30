@@ -47,8 +47,11 @@ router.get('/', async (req, res) => {
 // Ajax
 router.post('/load-more-posts', async (req, res) => {
     const searchedUser = await getUserByUsername(req.body.username);
-    const posts = await getAllPostsByUser(searchedUser, Number(req.body.count));
     const loggedUser = await req.user;
+    
+    let page = await req.body.page;
+    let limit = 5;
+    const posts = await getAllPostsByUser(searchedUser, limit * 1, (page - 1) * limit);
 
     res.render('./components/posts', {
         user: searchedUser,

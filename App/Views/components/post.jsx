@@ -97,7 +97,7 @@ function Post(props) {
             <div className="input">
               <form action={`/post/comment/${props?.post?._id}`} method="POST" className="comment-post-form">
                 <div className="input-group">
-                  <input type="text" className="form-control rounded-corner" placeholder="Write a comment..." name="comment" />
+                  <input type="text" className="form-control rounded-corner comment-body-input" placeholder="Write a comment..." name="comment" />
                   <span className="input-group-btn p-l-10">
                     <button className="btn btn-primary f-s-12 rounded-corner post-comment-button" type="submit">Comment</button>
                   </span>

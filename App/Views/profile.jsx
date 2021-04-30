@@ -3,6 +3,7 @@ import Layout from './layouts/layout';
 import UserPanel from './components/userPanel';
 import BigButtonPanel from './components/bigButtonPanel';
 import NewPost from './components/newPost';
+import Timeline from './components/timeline';
 import Posts from './components/posts';
 import Followers from './components/followers';
 import Following from './components/following';
@@ -20,7 +21,11 @@ function Profile(props) {
         <div className="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="nav-home-tab">
           <BigButtonPanel route="javascript:;" dataTarget="#new-post-modal">New Post</BigButtonPanel>
           <NewPost />
-          <Posts posts={props.posts} currentUser={props.currentUser} user={props.user} className="profile-posts" loggedIn/>
+          
+          <Timeline className={props.className}>
+            <Posts posts={props.posts} currentUser={props.currentUser} user={props.user} className="profile-posts" loggedIn />
+          </Timeline>
+
           <BigButtonPanel route="javascript:;" className={"load-more-posts"}>Load more</BigButtonPanel>
         </div>
 

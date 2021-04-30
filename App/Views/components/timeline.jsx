@@ -9,7 +9,7 @@ const Timeline = (props) => (
           <div className="profile-content">
             <div className="tab-content p-0">
               <div className="tab-pane fade active show" id="profile-post">
-                <ul className="timeline">
+                <ul className="timeline posts-container">
                   {props.children}
                 </ul>
               </div>

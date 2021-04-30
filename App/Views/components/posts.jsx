@@ -6,11 +6,12 @@ import Timeline from './timeline';
 function Posts(props) {
 
   return (
-    <Timeline className={props.className}>
+    // <Timeline className={props.className}>
+    <>
       {props?.user ?
         <>
           {props?.posts.map((post) => (
-            <Post post={post} currentUser={props.currentUser} user={props.user} loggedIn={props.loggedIn}/>
+            <Post post={post} currentUser={props.currentUser} user={props.user} loggedIn={props.loggedIn} />
           ))}
         </>
         :
@@ -20,8 +21,8 @@ function Posts(props) {
           ))}
         </>
       }
-
-    </Timeline>
+    </>
+    // </Timeline>
   )
 }
 

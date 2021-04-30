@@ -1,20 +1,20 @@
 $(document).ready(function () {
     // Posts
-    let count = 5;
-    $(document).on('submit', 'load-more-user-posts-form', function (e) {
+    let page = 1;
+    $(document).on('submit', '#load-more-user-posts-form', function (e) {
         e.preventDefault();
         var form = $(this);
         var url = form.attr('action');
 
-        count += 5;
+        page++;
 
         $.ajax({
             url: url,
             method: "POST",
-            data: `${form.serialize()}&count=${count}`,
+            data: `${form.serialize()}&page=${page}`,
             dataType: "html",
             success: function (data) {
-                $(".profile-posts").html(data);
+                $(".posts-container").append(data);
             }
         })
 
