@@ -8,6 +8,7 @@ import BigButtonPanel from './components/bigButtonPanel';
 function Index(props) {
   return (
     <Layout title={props.title}>
+      <BigButtonPanel route="javascript:;" className={"update-feed-posts"}>Update timeline</BigButtonPanel>
       <Timeline>
         <Posts posts={props.posts} currentUser={props.currentUser} className="timeline-posts" />
       </Timeline>
