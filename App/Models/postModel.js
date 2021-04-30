@@ -107,6 +107,14 @@ async function deletePostById(id) {
     return result;
 };
 
+async function deletePostComment(postId, commentId) {
+    const result = await Post.updateOne(
+        { _id: postId },
+        { $pull: { comments: { _id: commentId }} }
+    );
+    return result;
+};
+
 async function deleteAllPosts() {
     const result = await Post.deleteMany({});
     return result;
@@ -163,6 +171,7 @@ export {
     dislikePost,
     commentPost,
     getPostByIdFull,
+    deletePostComment,
 };
 
 

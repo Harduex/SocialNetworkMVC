@@ -106,7 +106,7 @@ function Post(props) {
             </div>
           </div>
 
-          <Comments post={props?.post} />
+          <Comments post={props?.post} currentUser={props?.currentUser} />
 
         </div>
 

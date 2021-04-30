@@ -4973,6 +4973,25 @@ $(document).ready(function () {
                             let count = Number($(`#${id}_counter`).text().trim());
                             count++;
                             $(`#${id}_counter`).text(count);
+
+                            // Delete post comment
+                            $(".delete-post-comment-form").submit(function (e) {
+                                e.preventDefault();
+                                var form = $(this);
+                                var url = form.attr('action');
+
+                                if (confirm("Are you sure you want to delete this comment?")) {
+                                    $.ajax({
+                                        url: url,
+                                        method: "POST",
+                                        data: form.serialize(),
+                                        dataType: "json",
+                                        success: function (data) {
+                                            $(`#comment_${data?._id}`).remove();
+                                        }
+                                    });
+                                }
+                            });
                         }
                     })
                 })
@@ -5026,7 +5045,24 @@ $(document).ready(function () {
                     }
                 });
 
+                // Delete post comment
+                $(".delete-post-comment-form").submit(function (e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var url = form.attr('action');
 
+                    if (confirm("Are you sure you want to delete this comment?")) {
+                        $.ajax({
+                            url: url,
+                            method: "POST",
+                            data: form.serialize(),
+                            dataType: "json",
+                            success: function (data) {
+                                $(`#comment_${data?._id}`).remove();
+                            }
+                        });
+                    }
+                });
 
             });
     })
@@ -5066,6 +5102,25 @@ $(document).ready(function () {
                 let count = Number($(`#${id}_counter`).text().trim());
                 count++;
                 $(`#${id}_counter`).text(count);
+
+                // Delete post comment
+                $(".delete-post-comment-form").submit(function (e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var url = form.attr('action');
+
+                    if (confirm("Are you sure you want to delete this comment?")) {
+                        $.ajax({
+                            url: url,
+                            method: "POST",
+                            data: form.serialize(),
+                            dataType: "json",
+                            success: function (data) {
+                                $(`#comment_${data?._id}`).remove();
+                            }
+                        });
+                    }
+                });
             }
         })
     })
@@ -5114,6 +5169,25 @@ $(document).ready(function () {
                 dataType: "json",
                 success: function (data) {
                     $(`#post_${data?._id}`).remove();
+                }
+            });
+        }
+    });
+
+    // Delete post comment
+    $(".delete-post-comment-form").submit(function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action');
+
+        if (confirm("Are you sure you want to delete this comment?")) {
+            $.ajax({
+                url: url,
+                method: "POST",
+                data: form.serialize(),
+                dataType: "json",
+                success: function (data) {
+                    $(`#comment_${data?._id}`).remove();
                 }
             });
         }
