@@ -95,7 +95,7 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
                 bio: bio,
             }
 
-            editUser(currentUserId, updates);
+            const result = await editUser(currentUserId, updates);
             res.redirect('/auth/logout');
         } else {
             res.render('editProfile', { title: 'Edit Profile', passwordError: `Wrong password!`, user: user });
@@ -110,7 +110,7 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
             bio: bio,
         }
 
-        editUser(currentUserId, updates);
+        const result = await editUser(currentUserId, updates);
 
         res.redirect('/profile/edit');
     }

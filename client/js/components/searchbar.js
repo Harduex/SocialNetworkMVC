@@ -3,7 +3,7 @@ $(document).ready(function () {
     var inputBox = $('.searchbar-input');
     var searchbar = $('.searchbar');
     var isOpen = false;
-    submitIcon.click(function () {
+    submitIcon.on('click', function () {
         if (isOpen == false) {
             searchbar.addClass('searchbar-open');
             inputBox.focus();
