@@ -26,7 +26,7 @@ const Profile = (props) => (
                       <div className="col-12 col-sm-auto mb-3">
                         <div className="mx-auto" style={{ width: '140px' }}>
                           <div className="d-flex justify-content-center align-items-center rounded" style={{ height: '140px', backgroundColor: 'rgb(233, 236, 239)' }}>
-                            <img src={`data:image/jpeg;base64,${props?.user?.profilePic}`} alt="profile image" width="140" height="140" />
+                            <img src={`data:image/jpeg;base64,${props?.user?.profilePic}`} alt="profile image" width="140" height="140" id="change-profile-image" />
                           </div>
                         </div>
                       </div>
@@ -39,7 +39,7 @@ const Profile = (props) => (
                             <button className="btn btn-primary change-profile-pic__button" type="button">
                               <i className="fa fa-fw fa-camera" />
                               <span>Change Photo</span>
-                              <input type="file" name="profilePic" accept="image/*" className="change-profile-pic__input" />
+                              <input type="file" name="profilePic" accept="image/*" className="change-profile-pic__input" id="upload-profile-image-input"/>
                             </button>
                           </div>
                         </div>
