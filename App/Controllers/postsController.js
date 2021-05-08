@@ -24,7 +24,7 @@ router.get('/get/:id', async (req, res) => {
 
 router.post('/likes/:id', async (req, res) => {
     const post = await getPostByIdFull(req.params.id);
-console.log(post);
+
     res.render('./components/postLikesContent', {
         title: 'Post Likes',
         post: post
