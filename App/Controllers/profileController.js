@@ -67,7 +67,8 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
         bio,
         currentPassword,
         newPassword,
-        newPasswordConfirm
+        newPasswordConfirm,
+        coverColor
     } = req.body;
 
     let profilePic;
@@ -96,6 +97,7 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
                 email: email,
                 password: NewHashedPassword,
                 bio: bio,
+                coverColor: coverColor,
             }
 
             const result = await editUser(currentUserId, updates);
@@ -111,6 +113,7 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
             fullName: fullName,
             email: email,
             bio: bio,
+            coverColor: coverColor,
         }
 
         const result = await editUser(currentUserId, updates);

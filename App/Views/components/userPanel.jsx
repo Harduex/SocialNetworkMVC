@@ -13,7 +13,7 @@ function UserPanel(props) {
             <div className="profile">
               <div className="profile-header">
                 {/* BEGIN profile-header-cover */}
-                <div className="profile-header-cover" />
+                <div className="profile-header-cover dynamic-text-bg-color" style={{ backgroundColor: props?.user?.coverColor }} />
                 {/* END profile-header-cover */}
                 {/* BEGIN profile-header-content */}
                 <div className="profile-header-content">
@@ -24,22 +24,21 @@ function UserPanel(props) {
                   {/* END profile-header-img */}
                   {/* BEGIN profile-header-info */}
                   <div className="profile-header-info">
-                    <h4 className="m-t-10 m-b-5 user-full-name">{props?.user?.fullName || 'user full name'}</h4>
-                    <a href={`user?username=${props?.user?.username}`} className="m-b-10 text-light user-username">@{props?.user?.username || 'user'}</a>
-                    <p className="m-b-10 user-bio">{props?.user?.bio || ''}</p>
+                    <h4 className="m-t-10 m-b-5 user-full-name dynamic-text-color">{props?.user?.fullName || 'user full name'}</h4>
+                    <a href={`user?username=${props?.user?.username}`} className="m-b-10 user-username dynamic-text-color">@{props?.user?.username || 'user'}</a>
+                    <p className="m-b-10 user-bio dynamic-text-color">{props?.user?.bio || ''}</p>
                   </div>
                   {props.loggedIn ?
                     <div className="profile-options">
-                      <a href="/profile/edit" className="btn btn-md btn-primary edit-profile-button">
+                      <a href="/profile/edit" className="btn btn-md btn-danger edit-profile-button">
                         <i class="fa fa-lg fa-user-cog text-white"></i>
                       </a>
                     </div>
                     :
                     !props.hideFollowButton && (
                       <div className="profile-options">
-                        {/* <a href={`/user/follow/${props?.user?.username}`} className="btn btn-sm btn-primary mb-2">{props?.follow}</a> */}
                         <form action={`/user/follow/${props?.user?.username}`} method="post" className="follow-user-form">
-                          <button type="submit" className="btn btn-sm btn-primary mb-2 follow-user-button">{props?.follow}</button>
+                          <button type="submit" className="btn btn-sm btn-danger mb-2 follow-user-button">{props?.follow}</button>
                         </form>
 
                       </div>
