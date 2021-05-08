@@ -32,15 +32,22 @@ const Profile = (props) => (
                       </div>
                       <div className="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                         <div className="text-center text-sm-left mb-2 mb-sm-0">
-                          <h4 className="pt-sm-2 pb-1 mb-0 text-nowrap">{props?.user?.fullName}</h4>
-                          <p className="mb-0">{props?.user?.email}</p>
-                          <div className="text-muted"><small>email address</small></div>
-                          <div className="mt-2">
-                            <button className="btn btn-primary change-profile-pic__button" type="button">
-                              <i className="fa fa-fw fa-camera" />
+                          <h4 className="pt-sm-2 pb-0 mb-0 text-nowrap">{props?.user?.fullName}</h4>
+                          <div className="text-muted"><small>@{props?.user?.username}</small></div>
+                          <div className="mt-1">
+                            <button className="btn btn-primary change-profile-pic__button mb-2" type="button">
+                              <i className="fa fa-fw fa-camera mr-2" />
                               <span>Change Photo</span>
-                              <input type="file" name="profilePic" accept="image/*" className="change-profile-pic__input" id="upload-profile-image-input"/>
+                              <input type="file" name="profilePic" accept="image/*" className="change-profile-pic__input" id="upload-profile-image-input" />
                             </button>
+                            <br />
+                            <div style={{ position: 'relative', display: 'inline-block' }}>
+                              <button type="button" className="btn btn-primary color-picker-button dynamic-text-bg-color" style={{ backgroundColor: props?.user?.coverColor || '#4E5D6C' }}>
+                                <i className="fa fa-fw fa-palette mr-2 dynamic-text-color" />
+                                <span className="dynamic-text-color">Change Cover</span>
+                              </button>
+                              <input type="color" defaultValue={props?.user?.coverColor} className="color-picker-hidden" name="coverColor" />
+                            </div>
                           </div>
                         </div>
                         <div className="text-center text-sm-right">

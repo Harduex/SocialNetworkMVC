@@ -4871,6 +4871,7 @@ $(document).ready(function () {
             success: function (data) {
                 e.preventDefault();
                 $(`#post-likes-modal-body`).html(data);
+                dynamicTextColor();
             }
         })
     });
@@ -4948,8 +4949,37 @@ function loadFile(event) {
 };
 
 $("#upload-profile-image-input").change(function (e) {
-    console.log(e);
     loadFile(e)
+});
+
+// Color picker
+$(".color-picker-hidden").change(function () {
+    $(".color-picker-button").css('background', $(this).val());
+    dynamicTextColor();
+});
+
+// Dynamic text color
+function getContrastYIQ(hexcolor) {
+    hexcolor = hexcolor.replace("#", "");
+    var r = parseInt(hexcolor.substr(0, 2), 16);
+    var g = parseInt(hexcolor.substr(2, 2), 16);
+    var b = parseInt(hexcolor.substr(4, 2), 16);
+    var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+    return (yiq >= 128) ? 'black' : 'white';
+}
+
+function dynamicTextColor() {
+    let bgRgb = $('.dynamic-text-bg-color').css("background-color");
+    let ctx = document.createElement('canvas').getContext('2d');
+    ctx.strokeStyle = bgRgb;
+    let bgHexColor = ctx.strokeStyle;
+    let textColor = getContrastYIQ(bgHexColor);
+    $('.dynamic-text-color').css('color', textColor);
+    console.log(textColor);
+}
+
+$(document).ready(function () {
+    dynamicTextColor();
 });
 
 $(document).ready(function () {
