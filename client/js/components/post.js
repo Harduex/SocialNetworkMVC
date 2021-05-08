@@ -63,7 +63,6 @@ $(document).ready(function () {
             success: function (data) {
                 e.preventDefault();
                 $(`#post-likes-modal-body`).html(data);
-                dynamicTextColor();
             }
         })
     });

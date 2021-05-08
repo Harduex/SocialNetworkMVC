@@ -78,7 +78,7 @@ async function getPostByIdFull(id) {
         .findOne({ _id: id })
         .populate('user', 'username profilePic')
         .populate('comments.user', 'username profilePic')
-        .populate('likes', 'username fullName profilePic');
+        .populate('likes', 'username fullName profilePic coverColor');
     return post;
 };
 
