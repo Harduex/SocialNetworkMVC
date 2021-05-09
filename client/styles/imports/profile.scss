@@ -800,6 +800,7 @@ select.form-control:not([size]):not([multiple]) {
     grid-template-columns: repeat(3, 1fr);
     column-gap: 1em;
     row-gap: 1em;
+    padding-bottom: 1em;
     .post-item {
         .timeline-body {
             margin: 0;
@@ -827,4 +828,12 @@ select.form-control:not([size]):not([multiple]) {
             }
         }
     }
+    .hide-post {
+        display: none;
+    }
+}
+.gallery-view-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

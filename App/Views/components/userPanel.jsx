@@ -58,10 +58,13 @@ function UserPanel(props) {
                     <li className="nav-item"><a href="#followers" className="nav-link text-white" data-toggle="tab">Followers {(props?.user?.followers?.length || 0)}</a></li>
                     <li className="nav-item"><a href="#following" className="nav-link text-white" data-toggle="tab">Following {(props?.user?.following?.length || 0)}</a></li>
                   </ul>
-                  <label class="switch">
-                    <input type="checkbox" className="toggle-timeline"/>
-                    <span class="slider round"></span>
-                  </label>
+                  <div className="gallery-view-toggle">
+                    <span className="gallery-view-toggle__label">Gallery</span>
+                    <label class="switch">
+                      <input type="checkbox" className="toggle-timeline" />
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
                 </div>
               }
               {/* END profile-header-tab */}
