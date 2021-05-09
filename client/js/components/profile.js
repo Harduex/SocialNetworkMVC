@@ -1,6 +1,6 @@
 // New profile image preview
 function loadFile(event) {
-    console.log('called');
+    // console.log('called');
     var output = document.getElementById('change-profile-image');
     output.src = URL.createObjectURL(event.target.files[0]);
     output.onload = function () {
@@ -35,7 +35,7 @@ function dynamicTextColor() {
     let bgHexColor = ctx.strokeStyle;
     let textColor = getContrastYIQ(bgHexColor);
     $('.dynamic-text-color').css('color', textColor);
-    console.log(textColor);
+    // console.log(textColor);
 }
 
 // Toggle TImeline
