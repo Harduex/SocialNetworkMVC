@@ -1,11 +1,6 @@
 import React from 'react';
 import Layout from './layouts/layout';
 import UserPanel from './components/userPanel';
-import BigButtonPanel from './components/bigButtonPanel';
-import Timeline from './components/timeline';
-import Posts from './components/posts';
-import Followers from './components/followers';
-import Following from './components/following';
 
 
 function Profile(props) {
@@ -13,6 +8,7 @@ function Profile(props) {
   return (
     <Layout title={props.title}>
       <div className="container">
+        <h1>Search results for: {props?.keyword}</h1>
         <div className="row">
           <div className="col-md-12">
             <div id="content" className="content content-full-width">
@@ -32,7 +28,6 @@ function Profile(props) {
                         } else {
                           return <UserPanel user={user} hideFollowButton loggedIn />
                         }
-
 
                       })}
 

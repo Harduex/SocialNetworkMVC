@@ -7,7 +7,7 @@ import sharp from 'sharp';
 const upload = multer({ dest: './public/temp' });
 
 import { editUser, getUsersByArray } from '../Models/userModel';
-import { getAllPostsByUser } from '../Models/postModel';
+import { getAllPostsByUser, getPostsCount } from '../Models/postModel';
 
 router.get('/', async (req, res) => {
     const user = await req.user;
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
     const followingFull = await getUsersByArray(following);
 
     const posts = await getAllPostsByUser(user, 5);
-
+    const postsCount = await getPostsCount(user);
 
     res.render('profile', {
         title: `${user.username}'s Profile`,
@@ -28,6 +28,7 @@ router.get('/', async (req, res) => {
         followers: followersFull,
         following: followingFull,
         posts: posts,
+        postsCount: postsCount,
     });
 });
 
