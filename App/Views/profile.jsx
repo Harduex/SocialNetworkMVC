@@ -14,7 +14,7 @@ function Profile(props) {
   return (
     <Layout title={props.title}>
 
-      <UserPanel user={props.user} follow={props.follow} posts={props.posts} loggedIn mainPanel />
+      <UserPanel user={props.user} follow={props.follow} posts={props.posts} postsCount={props?.postsCount} loggedIn mainPanel />
 
       <div className="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
 

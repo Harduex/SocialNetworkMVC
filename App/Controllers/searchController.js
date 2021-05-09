@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {
     const searchResults = await searchUser(req.query.keyword, 'username fullName profilePic coverColor');
 
     res.render('searchResults', {
+        keyword: req.query.keyword,
         currentUser: currentUser,
         searchResults: searchResults,
     });

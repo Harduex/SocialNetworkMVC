@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 import { getUserByUsername, getUserById, getUsersByArray, follow, unfollow } from '../Models/userModel';
-import { getAllPostsByUser } from '../Models/postModel';
+import { getAllPostsByUser, getPostsCount } from '../Models/postModel';
 
 
 router.get('/', async (req, res) => {
@@ -30,6 +30,7 @@ router.get('/', async (req, res) => {
     }
 
     const posts = await getAllPostsByUser(searchedUser, 5);
+    const postsCount = await getPostsCount(searchedUser);
 
 
     res.render('userProfile', {
@@ -40,6 +41,7 @@ router.get('/', async (req, res) => {
         followers: followersFull,
         following: followingFull,
         posts: posts,
+        postsCount: postsCount,
     });
 
 });
@@ -48,7 +50,7 @@ router.get('/', async (req, res) => {
 router.post('/load-more-posts', async (req, res) => {
     const searchedUser = await getUserByUsername(req.body.username);
     const loggedUser = await req.user;
-    
+
     let page = await req.body.page;
     let limit = 5;
     const posts = await getAllPostsByUser(searchedUser, limit * 1, (page - 1) * limit);

@@ -95,6 +95,14 @@ async function getAllPostsByUser(user, limit = 1000, skip = 0) {
     return post;
 };
 
+async function getPostsCount(user) {
+    const postsCount = await Post
+        .countDocuments({ user: user._id });
+
+    return postsCount;
+};
+
+
 
 async function editPost(id, updates) {
     const result = await Post
@@ -174,6 +182,7 @@ export {
     commentPost,
     getPostByIdFull,
     deletePostComment,
+    getPostsCount,
 };
 
 
