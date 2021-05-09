@@ -137,6 +137,15 @@ async function deleteAllUsers() {
     return result;
 };
 
+async function searchUser(keyword, fields) {
+    let regex = new RegExp(keyword, 'i');
+
+    const result = await User
+        .find({ $and: [{ $or: [{ username: regex }, { fullName: regex }] }] }, fields);
+
+    return result;
+};
+
 
 export {
     User,
@@ -151,4 +160,5 @@ export {
     follow,
     unfollow,
     getUsersByArray,
+    searchUser,
 };
