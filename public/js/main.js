@@ -4981,6 +4981,11 @@ $(document).ready(function () {
     dynamicTextColor();
 });
 
+// Toggle TImeline
+$(".toggle-timeline").change(function () {
+    $(".posts-container").toggleClass('grid-timeline');
+});
+
 $(document).ready(function () {
     var submitIcon = $('.searchbar-icon');
     var inputBox = $('.searchbar-input');

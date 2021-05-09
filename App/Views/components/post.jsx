@@ -9,7 +9,7 @@ function Post(props) {
   let dateString = d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
 
   return (
-    <li id={`post_${props?.post?._id}`}>
+    <li id={`post_${props?.post?._id}`} className="post-item">
       {/* begin timeline-body */}
       <div className="timeline-body">
         <div className="timeline-header">
