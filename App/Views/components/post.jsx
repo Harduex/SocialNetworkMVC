@@ -9,9 +9,9 @@ function Post(props) {
   let dateString = d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
 
   return (
-    <li id={`post_${props?.post?._id}`} className="post-item">
+    <li id={`post_${props?.post?._id}`} className={`post-item ${props?.post?.image.toString() === '' ? 'hide-post' : ''}`} >
       {/* begin timeline-body */}
-      <div className="timeline-body">
+      <div className={`timeline-body`}>
         <div className="timeline-header">
 
           <div>
@@ -44,11 +44,11 @@ function Post(props) {
           <a href={`/post/get/${props?.post?._id}`}>
             <div className="timeline-content__body">
               {props?.post?.body &&
-                <p class="text-white">{props?.post?.body || 'post body'}</p>
+                <p class="text-white">{props?.post?.body || ''}</p>
               }
             </div>
-            {props?.post?.image &&
-              <img className="post-image" src={`data:image/jpeg;base64,${props?.post?.image || ''}`} alt="" />
+            {props?.post?.image != '' &&
+              <img className="post-image" src={`data:image/jpeg;base64,${props?.post?.image || ''}`} />
             }
           </a>
         </div>

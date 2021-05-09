@@ -8448,7 +8448,8 @@ select.form-control:not([size]):not([multiple]) {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 1em;
-  row-gap: 1em; }
+  row-gap: 1em;
+  padding-bottom: 1em; }
   .grid-timeline .post-item .timeline-body {
     margin: 0;
     padding: 0;
@@ -8469,6 +8470,13 @@ select.form-control:not([size]):not([multiple]) {
     .grid-timeline .post-item .timeline-body .post-image {
       height: 100%;
       object-fit: cover; }
+  .grid-timeline .hide-post {
+    display: none; }
+
+.gallery-view-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 .searchbar {
   position: relative;

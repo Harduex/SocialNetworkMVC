@@ -38,11 +38,12 @@ function dynamicTextColor() {
     console.log(textColor);
 }
 
-$(document).ready(function () {
-    dynamicTextColor();
-});
-
 // Toggle TImeline
 $(".toggle-timeline").change(function () {
     $(".posts-container").toggleClass('grid-timeline');
+});
+
+
+$(document).ready(function () {
+    dynamicTextColor();
 });
