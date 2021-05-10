@@ -63,7 +63,9 @@ function Post(props) {
               </div>
               :
               <>
-                <p class="text-white">{props?.post?.body || ''}</p>
+                <div className="text-white hashtags">
+                  <p>{props?.post?.body || ''}</p>
+                </div>
               </>
             }
           </div>
