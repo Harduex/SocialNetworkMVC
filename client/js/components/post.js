@@ -143,10 +143,11 @@ $(document).ready(function () {
                     data: { newValue: this.value },
                     dataType: "json",
                 });
+
                 return `<span class="text-white" id='edit-post-${postId}-field'>
-                    <a href='/post/get/${postId}'>
-                        ${this.value}
-                    </a>
+                            <div className="text-white hashtags">
+                               <p>${this.value.replace(/#(\S+)/g, '<a href="' + url + '/$1" title="Find more posts tagged with $1">#$1</a>')}</p>
+                            </div>
                      </span>`
             }
         });
@@ -180,6 +181,16 @@ $(document).ready(function () {
             }
         });
     });
+
+    // Create links from hashtags
+    var url = '/search/hashtag';
+    var hashtags = $('div.hashtags > p');
+
+    if (hashtags.length > 0) {
+        for (let i = 0; i < hashtags.length; i = i + 1) {
+            hashtags[i].innerHTML = hashtags[i].innerHTML.replace(/#(\S+)/g, '<a href="' + url + '/$1" title="Find more posts tagged with $1">#$1</a>');
+        }
+    }
 
 });
 

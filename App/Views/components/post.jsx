@@ -26,7 +26,9 @@ function Post(props) {
               </div>
               <div className="text-muted post-date">
                 <small>
-                  {dateString}
+                  <a href={`/post/get/${props?.post?._id}`} className="text-white">
+                    {dateString}
+                  </a>
                 </small>
               </div>
             </div>
@@ -49,9 +51,9 @@ function Post(props) {
                 <form action={`/post/edit/${props?.post?._id}`} method="GET" className="edit-post-form d-flex justify-content-between">
                   <input type="text" name="edit-post-id" value={props?.post?._id} style={{ display: 'none' }} />
                   <span class="text-white" id={`edit-post-${props?.post?._id}-field`}>
-                    <a href={`/post/get/${props?.post?._id}`} className="text-white">
-                      {props?.post?.body || ''}
-                    </a>
+                    <div className="text-white hashtags">
+                      <p>{props?.post?.body || ''}</p>
+                    </div>
                   </span>
                   <button type="submit" className={`btn btn-secondary m-0 p-0 text-inverse-lighter edit-post-toggle`}>
                     <i className="fa fa-edit fa-fw fa-lg m-r-3" />
