@@ -49,7 +49,7 @@ function Post(props) {
                 <form action={`/post/edit/${props?.post?._id}`} method="GET" className="edit-post-form d-flex justify-content-between">
                   <input type="text" name="edit-post-id" value={props?.post?._id} style={{ display: 'none' }} />
                   <span class="text-white" id={`edit-post-${props?.post?._id}-field`}>
-                    <a href={`/post/get/${props?.post?._id}`}>
+                    <a href={`/post/get/${props?.post?._id}`} className="text-white">
                       {props?.post?.body || ''}
                     </a>
                   </span>
