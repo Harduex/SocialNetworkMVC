@@ -166,6 +166,19 @@ async function commentPost(postId, userId, comment) {
     return result;
 };
 
+async function editPostComment(postId, comment, commentId) {
+
+    const result = await Post.updateOne(
+        { _id: postId, "comments._id": commentId },
+        {
+            $set: {
+                "comments.$.comment": comment,
+            }
+        }
+    );
+    return result;
+};
+
 
 export {
     Post,
@@ -183,6 +196,7 @@ export {
     getPostByIdFull,
     deletePostComment,
     getPostsCount,
+    editPostComment,
 };
 
 
