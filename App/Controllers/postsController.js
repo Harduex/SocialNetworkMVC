@@ -91,11 +91,11 @@ router.post('/comment/delete/:id', async (req, res) => {
     res.json({ result: result, _id: commentId });
 });
 
-router.get('/comment/edit/:id', async (req, res) => {
+router.post('/comment/edit/:id', async (req, res) => {
     const postId = req.body.postId;
-    const commentId = req.body.id;
-    const comment = req.query.comment;
-    
+    const commentId = req.body.commentId;
+    const comment = req.body.comment;
+
     let result = await editPostComment(postId, comment, commentId);
     res.json({ result: result });
 });

@@ -8481,6 +8481,12 @@ select.form-control:not([size]):not([multiple]) {
 .edit-post-fields {
   margin-bottom: 10px; }
 
+.post-comment-content {
+  width: 100%; }
+
+.delete-post-comment-form {
+  display: inline-flex; }
+
 .searchbar {
   position: relative;
   min-width: 35px;
