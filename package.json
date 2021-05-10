@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "babel-node ./bin/www",
-    "gulp": "npx gulp && npx gulp watch",
+    "start": "gulp && npm run server",
+    "gulp": "gulp && gulp watch",
     "server": "nodemon --exec babel-node ./bin/www",
     "dev": "concurrently \"npm run gulp\" \"npm run server\""
   },
