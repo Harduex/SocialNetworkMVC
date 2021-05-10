@@ -102,14 +102,11 @@ async function getPostsCount(user) {
     return postsCount;
 };
 
-
-
 async function editPost(id, updates) {
     const result = await Post
         .updateOne({ _id: id }, updates);
     return result;
 };
-
 
 async function deletePostById(id) {
     const result = await Post.deleteOne({ _id: id });
@@ -185,7 +182,8 @@ async function searchPosts(keyword) {
     const result = await Post
         .find({ body: regex })
         .populate('user', 'username profilePic')
-        .populate('comments.user', 'username profilePic');
+        .populate('comments.user', 'username profilePic')
+        .sort({ createdAt: -1 });
 
     return result;
 };
