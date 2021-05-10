@@ -8487,6 +8487,18 @@ select.form-control:not([size]):not([multiple]) {
 .delete-post-comment-form {
   display: inline-flex; }
 
+.index-title-container {
+  padding: 0 18%; }
+  @media (max-width: 1000px) {
+    .index-title-container {
+      padding: 1em 2%; } }
+  @media (max-width: 768px) {
+    .index-title-container {
+      padding: 1em 3%; } }
+  @media (max-width: 320px) {
+    .index-title-container h1 {
+      font-size: 28px; } }
+
 .searchbar {
   position: relative;
   min-width: 35px;

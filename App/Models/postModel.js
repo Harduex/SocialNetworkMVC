@@ -179,6 +179,16 @@ async function editPostComment(postId, comment, commentId) {
     return result;
 };
 
+async function searchPosts(keyword) {
+    let regex = new RegExp(keyword, 'i');
+
+    const result = await Post
+        .find({ body: regex })
+        .populate('user', 'username profilePic')
+        .populate('comments.user', 'username profilePic');
+
+    return result;
+};
 
 export {
     Post,
@@ -197,6 +207,7 @@ export {
     deletePostComment,
     getPostsCount,
     editPostComment,
+    searchPosts,
 };
 
 

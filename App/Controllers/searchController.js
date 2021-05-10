@@ -1,7 +1,8 @@
 import express from 'express';
 const router = express.Router();
 
-import { searchUser } from '../Models/userModel';
+import { searchUser, getUserByUsername } from '../Models/userModel';
+import { searchPosts } from '../Models/postModel';
 
 
 router.get('/', async (req, res) => {
@@ -20,6 +21,23 @@ router.post('/', async (req, res) => {
 
     res.json({ keyword: req.body.keyword, results: searchResults });
 });
+
+router.get('/hashtag/:keyword', async (req, res) => {
+    const searchResults = await searchPosts(`#${req.params.keyword}`);
+    const currentUser = await req.user;
+    const postUser = await getUserByUsername(searchResults?.user?.username);
+
+
+    res.render('index', {
+        title: `Hashtag #${req.params.keyword}`,
+        user: postUser,
+        currentUser: currentUser,
+        posts: searchResults,
+        hideButtons: true
+    });
+
+});
+
 
 
 export default router;
