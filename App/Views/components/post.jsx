@@ -33,20 +33,39 @@ function Post(props) {
           </div>
 
           {props.loggedIn && (
-            <form action={`/post/delete/${props?.post?._id}`} method="POST" className="delete-post-form">
-              <button type="submit" className="btn btn-secondary m-r-15 text-inverse-lighter delete-post-button">
-                <i className="fa fa-times-circle fa-fw fa-lg m-r-3" />
-              </button>
-            </form>
+            <>
+              <form action={`/post/delete/${props?.post?._id}`} method="POST" className="delete-post-form">
+                <button type="submit" className="btn btn-secondary m-r-15 text-inverse-lighter delete-post-button">
+                  <i className="fa fa-times-circle fa-fw fa-lg m-r-3" />
+                </button>
+              </form>
+            </>
           )}
         </div>
         <div className="timeline-content">
-          <a href={`/post/get/${props?.post?._id}`}>
-            <div className="timeline-content__body">
-              {props?.post?.body &&
+          <div className="timeline-content__body">
+            {props?.loggedIn && props?.post?.body ?
+              <div className="edit-post-fields" >
+                <form action={`/post/edit/${props?.post?._id}`} method="GET" className="edit-post-form d-flex justify-content-between">
+                  <input type="text" name="edit-post-id" value={props?.post?._id} style={{ display: 'none' }} />
+                  <span class="text-white" id={`edit-post-${props?.post?._id}-field`}>
+                    <a href={`/post/get/${props?.post?._id}`}>
+                      {props?.post?.body || ''}
+                    </a>
+                  </span>
+                  <button type="submit" className={`btn btn-secondary m-0 p-0 text-inverse-lighter edit-post-toggle`}>
+                    <i className="fa fa-edit fa-fw fa-lg m-r-3" />
+                  </button>
+                </form>
+
+              </div>
+              :
+              <>
                 <p class="text-white">{props?.post?.body || ''}</p>
-              }
-            </div>
+              </>
+            }
+          </div>
+          <a href={`/post/get/${props?.post?._id}`}>
             {props?.post?.image != '' &&
               <img className="post-image" src={`data:image/jpeg;base64,${props?.post?.image || ''}`} />
             }

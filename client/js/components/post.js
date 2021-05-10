@@ -127,4 +127,35 @@ $(document).ready(function () {
         }
     });
 
+    // Edit post
+    $(document).on('submit', '.edit-post-form', function (e) {
+        e.preventDefault();
+        var data = $(this).serializeArray();
+        let postId = data[0].value;
+
+        $(`#edit-post-${postId}-field`).replaceWith(function () {
+            if (this.className === 'text-white') {
+                return `<input type="text" class='text-black' value='${this.innerText}' name='edited-post-${postId}-field' id='edit-post-${postId}-field' />`
+            } else {
+                $.ajax({
+                    url: `/post/edit/${postId}`,
+                    method: "POST",
+                    data: { newValue: this.value },
+                    dataType: "json",
+                });
+                return `<span class="text-white" id='edit-post-${postId}-field'>
+                    <a href='/post/get/${postId}'>
+                        ${this.value}
+                    </a>
+                     </span>`
+            }
+        });
+    });
+
+    $(document).on('click', '.edit-post-toggle', function () {
+        console.log(this);
+        $(this).find('i').toggleClass('fa-edit fa-check');
+    });
+
 });
+

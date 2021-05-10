@@ -5,7 +5,7 @@ const upload = multer({ dest: './public/temp' });
 import fs from 'fs';
 import sharp from 'sharp';
 
-import { addPost, getPostById, likePost, dislikePost, commentPost, getPostByIdFull, deletePostById, deletePostComment } from '../Models/postModel';
+import { addPost, getPostById, likePost, dislikePost, commentPost, getPostByIdFull, deletePostById, deletePostComment, editPost } from '../Models/postModel';
 import { getUserByUsername } from '../Models/userModel';
 
 
@@ -75,10 +75,17 @@ router.post('/comment/:id', async (req, res) => {
 router.post('/comment/delete/:id', async (req, res) => {
     const postId = req.body.postId;
     const commentId = req.params.id;
-    console.log(postId, commentId);
+    // console.log(postId, commentId);
     let result = await deletePostComment(postId, commentId);
     res.json({ result: result, _id: commentId });
 });
+
+router.post('/edit/:id', async (req, res) => {
+    const postId = req.params.id;
+    let result = await editPost(postId, { body: req.body.newValue });
+    res.json({ result: result });
+});
+
 
 router.get('/new', async (req, res) => {
     const user = await req.user;
