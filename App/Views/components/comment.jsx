@@ -26,12 +26,27 @@ function Comment(props) {
                 </div>
 
                 {props?.comment?.user?.username === props?.currentUser && (
-                    <form action={`/post/comment/delete/${props?.comment?._id}`} method="POST" className="delete-post-comment-form">
-                        <input type="text" name="postId" value={props?.post?._id} hidden />
-                        <button type="submit" className="btn btn-secondary m-r-15 text-inverse-lighter delete-post-button">
-                            <i className="fa fa-times-circle fa-fw fa-lg m-r-3" />
-                        </button>
-                    </form>
+                    <>
+                        {/* <div className="edit-post-fields" >
+                            <form action={`/post/comment/edit/${props?.comment?._id}`} method="GET" className="edit-post-form d-flex justify-content-between">
+                                <input type="text" name="edit-post-id" value={props?.comment?._id} style={{ display: 'none' }} />
+                                <span class="text-white" id={`edit-post-${props?.post?._id}-field`}>
+                                    <a href={`/post/get/${props?.post?._id}`} className="text-white">
+                                        {props?.post?.body || ''}
+                                    </a>
+                                </span>
+                                <button type="submit" className={`btn btn-secondary m-0 p-0 text-inverse-lighter edit-post-toggle`}>
+                                    <i className="fa fa-edit fa-fw fa-lg m-r-3" />
+                                </button>
+                            </form>
+                        </div> */}
+                        <form action={`/post/comment/delete/${props?.comment?._id}`} method="POST" className="delete-post-comment-form">
+                            <input type="text" name="postId" value={props?.post?._id} hidden />
+                            <button type="submit" className="btn btn-secondary m-r-15 text-inverse-lighter delete-post-button">
+                                <i className="fa fa-times-circle fa-fw fa-lg m-r-3" />
+                            </button>
+                        </form>
+                    </>
                 )}
             </div>
         </div>
