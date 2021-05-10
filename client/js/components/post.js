@@ -157,5 +157,29 @@ $(document).ready(function () {
         $(this).find('i').toggleClass('fa-edit fa-check');
     });
 
+    // Edit post comment
+    $(document).on('submit', '.edit-post-comment-form', function (e) {
+        e.preventDefault();
+        var data = $(this).serializeArray();
+        let postId = data[0].value;
+        let commentId = data[1].value;
+
+        $(`#edit-comment-${commentId}-field`).replaceWith(function () {
+            if (this.className === 'text-white') {
+                return `<input type="text" class='text-black' value='${this.innerText}' name='edited-comment-${commentId}-field' id='edit-comment-${commentId}-field' />`
+            } else {
+                $.ajax({
+                    url: `/post/comment/edit/${commentId}`,
+                    method: "POST",
+                    data: { comment: this.value, postId: postId, commentId: commentId },
+                    dataType: "json",
+                });
+                return `<span class="text-white" id='edit-comment-${commentId}-field'>
+                        ${this.value}
+                        </span>`
+            }
+        });
+    });
+
 });
 
