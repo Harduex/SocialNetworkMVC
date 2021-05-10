@@ -15,6 +15,9 @@ $(document).ready(function () {
             dataType: "html",
             success: function (data) {
                 $(".posts-container").append(data);
+
+                // Create links from hashtags
+                transformHashtags();
             }
         })
 

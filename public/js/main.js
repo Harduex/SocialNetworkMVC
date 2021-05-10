@@ -7479,6 +7479,9 @@ $(document).ready(function () {
         })
             .done(function (data) {
                 $(".posts-container").append(data);
+
+                // Create links from hashtags
+                transformHashtags();
             });
     })
 
@@ -7650,6 +7653,11 @@ $(document).ready(function () {
     });
 
     // Create links from hashtags
+    transformHashtags();
+});
+
+function transformHashtags() {
+
     var url = '/search/hashtag';
     var hashtags = $('div.hashtags > p');
 
@@ -7658,9 +7666,7 @@ $(document).ready(function () {
             hashtags[i].innerHTML = hashtags[i].innerHTML.replace(/#(\S+)/g, '<a href="' + url + '/$1" title="Find more posts tagged with $1">#$1</a>');
         }
     }
-
-});
-
+}
 
 // New profile image preview
 function loadFile(event) {
@@ -7801,6 +7807,9 @@ $(document).ready(function () {
             dataType: "html",
             success: function (data) {
                 $(".posts-container").append(data);
+
+                // Create links from hashtags
+                transformHashtags();
             }
         })
 
