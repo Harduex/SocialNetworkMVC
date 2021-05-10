@@ -7616,7 +7616,7 @@ $(document).ready(function () {
 
                 return `<span class="text-white" id='edit-post-${postId}-field'>
                             <div className="text-white hashtags">
-                               <p>${this.value.replace(/#(\S+)/g, '<a href="' + url + '/$1" title="Find more posts tagged with $1">#$1</a>')}</p>
+                               <p>${this.value.replace(/#(\S+)/g, '<a href="' + '/search/hashtag/$1" title="Find more posts tagged with $1">#$1</a>')}</p>
                             </div>
                      </span>`
             }
