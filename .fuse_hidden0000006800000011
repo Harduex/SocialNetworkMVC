@@ -6,7 +6,6 @@
     "start": "gulp && npm run server",
     "gulp": "gulp && gulp watch",
     "server": "nodemon --exec babel-node ./bin/www",
-    "db": "sudo docker run --rm -v ~/mongo/data:/data/db -p 27017:27017 --name mongo mongo:3.2",
     "dev": "concurrently \"npm run gulp\" \"npm run server\""
   },
   "dependencies": {
