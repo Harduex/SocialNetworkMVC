@@ -1,0 +1,52 @@
+{
+  "name": "express-mvc",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "gulp && npm run server",
+    "gulp": "gulp && gulp watch",
+    "server": "nodemon --exec babel-node ./bin/www",
+    "dev": "concurrently \"npm run gulp\" \"npm run server\""
+  },
+  "dependencies": {
+    "@babel/cli": "^7.13.16",
+    "bcrypt": "^5.0.1",
+    "concurrently": "^6.0.2",
+    "cookie-parser": "~1.4.4",
+    "debug": "~4.1.1",
+    "del": "^6.0.0",
+    "dotenv": "^9.0.0",
+    "express": "^4.17.1",
+    "express-flash": "0.0.2",
+    "express-pjax": "0.0.1",
+    "express-pjax-redirect": "0.0.2",
+    "express-react-views": "^0.11.0",
+    "express-session": "^1.17.1",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "http-errors": "~1.7.3",
+    "mongoose": "^5.7.10",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.2",
+    "nodefs": "0.0.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "sharp": "^0.28.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "nodemon": "^1.19.4"
+  }
+}
