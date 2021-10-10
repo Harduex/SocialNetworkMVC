@@ -8,34 +8,33 @@ import BigButtonPanel from './components/bigButtonPanel';
 function Index(props) {
   return (
     <Layout title={props.title}>
-      <div className="container contact-form">
-        <div className="contact-image">
-          <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact" />
-        </div>
-        <form method="post">
-          <h3>Drop Us a Message</h3>
-          <div className="row">
-            <div className="col-md-6">
-              <div className="form-group">
-                <input type="text" name="txtName" className="form-control" placeholder="Your Name *" />
-              </div>
-              <div className="form-group">
-                <input type="text" name="txtEmail" className="form-control" placeholder="Your Email *" />
-              </div>
-              <div className="form-group">
-                <input type="text" name="txtPhone" className="form-control" placeholder="Your Phone Number *" />
-              </div>
-              <div className="form-group">
-                <input type="submit" name="btnSubmit" className="btnContact" defaultValue="Send Message" />
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="form-group">
-                <textarea name="txtMsg" className="form-control" placeholder="Your Message *" style={{ width: '100%', height: '150px' }} defaultValue={""} />
-              </div>
-            </div>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <form id="contact" action="/contact" method="post">
+              <h3>Contact Us</h3>
+              <h4>Contact us directly if you have any questions:</h4>
+              <fieldset>
+                <input placeholder="Your name" type="text" className="form-control" name="name" tabIndex={1} required autofocus />
+              </fieldset>
+              <fieldset>
+                <input placeholder="Your Email Address" type="email" className="form-control" name="email" tabIndex={2} required />
+              </fieldset>
+              <fieldset>
+                <input placeholder="Your Phone Number (optional)" type="tel" className="form-control" name="phone" tabIndex={3} required />
+              </fieldset>
+              <fieldset>
+                <input placeholder="Subject" type="text" className="form-control" name="subject" tabIndex={4} required autofocus />
+              </fieldset>
+              <fieldset>
+                <textarea placeholder="Type your message here...." tabIndex={5} className="form-control" name="message" required defaultValue={""} />
+              </fieldset>
+              <fieldset>
+                <button type="submit" id="contact-submit" className="btn btn-primary" data-submit="...Sending">Submit</button>
+              </fieldset>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </Layout>
   )

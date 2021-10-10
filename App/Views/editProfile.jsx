@@ -21,7 +21,7 @@ const Profile = (props) => (
             <div className="col mb-3">
               <div className="card">
                 <div className="card-body">
-                  <form method="POST" enctype="multipart/form-data" className="e-profile form" noValidate >
+                  <form method="POST" action="/profile/edit" enctype="multipart/form-data" className="e-profile form" noValidate >
                     <div className="row">
                       <div className="col-12 col-sm-auto mb-3">
                         <div className="mx-auto" style={{ width: '140px' }}>
