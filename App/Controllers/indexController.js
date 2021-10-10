@@ -42,16 +42,6 @@ router.post('/posts', async (req, res) => {
 
 });
 
-router.get('/contact', checkAuthenticated, async (req, res) => {
-    const user = await req.user;
-
-    res.render('contact', {
-        title: `Contact Us!`,
-        user: user,
-    });
-
-});
-
 
 
 export default router;
