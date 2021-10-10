@@ -13,7 +13,7 @@ function Comment(props) {
 
                 <div className="post-comment-content">
                     <span className="userimage">
-                        <img src={`data:image/jpeg;base64,${props?.comment?.user?.profilePic || ''}`} />
+                        <img src={props?.comment?.user?.profilePic} />
                     </span>
                     <div className="post-user-details">
                         <div className="username">
