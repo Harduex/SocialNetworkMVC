@@ -4,6 +4,9 @@ const router = express.Router();
 import bcrypt from 'bcrypt';
 import passport from 'passport';
 import { User } from '../Models/userModel';
+import { createAvatar } from '@dicebear/avatars';
+import * as avatarStyle from '@dicebear/avatars-jdenticon-sprites';
+import svg64 from 'svg64';
 
 import { checkAuthenticated, checkNotAuthenticated } from '../../config/middlewares/authenticate';
 
@@ -14,11 +17,15 @@ router.get('/register', checkNotAuthenticated, (req, res) => {
 router.post('/register', checkNotAuthenticated, async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
+    let profilePicSvg = createAvatar(avatarStyle);
+    let profilePic = svg64(profilePicSvg);
+
     const user = new User({
         username: req.body.username,
         fullName: req.body.fullName,
         email: req.body.email,
         password: hashedPassword,
+        profilePic: profilePic,
     });
 
     user.save()

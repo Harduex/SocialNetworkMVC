@@ -122,7 +122,7 @@ router.post('/create', upload.single('postImage'), async (req, res) => {
     } else {
 
         const compressedImg = await compressImage(req.file.path);
-        image = compressedImg.toString('base64');
+        image = `data:image/jpeg;base64,${compressedImg.toString('base64')}`;
         fs.unlinkSync(req.file.path);
     }
 

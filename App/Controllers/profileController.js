@@ -79,7 +79,7 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
         profilePic = currentUserProfilePic;
     } else {
         const compressedImg = await compressImage(req.file.path);
-        profilePic = compressedImg.toString('base64');
+        profilePic = `data:image/jpeg;base64,${compressedImg.toString('base64')}`;
         fs.unlinkSync(req.file.path);
     }
 

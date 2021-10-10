@@ -19,7 +19,7 @@ function UserPanel(props) {
                 <div className="profile-header-content">
                   {/* BEGIN profile-header-img */}
                   <div className="profile-header-img">
-                    <img src={`data:image/jpeg;base64,${props?.user?.profilePic}`} alt="profile image" />
+                    <img src={props?.user?.profilePic} alt="profile image" />
                   </div>
                   {/* END profile-header-img */}
                   {/* BEGIN profile-header-info */}
