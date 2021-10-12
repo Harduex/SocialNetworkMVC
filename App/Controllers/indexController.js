@@ -3,7 +3,7 @@ const router = express.Router();
 
 import { checkAuthenticated } from '../helpers/middlewares/authenticate.js';
 import { getPostsByArray } from '../Models/postModel.js';
-import { getUsersByArray } from '../Models/userModel.js';
+import { getUsersByArray, getRandomUsersArray } from '../Models/userModel.js';
 
 
 router.get('/', checkAuthenticated, async (req, res) => {
@@ -13,10 +13,12 @@ router.get('/', checkAuthenticated, async (req, res) => {
     const followingFull = await getUsersByArray(following);
 
     const posts = await getPostsByArray(followingFull, 5);
+    const randomUsers = await getRandomUsersArray(10);
 
     res.render('index', {
         title: `${user.username}'s Feed`,
         user: user,
+        randomUsers: randomUsers,
         currentUser: user,
         posts: posts,
     });

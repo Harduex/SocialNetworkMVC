@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const options = { timestamps: true }
 
 import { Post } from '../Models/postModel.js';
+import random from 'mongoose-simple-random';
 
 
 // User schema
@@ -44,6 +45,8 @@ const userSchema = new Schema({
         type: String
     },
 }, options);
+
+userSchema.plugin(random);
 
 const tableName = 'users';
 const User = mongoose.model(tableName, userSchema)
@@ -146,6 +149,28 @@ async function searchUser(keyword, fields) {
     return result;
 };
 
+async function getRandomUser() {
+    const numItems = await User.estimatedDocumentCount()
+    const rand = Math.floor(Math.random() * numItems)
+    const randomItem = await User.findOne().skip(rand)
+
+    return randomItem;
+}
+
+async function getRandomUsersArray(maxLength) {
+    let result = [];
+
+    for (let i = 0; i < maxLength; i++) {
+        let item = await getRandomUser();
+        result.push(item._id);
+    }
+
+    result = [...new Set(result)];
+    result = await getUsersByArray(result);
+
+    return result;
+}
+
 
 export {
     User,
@@ -161,4 +186,5 @@ export {
     unfollow,
     getUsersByArray,
     searchUser,
+    getRandomUsersArray,
 };
