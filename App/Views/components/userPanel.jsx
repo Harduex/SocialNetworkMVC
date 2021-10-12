@@ -25,7 +25,7 @@ function UserPanel(props) {
                   {/* BEGIN profile-header-info */}
                   <div className="profile-header-info">
                     <h4 className="m-t-10 m-b-5 user-full-name dynamic-text-color">{props?.user?.fullName || 'user full name'}</h4>
-                    <a href={`user?username=${props?.user?.username}`} className="m-b-10 user-username dynamic-text-color">@{props?.user?.username || 'user'}</a>
+                    <a href={`/user?username=${props?.user?.username}`} className="m-b-10 user-username dynamic-text-color">@{props?.user?.username || 'user'}</a>
                     {props?.slick ?
                       <br />
                       :
