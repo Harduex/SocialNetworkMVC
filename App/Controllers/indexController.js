@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import { checkAuthenticated } from '../../config/middlewares/authenticate.js';
+import { checkAuthenticated } from '../helpers/middlewares/authenticate.js';
 import { getPostsByArray } from '../Models/postModel.js';
 import { getUsersByArray } from '../Models/userModel.js';
 

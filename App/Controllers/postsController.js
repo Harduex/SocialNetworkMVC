@@ -3,7 +3,7 @@ import multer from 'multer';
 const router = express.Router();
 const upload = multer({ dest: './public/temp' });
 import fs from 'fs';
-import sharp from 'sharp';
+import { compressImage } from '../helpers/utilities/general.js';
 
 import {
     addPost,
@@ -135,15 +135,6 @@ router.post('/delete/:id', async (req, res) => {
     const result = await deletePostById(req.params.id);
     res.json({ _id: req.params.id });
 });
-
-function compressImage(img) {
-
-    return sharp(img)
-        .resize({
-            height: 720,
-        })
-        .toBuffer();
-}
 
 
 export default router;

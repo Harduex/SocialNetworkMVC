@@ -1,7 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy;
 import bcrypt from 'bcrypt';
 import passport from 'passport';
-import { getUserById, getUserByUsername } from '../App/Models/userModel.js';
+import { getUserById, getUserByUsername } from '../Models/userModel.js';
 
 
 function initialize(passport, getUserByUsername, getUserById) {

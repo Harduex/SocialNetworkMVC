@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 import nodemailer from 'nodemailer';
 
-import { checkAuthenticated } from '../../config/middlewares/authenticate.js';
+import { checkAuthenticated } from '../helpers/middlewares/authenticate.js';
 
 
 router.get('/', checkAuthenticated, async (req, res) => {
