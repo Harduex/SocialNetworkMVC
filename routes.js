@@ -6,7 +6,7 @@ import postRouter from './App/Controllers/postsController.js';
 import searchRouter from './App/Controllers/searchController.js';
 import contactRouter from './App/Controllers/contactController.js';
 
-import { checkAuthenticated, checkNotAuthenticated } from './config/middlewares/authenticate.js';
+import { checkAuthenticated, checkNotAuthenticated } from './App/helpers/middlewares/authenticate.js';
 
 const routes = (app) => {
     app.use('/', indexController);

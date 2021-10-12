@@ -3,11 +3,11 @@ const router = express.Router();
 import bcrypt from 'bcrypt';
 import multer from 'multer';
 import fs from 'fs';
-import sharp from 'sharp';
 const upload = multer({ dest: './public/temp' });
 
 import { editUser, getUsersByArray } from '../Models/userModel.js';
 import { getAllPostsByUser, getPostsCount } from '../Models/postModel.js';
+import { compressImage } from '../helpers/utilities/general.js';
 
 router.get('/', async (req, res) => {
     const user = await req.user;
@@ -122,17 +122,6 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
         res.redirect('/profile/edit');
     }
 });
-
-function compressImage(img) {
-
-    return sharp(img)
-        .resize({
-            width: 200,
-            height: 200,
-            fit: sharp.fit.cover,
-        })
-        .toBuffer();
-}
 
 
 export default router;

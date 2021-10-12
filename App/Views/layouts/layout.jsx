@@ -19,7 +19,7 @@ function Layout(props) {
         <title>{props?.title}</title>
       </head>
       <body>
-        <Header title={props?.title} />
+        <Header title={props?.title} logged={props?.logged === false} />
         <div className="container main" id="root">
           {props.children}
         </div>

@@ -8,7 +8,7 @@ import { createAvatar } from '@dicebear/avatars';
 import * as avatarStyle from '@dicebear/avatars-jdenticon-sprites';
 import svg64 from 'svg64';
 
-import { checkAuthenticated, checkNotAuthenticated } from '../../config/middlewares/authenticate.js';
+import { checkAuthenticated, checkNotAuthenticated } from '../helpers/middlewares/authenticate.js';
 
 
 router.get('/register', checkNotAuthenticated, (req, res) => {

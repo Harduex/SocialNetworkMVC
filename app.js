@@ -13,7 +13,7 @@ import session from "express-session";
 import flash from "express-flash";
 
 // Database
-import useDatabase from './config/database.js';
+import useDatabase from './App/config/database.js';
 
 // Router import
 import useRouters from './routes.js';
@@ -28,7 +28,7 @@ const app = express();
 useDatabase();
 
 // Init user auth
-import initializePassport from './config/passport-config.js';
+import initializePassport from './App/config/passport-config.js';
 initializePassport();
 
 // view engine
