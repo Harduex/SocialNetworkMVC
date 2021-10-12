@@ -18,7 +18,9 @@ function Index(props) {
       }
       <Timeline>
         <Posts posts={props.posts} currentUser={props.currentUser} className="timeline-posts" />
-        <Explore randomUsers={props.randomUsers} currentUser={props.currentUser} slick={true}/>
+        {!props?.hideButtons &&
+          <Explore randomUsers={props.randomUsers} currentUser={props.currentUser} slick={true} />
+        }
       </Timeline>
       {!props?.hideButtons &&
         <BigButtonPanel route="javascript:;" className={"load-more-feed-posts"}>Load more</BigButtonPanel>
