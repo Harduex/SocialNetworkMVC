@@ -10,12 +10,12 @@
     "dev": "concurrently \"npm run gulp\" \"npm run server\""
   },
   "dependencies": {
-    "@babel/cli": "^7.15.7",
-    "@babel/core": "^7.15.8",
+    "@babel/cli": "^7.13.16",
     "@dicebear/avatars": "^4.9.1",
     "@dicebear/avatars-bottts-sprites": "^4.9.1",
     "@dicebear/avatars-jdenticon-sprites": "^4.9.1",
     "@dicebear/avatars-male-sprites": "^4.9.1",
+    "babel-cli": "^6.26.0",
     "bcrypt": "^5.0.1",
     "concurrently": "^6.0.2",
     "cookie-parser": "~1.4.4",

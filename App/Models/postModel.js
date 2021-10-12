@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const options = { timestamps: true }
 
-import { User } from '../Models/userModel';
+import { User } from '../Models/userModel.js';
 
 
 // Post model operations

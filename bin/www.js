@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-import app from '../app' ;
+import app from '../app.js';
 const debug = require('debug')('express-mvc:server');
 import http from 'http';
 

@@ -16,8 +16,8 @@ import {
     deletePostComment,
     editPostComment,
     editPost
-} from '../Models/postModel';
-import { getUserByUsername } from '../Models/userModel';
+} from '../Models/postModel.js';
+import { getUserByUsername } from '../Models/userModel.js';
 
 
 router.get('/get/:id', async (req, res) => {
