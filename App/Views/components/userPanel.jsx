@@ -16,7 +16,7 @@ function UserPanel(props) {
                 <div className="profile-header-cover dynamic-text-bg-color" style={{ backgroundColor: props?.user?.coverColor }} />
                 {/* END profile-header-cover */}
                 {/* BEGIN profile-header-content */}
-                <div className="profile-header-content">
+                <div className={props?.slick ? "profile-header-content carousel-view" : "profile-header-content"} >
                   {/* BEGIN profile-header-img */}
                   <div className="profile-header-img">
                     <img src={props?.user?.profilePic} alt="profile image" />
@@ -26,7 +26,11 @@ function UserPanel(props) {
                   <div className="profile-header-info">
                     <h4 className="m-t-10 m-b-5 user-full-name dynamic-text-color">{props?.user?.fullName || 'user full name'}</h4>
                     <a href={`user?username=${props?.user?.username}`} className="m-b-10 user-username dynamic-text-color">@{props?.user?.username || 'user'}</a>
-                    <p className="m-b-10 user-bio dynamic-text-color">{props?.user?.bio || ''}</p>
+                    {props?.slick ?
+                      <br />
+                      :
+                      <p className="m-b-10 user-bio dynamic-text-color">{props?.user?.bio || ''}</p>
+                    }
                   </div>
                   {props.loggedIn ?
                     <div className="profile-options">

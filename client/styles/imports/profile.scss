@@ -36,6 +36,23 @@
     }
 }
 
+.profile-header .profile-header-content.carousel-view {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .profile-header {
+        &-info {
+            margin-right: 0;
+            text-align: center;
+        }
+        &-img {
+            margin-right: 0;
+            margin-bottom: 1em;
+        }
+    }
+}
+
 .profile-header-img {
     padding: 3px;
     border-radius: 4px;
@@ -840,7 +857,7 @@ select.form-control:not([size]):not([multiple]) {
 .edit-post-fields {
     margin-bottom: 10px;
 }
-.post-comment-content{
+.post-comment-content {
     width: 100%;
 }
 .delete-post-comment-form {

@@ -3,6 +3,7 @@ import Layout from './layouts/layout';
 import Timeline from './components/timeline';
 import Posts from './components/posts';
 import BigButtonPanel from './components/bigButtonPanel';
+import Explore from './components/explore';
 
 
 function Index(props) {
@@ -17,6 +18,7 @@ function Index(props) {
       }
       <Timeline>
         <Posts posts={props.posts} currentUser={props.currentUser} className="timeline-posts" />
+        <Explore randomUsers={props.randomUsers} currentUser={props.currentUser} slick={true}/>
       </Timeline>
       {!props?.hideButtons &&
         <BigButtonPanel route="javascript:;" className={"load-more-feed-posts"}>Load more</BigButtonPanel>
