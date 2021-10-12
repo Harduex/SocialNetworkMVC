@@ -55,8 +55,11 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
-.env.cloud
+.env*
 
 # next.js build output
 .next
+
+# temp linux files
+
+.fuse_*
