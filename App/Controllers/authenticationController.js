@@ -3,12 +3,12 @@ const router = express.Router();
 
 import bcrypt from 'bcrypt';
 import passport from 'passport';
-import { User } from '../Models/userModel';
+import { User } from '../Models/userModel.js';
 import { createAvatar } from '@dicebear/avatars';
 import * as avatarStyle from '@dicebear/avatars-jdenticon-sprites';
 import svg64 from 'svg64';
 
-import { checkAuthenticated, checkNotAuthenticated } from '../../config/middlewares/authenticate';
+import { checkAuthenticated, checkNotAuthenticated } from '../../config/middlewares/authenticate.js';
 
 
 router.get('/register', checkNotAuthenticated, (req, res) => {

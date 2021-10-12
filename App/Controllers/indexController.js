@@ -1,9 +1,9 @@
 import express from 'express';
 const router = express.Router();
 
-import { checkAuthenticated } from '../../config/middlewares/authenticate';
-import { getPostsByArray } from '../Models/postModel';
-import { getUsersByArray } from '../Models/userModel';
+import { checkAuthenticated } from '../../config/middlewares/authenticate.js';
+import { getPostsByArray } from '../Models/postModel.js';
+import { getUsersByArray } from '../Models/userModel.js';
 
 
 router.get('/', checkAuthenticated, async (req, res) => {

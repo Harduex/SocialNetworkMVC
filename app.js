@@ -13,10 +13,10 @@ import session from "express-session";
 import flash from "express-flash";
 
 // Database
-import useDatabase from './config/database';
+import useDatabase from './config/database.js';
 
 // Router import
-import useRouters from './routes';
+import useRouters from './routes.js';
 
 // .env
 dotenv.config();
@@ -28,7 +28,7 @@ const app = express();
 useDatabase();
 
 // Init user auth
-import initializePassport from './config/passport-config';
+import initializePassport from './config/passport-config.js';
 initializePassport();
 
 // view engine

@@ -1,8 +1,8 @@
 import express from 'express';
 const router = express.Router();
 
-import { getUserByUsername, getUserById, getUsersByArray, follow, unfollow } from '../Models/userModel';
-import { getAllPostsByUser, getPostsCount } from '../Models/postModel';
+import { getUserByUsername, getUserById, getUsersByArray, follow, unfollow } from '../Models/userModel.js';
+import { getAllPostsByUser, getPostsCount } from '../Models/postModel.js';
 
 
 router.get('/', async (req, res) => {

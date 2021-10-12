@@ -6,8 +6,8 @@ import fs from 'fs';
 import sharp from 'sharp';
 const upload = multer({ dest: './public/temp' });
 
-import { editUser, getUsersByArray } from '../Models/userModel';
-import { getAllPostsByUser, getPostsCount } from '../Models/postModel';
+import { editUser, getUsersByArray } from '../Models/userModel.js';
+import { getAllPostsByUser, getPostsCount } from '../Models/postModel.js';
 
 router.get('/', async (req, res) => {
     const user = await req.user;
