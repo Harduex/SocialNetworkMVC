@@ -21,7 +21,7 @@ const Profile = (props) => (
             <div className="col mb-3">
               <div className="card">
                 <div className="card-body">
-                  <form method="POST" action="/profile/edit" enctype="multipart/form-data" className="e-profile form" noValidate >
+                  <form method="POST" action="/profile/edit" enctype="multipart/form-data" className="e-profile form" id="edit-profile-form" noValidate >
                     <div className="row">
                       <div className="col-12 col-sm-auto mb-3">
                         <div className="mx-auto" style={{ width: '140px' }}>
@@ -82,7 +82,7 @@ const Profile = (props) => (
                               <div className="col">
                                 <div className="form-group">
                                   <label>Email</label>
-                                  <input className="form-control" type="text" placeholder="user@example.com" defaultValue={props?.user?.email} name="email" />
+                                  <input className="form-control" type="email" placeholder="user@example.com" defaultValue={props?.user?.email} name="email" />
                                 </div>
                               </div>
                             </div>
@@ -113,7 +113,7 @@ const Profile = (props) => (
                               <div className="col">
                                 <div className="form-group">
                                   <label>Current Password</label>
-                                  <input className="form-control" type="password" placeholder="••••••" name="currentPassword" />
+                                  <input className="form-control" type="password" placeholder="••••••••" name="currentPassword" />
                                 </div>
                               </div>
                             </div>
@@ -121,7 +121,7 @@ const Profile = (props) => (
                               <div className="col">
                                 <div className="form-group">
                                   <label>New Password</label>
-                                  <input className="form-control" type="password" placeholder="••••••" name="newPassword" />
+                                  <input className="form-control" type="password" placeholder="••••••••" name="newPassword" />
                                 </div>
                               </div>
                             </div>
@@ -129,7 +129,7 @@ const Profile = (props) => (
                               <div className="col">
                                 <div className="form-group">
                                   <label>Confirm <span className="d-none d-xl-inline">Password</span></label>
-                                  <input className="form-control" type="password" placeholder="••••••" name="newPasswordConfirm" /></div>
+                                  <input className="form-control" type="password" placeholder="••••••••" name="newPasswordConfirm" /></div>
                               </div>
                             </div>
                           </div>
