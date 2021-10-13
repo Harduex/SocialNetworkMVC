@@ -53,8 +53,8 @@ const chatSocket = (io) => {
             const uniqueRoom1 = `${currUser._id}${chatUser._id}`;
             const uniqueRoom2 = `${chatUser._id}${currUser._id}`;
 
-            console.log(uniqueRoom1, uniqueRoom2);
-            
+            // console.log(uniqueRoom1, uniqueRoom2);
+
             socket.join(uniqueRoom1);
             socket.join(uniqueRoom2);
 

@@ -5,7 +5,7 @@ import Layout from './layouts/layout';
 function Chat(props) {
     return (
         <Layout title={props.title}>
-            <div>
+            <div className="chat-wrapper">
                 <div className="chat-container">
                     <header className="chat-header">
                         <h1><i className="fas fa-envelope" /> Chat</h1>
