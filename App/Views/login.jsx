@@ -18,10 +18,11 @@ function Login(props) {
                             <label htmlFor="exampleInputPassword1">Password</label>
                             <input type="password" name="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
                         </div>
-                        <button type="submit" className="btn btn-primary">Log in</button>
+                        <button type="submit" className="btn btn-primary mb-2">Log in</button>
                     </fieldset>
                 </form>
-                <a href="/auth/register">Sign up</a>
+                <a href="/auth/register" className="mb-2 d-block">Sign up</a>
+                <a href="/contact">Contact Us</a>
             </div>
         </Layout>
     )

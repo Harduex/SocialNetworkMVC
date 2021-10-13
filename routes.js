@@ -15,7 +15,7 @@ const routes = (app) => {
     app.use('/user', checkAuthenticated, userRouter);
     app.use('/post', checkAuthenticated, postRouter);
     app.use('/search', checkAuthenticated, searchRouter);
-    app.use('/contact', checkAuthenticated, contactRouter);
+    app.use('/contact', contactRouter);
 }
 
 
