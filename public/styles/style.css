@@ -7964,10 +7964,23 @@ body {
 .chat-sidebar ul li {
   padding: 10px 0; }
 
+@media (max-width: 425px) {
+  .chat-wrapper {
+    position: absolute;
+    top: 18px;
+    right: 0;
+    left: 0;
+    bottom: 0; } }
+
 .chat-messages {
   padding: 30px;
   max-height: 500px;
+  min-height: 350px;
   overflow-y: scroll; }
+  @media (max-width: 425px) {
+    .chat-messages {
+      max-height: calc(100vh - 236px) !important;
+      min-height: calc(100vh - 236px) !important; } }
 
 .chat-messages .message {
   padding: 10px;
