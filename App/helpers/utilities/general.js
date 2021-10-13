@@ -7,6 +7,9 @@ function compressImage(img) {
         .resize({
             height: 720,
         })
+        .jpeg({
+            quality: 50
+        })
         .toBuffer();
 }
 
