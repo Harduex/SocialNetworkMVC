@@ -29,6 +29,9 @@ function Header(props) {
                                 <SearchBar />
                             </li>
                             <li className="nav-item">
+                                <a className="nav-link" href="/chat">Chat</a>
+                            </li>
+                            <li className="nav-item">
                                 <a className="nav-link" href="/profile">Profile</a>
                             </li>
                             <li className="nav-item">
