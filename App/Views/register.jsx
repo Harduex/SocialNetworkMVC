@@ -29,7 +29,7 @@ function Register(props) {
                     </fieldset>
                 </form>
                 <a href="/auth/login" className="mb-2 d-block">Sign in</a>
-                <a href="/contact">Contact Us</a>
+                <a href="/contact" className="text-info">Contact Us</a>
             </div>
         </Layout>
     )
