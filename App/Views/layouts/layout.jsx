@@ -14,6 +14,7 @@ function Layout(props) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
         <link rel="stylesheet" href="/styles/style.css" type="text/css" media="all" />
+       
         <script type="text/javascript" src="/js/main.js" defer></script>
 
         <title>{props?.title}</title>

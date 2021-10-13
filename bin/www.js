@@ -7,6 +7,9 @@
 import app from '../app.js';
 const debug = require('debug')('express-mvc:server');
 import http from 'http';
+import socketio from 'socket.io';
+
+import useSockets from '../sockets.js';
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +23,13 @@ app.set('port', port);
  */
 
 const server = http.createServer(app);
+
+
+/**
+ * Sockets
+ */
+const io = socketio(server);
+useSockets(io);
 
 /**
  * Listen on provided port, on all network interfaces.

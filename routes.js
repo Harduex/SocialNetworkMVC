@@ -5,6 +5,7 @@ import userRouter from './App/Controllers/usersController.js';
 import postRouter from './App/Controllers/postsController.js';
 import searchRouter from './App/Controllers/searchController.js';
 import contactRouter from './App/Controllers/contactController.js';
+import chatRouter from './App/Controllers/chatController.js';
 
 import { checkAuthenticated, checkNotAuthenticated } from './App/helpers/middlewares/authenticate.js';
 
@@ -16,6 +17,7 @@ const routes = (app) => {
     app.use('/post', checkAuthenticated, postRouter);
     app.use('/search', checkAuthenticated, searchRouter);
     app.use('/contact', contactRouter);
+    app.use('/chat', checkAuthenticated, chatRouter);
 }
 
 
