@@ -30,8 +30,8 @@ function Index(props) {
                 <textarea placeholder="Type your message here...." tabIndex={5} className="form-control" name="message" required defaultValue={""} />
               </fieldset>
               <fieldset className="d-flex justify-content-between">
-                <button type="submit" id="contact-submit" className="btn btn-primary" data-submit="...Sending">Submit</button>
                 <a id="contact-submit" className="btn btn-primary" href="/">Back</a>
+                <button type="submit" id="contact-submit" className="btn btn-primary" data-submit="...Sending">Submit</button>
               </fieldset>
             </form>
           </div>

@@ -22,7 +22,7 @@ function Login(props) {
                     </fieldset>
                 </form>
                 <a href="/auth/register" className="mb-2 d-block">Sign up</a>
-                <a href="/contact">Contact Us</a>
+                <a href="/contact" className="text-info">Contact Us</a>
             </div>
         </Layout>
     )
