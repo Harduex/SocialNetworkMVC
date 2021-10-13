@@ -6,7 +6,7 @@ function Register(props) {
     return (
         <Layout title={props.message} logged={props?.logged === false}>
             <div className="container">
-                <form action="/auth/register" method="post">
+                <form action="/auth/register" method="post" id="registration-form">
                     <fieldset>
                         <legend>{props.message}</legend>
                         <div className="form-group">
@@ -24,6 +24,10 @@ function Register(props) {
                         <div className="form-group">
                             <label for="password">Password</label>
                             <input type="password" name="password" className="form-control" id="password" placeholder="Password" />
+                        </div>
+                        <div className="form-group">
+                            <label for="password">Confirm Password</label>
+                            <input type="password" name="pwd2" className="form-control" id="password" placeholder="Password" />
                         </div>
                         <button type="submit" className="btn btn-primary mb-2">Registration</button>
                     </fieldset>
