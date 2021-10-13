@@ -7920,6 +7920,10 @@ body {
   color: var(--dark-color-a);
   border: 0;
   font-size: 17px; }
+  @media (max-width: 425px) {
+    .chat-btn {
+      font-size: 16px;
+      padding: 5px; } }
 
 /* Chat Page */
 .chat-container {
@@ -7989,7 +7993,7 @@ body {
 .chat-form-container form {
   display: flex; }
 
-.chat-form-container input[type='text'] {
+.chat-form-container input[type="text"] {
   font-size: 16px;
   padding: 5px;
   height: 40px;
@@ -8023,7 +8027,7 @@ body {
   display: block;
   margin-bottom: 5px; }
 
-.join-main input[type='text'] {
+.join-main input[type="text"] {
   font-size: 16px;
   padding: 5px;
   height: 40px;
@@ -8038,6 +8042,11 @@ body {
 .join-main .btn {
   margin-top: 20px;
   width: 100%; }
+
+@media (max-width: 425px) {
+  #msg {
+    height: 60px;
+    width: 160px; } }
 
 @media (max-width: 700px) {
   .chat-main {
