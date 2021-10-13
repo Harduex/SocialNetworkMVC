@@ -7,14 +7,14 @@ import BigButtonPanel from './components/bigButtonPanel';
 
 function Index(props) {
   return (
-    <Layout title={props.title}>
+    <Layout title={props.title} logged={props?.logged}>
       <div className="container">
         <div className="row">
           <div className="col">
             <form id="contact" action="/contact" method="post" className="text-center">
               <h1 className="text-center">Thank you for your message!</h1>
               <h3 className="text-center">We will reach you soon.</h3>
-              <a className="text-center" href="/">Back to timeline</a>
+              <a className="text-center" href="/">Back to Home</a>
             </form>
           </div>
         </div>

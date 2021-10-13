@@ -7,7 +7,7 @@ import BigButtonPanel from './components/bigButtonPanel';
 
 function Index(props) {
   return (
-    <Layout title={props.title}>
+    <Layout title={props.title} logged={props?.logged}>
       <div className="container">
         <div className="row">
           <div className="col">
@@ -29,8 +29,9 @@ function Index(props) {
               <fieldset>
                 <textarea placeholder="Type your message here...." tabIndex={5} className="form-control" name="message" required defaultValue={""} />
               </fieldset>
-              <fieldset>
+              <fieldset className="d-flex justify-content-between">
                 <button type="submit" id="contact-submit" className="btn btn-primary" data-submit="...Sending">Submit</button>
+                <a id="contact-submit" className="btn btn-primary" href="/">Back</a>
               </fieldset>
             </form>
           </div>

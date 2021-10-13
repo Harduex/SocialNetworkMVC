@@ -2,15 +2,14 @@ import express from 'express';
 const router = express.Router();
 import nodemailer from 'nodemailer';
 
-import { checkAuthenticated } from '../helpers/middlewares/authenticate.js';
 
-
-router.get('/', checkAuthenticated, async (req, res) => {
+router.get('/', async (req, res) => {
     const user = await req.user;
 
     res.render('contact', {
         title: `Contact Us!`,
         user: user,
+        logged: false,
     });
 
 });
@@ -40,7 +39,7 @@ router.post('/', async (req, res) => {
         subject: subject,
         text: message,
         html: `
-        <p>Username: ${user.username}<p>
+        <p>Username: ${user?.username || 'not registered'}<p>
         <p>Name: ${name}<p>
         <p>Email: ${email}<p>
         <p>Phone: ${phone}<p>
@@ -55,6 +54,7 @@ router.post('/', async (req, res) => {
             res.render('contactSuccess', {
                 title: `Message Sent!`,
                 user: user,
+                logged: false,
             });
         }
     });

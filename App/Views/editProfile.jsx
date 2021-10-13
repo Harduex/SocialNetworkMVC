@@ -57,7 +57,7 @@ const Profile = (props) => (
                       </div>
                     </div>
                     <ul className="nav nav-tabs">
-                      <li className="nav-item"><a href className="active nav-link">Settings</a></li>
+                      <li className="nav-item"><a href className={props?.error ? "text-red active nav-link" : "active nav-link"}>{props?.error ? props.error : 'Settings'}</a></li>
                     </ul>
                     <div className="tab-content pt-3">
                       <div className="tab-pane active">
@@ -90,7 +90,14 @@ const Profile = (props) => (
                               <div className="col mb-3">
                                 <div className="form-group">
                                   <label>Bio</label>
-                                  <textarea className="form-control" rows={5} placeholder="My Bio" defaultValue={props?.user?.bio} name="bio" />
+                                  <textarea 
+                                  className="form-control" 
+                                  rows={5} 
+                                  placeholder="My Bio" 
+                                  defaultValue={props?.user?.bio} 
+                                  name="bio"
+                                  maxlength="125"
+                                  />
                                 </div>
                               </div>
                             </div>

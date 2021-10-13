@@ -15,6 +15,7 @@ $(document).ready(function () {
 
                 // Create links from hashtags
                 transformHashtags();
+                transformUserTags();
             });
     })
 
@@ -147,9 +148,13 @@ $(document).ready(function () {
                     dataType: "json",
                 });
 
+                transformUserTags();
+
                 return `<span class="text-white" id='edit-post-${postId}-field'>
                             <div className="text-white hashtags">
-                               <p>${this.value.replace(/#(\S+)/g, '<a href="' + '/search/hashtag/$1" title="Find more posts tagged with $1">#$1</a>')}</p>
+                                <p>
+                                    ${ this.value.replace(/@(\S+)/g, '<a href="' + '/user?username=$1" title="Go to $1`s profile">@$1</a>').replace(/#(\S+)/g, '<a href="' + '/search/hashtag/$1" title="Find more posts tagged with $1">#$1</a>') }
+                                </p>
                             </div>
                      </span>`
             }
@@ -187,6 +192,7 @@ $(document).ready(function () {
 
     // Create links from hashtags
     transformHashtags();
+    transformUserTags();
 });
 
 function transformHashtags() {
@@ -197,6 +203,18 @@ function transformHashtags() {
     if (hashtags.length > 0) {
         for (let i = 0; i < hashtags.length; i = i + 1) {
             hashtags[i].innerHTML = hashtags[i].innerHTML.replace(/#(\S+)/g, '<a href="' + url + '/$1" title="Find more posts tagged with $1">#$1</a>');
+        }
+    }
+}
+
+function transformUserTags() {
+
+    var url = 'user?username=';
+    var hashtags = $('div.hashtags > p');
+
+    if (hashtags.length > 0) {
+        for (let i = 0; i < hashtags.length; i = i + 1) {
+            hashtags[i].innerHTML = hashtags[i].innerHTML.replace(/@(\S+)/g, '<a href="' + url + '$1" title="Go to $1`s profile">@$1</a>');
         }
     }
 }

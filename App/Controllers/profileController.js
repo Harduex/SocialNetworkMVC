@@ -116,8 +116,17 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
             bio: bio,
             coverColor: coverColor,
         }
-
-        const result = await editUser(currentUserId, updates);
+        try {
+            const result = await editUser(currentUserId, updates);
+        } catch (err) {
+            if (err) {
+                res.render('editProfile', {
+                    title: 'Username Already Exist',
+                    user: user,
+                    error: 'Username already exist'
+                });
+            }
+        }
 
         res.redirect('/profile/edit');
     }

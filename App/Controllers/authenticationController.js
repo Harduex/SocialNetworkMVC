@@ -33,7 +33,16 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
             res.render('login', { message: 'User added' });
         })
         .catch((err) => {
-            res.render('register', { message: 'User already exist' });
+            let message = '';
+
+            if(err.message.includes('email')) {
+                message = "Email field is required"
+            }
+            if(err.message.includes('username')) {
+                message = "Username already exists"
+            }
+
+            res.render('register', { message: message});
         });
 });
 

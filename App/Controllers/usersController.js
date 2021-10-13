@@ -9,6 +9,12 @@ router.get('/', async (req, res) => {
     const loggedUser = await req.user;
     const searchedUser = await getUserByUsername(req.query.username);
 
+    if (!searchedUser) {
+        res.render('notFound', {
+            title: 'Not Found'
+        });
+    }
+
     const loggedIn = (loggedUser.username === searchedUser.username);
     let followText;
 
