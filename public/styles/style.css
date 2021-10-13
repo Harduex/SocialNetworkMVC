@@ -9099,6 +9099,33 @@ select.form-control:not([size]):not([multiple]) {
     .index-title-container h1 {
       font-size: 28px; } }
 
+.post-comment {
+  max-width: 30px; }
+
+.edit-post-comment-field {
+  width: 34em; }
+  @media (max-width: 1200px) {
+    .edit-post-comment-field {
+      width: 24em; } }
+  @media (max-width: 1000px) {
+    .edit-post-comment-field {
+      width: 43em; } }
+  @media (max-width: 992px) {
+    .edit-post-comment-field {
+      width: 28em; } }
+  @media (max-width: 768px) {
+    .edit-post-comment-field {
+      width: 17em; } }
+  @media (max-width: 505px) {
+    .edit-post-comment-field {
+      width: 14em; } }
+  @media (max-width: 460px) {
+    .edit-post-comment-field {
+      width: 8em; } }
+  @media (max-width: 320px) {
+    .edit-post-comment-field {
+      width: 4em; } }
+
 .searchbar {
   position: relative;
   min-width: 35px;

@@ -877,3 +877,30 @@ select.form-control:not([size]):not([multiple]) {
         }
     }
 }
+.post-comment {
+        max-width: 30px;
+}
+.edit-post-comment-field {
+    width: 34em;
+    @include responsive(1200px) {
+        width: 24em;
+    }
+    @include responsive(1000px) {
+        width: 43em;
+    }
+    @include responsive(992px) {
+        width: 28em;
+    }
+    @include responsive(768px) {
+        width: 17em;
+    }
+    @include responsive(505px) {
+        width: 14em;
+    }
+    @include responsive(460px) {
+        width: 8em;
+    }
+    @include responsive(320px) {
+        width: 4em;
+    }
+}

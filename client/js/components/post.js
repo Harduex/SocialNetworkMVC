@@ -175,7 +175,7 @@ $(document).ready(function () {
 
         $(`#edit-comment-${commentId}-field`).replaceWith(function () {
             if (this.className === 'text-white') {
-                return `<input type="text" class='text-black' value='${this.innerText}' name='edited-comment-${commentId}-field' id='edit-comment-${commentId}-field' />`
+                return `<input type="text" class='edit-post-comment-field text-black' value='${this.innerText}' name='edited-comment-${commentId}-field' id='edit-comment-${commentId}-field' />`
             } else {
                 $.ajax({
                     url: `/post/comment/edit/${commentId}`,
