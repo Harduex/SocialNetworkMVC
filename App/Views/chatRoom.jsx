@@ -9,17 +9,15 @@ function Chat(props) {
                 <div className="chat-container">
                     <header className="chat-header">
                         <h1><i className="fas fa-envelope" /> Chat</h1>
-                        <a id="leave-btn" className="btn">Leave Room</a>
+                        <a id="leave-btn" className="chat-btn" href="/chat">Leave Room</a>
                     </header>
                     <main className="chat-main">
                         <div className="chat-sidebar">
                             <h3><i className="fas fa-users" /> You:</h3>
-                            <p>{props?.user.username}</p>
-                            <ul id="your-chat-user" />
+                            <p id="your-chat-user">{props?.user.username}</p>
 
                             <h3><i className="fas fa-users" /> Chat with:</h3>
-                            <p>{props?.chatUser.username}</p>
-                            <ul id="chat-user" />
+                            <p id="chat-user">{props?.chatUser.username}</p>
                         </div>
                         <div className="chat-messages" />
                     </main>
