@@ -122,7 +122,9 @@ function Post(props) {
                 <div className="input-group">
                   <input type="text" className="form-control rounded-corner comment-body-input" placeholder="Write a comment..." name="comment" />
                   <span className="input-group-btn p-l-10">
-                    <button className="btn btn-primary f-s-12 rounded-corner post-comment-button" type="submit">Comment</button>
+                    <button className="btn btn-primary f-s-12 rounded-corner post-comment-button" type="submit">
+                      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    </button>
                   </span>
                 </div>
               </form>
