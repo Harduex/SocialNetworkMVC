@@ -26,7 +26,7 @@ router.get('/', checkAuthenticated, async (req, res) => {
 });
 
 // Ajax
-router.post('/posts', async (req, res) => {
+router.post('/posts', checkAuthenticated, async (req, res) => {
     const user = await req.user;
 
     const following = user.following;
@@ -37,7 +37,7 @@ router.post('/posts', async (req, res) => {
 
     const posts = await getPostsByArray(followingFull, limit * 1, (page - 1) * limit);
 
-    res.render('./components/posts',{
+    res.render('./components/posts', {
         currentUser: user,
         posts: posts,
     });
