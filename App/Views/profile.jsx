@@ -25,8 +25,6 @@ function Profile(props) {
           <Timeline className={props.className}>
             <Posts posts={props.posts} currentUser={props.currentUser} user={props.user} className="profile-posts" loggedIn />
           </Timeline>
-
-          <BigButtonPanel route="javascript:;" className={"load-more-posts"}>Load more</BigButtonPanel>
         </div>
 
         <div className="tab-pane fade" id="followers" role="tabpanel" aria-labelledby="nav-profile-tab">

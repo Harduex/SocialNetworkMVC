@@ -2,22 +2,26 @@ $(document).ready(function () {
 
     // Posts
     let page = 1;
-    $(document).on('click', '.load-more-posts', function () {
-        page++;
-        $.ajax({
-            url: "/profile",
-            method: "POST",
-            data: { page: page },
-            dataType: "html"
-        })
-            .done(function (data) {
-                $(".posts-container").append(data);
 
-                // Create links from hashtags
-                transformHashtags();
-                transformUserTags();
-            });
-    })
+    $(window).scroll(function () {
+        if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+            if (window.location.pathname == '/profile') {
+                page++;
+                $.ajax({
+                    url: "/profile",
+                    method: "POST",
+                    data: { page: page },
+                    dataType: "html"
+                })
+                    .done(function (data) {
+                        $(".posts-container").append(data);
+                        // Create links from hashtags
+                        transformHashtags();
+                        transformUserTags();
+                    });
+            }
+        }
+    });
 
     var commentBox = $(".comment-box");
     $(document).on('click', '.comment-button', function () {
@@ -148,12 +152,10 @@ $(document).ready(function () {
                     dataType: "json",
                 });
 
-                transformUserTags();
-
                 return `<span class="text-white" id='edit-post-${postId}-field'>
                             <div className="text-white hashtags">
                                 <p>
-                                    ${ this.value.replace(/@(\S+)/g, '<a class="text-info" href="' + '/user?username=$1" title="Go to $1`s profile">@$1</a>').replace(/#(\S+)/g, '<a href="' + '/search/hashtag/$1" title="Find more posts tagged with $1">#$1</a>') }
+                                    ${this.value.replace(/@(\S+)/g, '<a class="text-info" href="' + '/user?username=$1" title="Go to $1`s profile">@$1</a>').replace(/#(\S+)/g, '<a href="' + '/search/hashtag/$1" title="Find more posts tagged with $1">#$1</a>')}
                                 </p>
                             </div>
                      </span>`
