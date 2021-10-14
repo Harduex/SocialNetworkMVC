@@ -22,9 +22,6 @@ function Index(props) {
           <Explore randomUsers={props.randomUsers} currentUser={props.currentUser} slick={true} />
         }
       </Timeline>
-      {!props?.hideButtons &&
-        <BigButtonPanel route="javascript:;" className={"load-more-feed-posts"}>Load more</BigButtonPanel>
-      }
     </Layout>
   )
 }

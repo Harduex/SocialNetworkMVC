@@ -53,7 +53,7 @@ router.get('/', async (req, res) => {
 });
 
 // Ajax
-router.post('/load-more-posts', async (req, res) => {
+router.post('/', async (req, res) => {
     const searchedUser = await getUserByUsername(req.body.username);
     const loggedUser = await req.user;
 
