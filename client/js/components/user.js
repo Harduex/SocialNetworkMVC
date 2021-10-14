@@ -3,7 +3,7 @@ $(document).ready(function () {
     let page = 1;
 
     $(window).scroll(function () {
-        if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+        if ((window.innerHeight + Math.ceil(window.pageYOffset)) >= document.body.offsetHeight) {
             if (window.location.pathname == '/user') {
                 page++;
                 const urlParams = new URLSearchParams(window.location.search);
