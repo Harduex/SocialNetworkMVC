@@ -7,7 +7,7 @@ const dbConnection = () => {
     const dbPassword = process.env.DB_PASSWORD ? `${process.env.DB_PASSWORD}@` : '';
     const dbUrl = process.env.DB_URL || 'localhost';
     const dbPort = process.env.DB_PORT ? `:${process.env.DB_PORT}` : '';
-    const dbName = process.env.DB_NAME || 'MyDb';
+    const dbName = process.env.DB_NAME || '';
 
     // Or full db uri connection string if you prefer
     const fullDbUri = process.env.DB_URI || '';
