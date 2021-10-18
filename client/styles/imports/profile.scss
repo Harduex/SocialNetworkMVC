@@ -55,13 +55,19 @@
 
 .profile-header-img {
     padding: 3px;
-    border-radius: 4px;
+    border-radius: 50%;
     background: #fff;
 }
 
 .profile-header-info h4 {
     font-weight: 500;
     color: #fff;
+}
+
+.profile-header-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 // .profile-header-img + .profile-header-info {
@@ -713,7 +719,7 @@ select.form-control:not([size]):not([multiple]) {
     width: 115px;
     height: 115px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 50%;
 }
 
 .user-full-name {
@@ -757,6 +763,7 @@ select.form-control:not([size]):not([multiple]) {
     margin-right: 20px;
 }
 .profile-options {
+    padding-top: 1em;
 }
 .edit-profile-button {
     width: 2.5em;
@@ -902,5 +909,15 @@ select.form-control:not([size]):not([multiple]) {
     }
     @include responsive(320px) {
         width: 4em;
+    }
+}
+
+.post-user-details-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .userimage {
+        width: 46px;
+        height: 46px;
     }
 }

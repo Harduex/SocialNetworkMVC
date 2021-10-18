@@ -8558,12 +8558,17 @@ body {
 
 .profile-header-img {
   padding: 3px;
-  border-radius: 4px;
+  border-radius: 50%;
   background: #fff; }
 
 .profile-header-info h4 {
   font-weight: 500;
   color: #fff; }
+
+.profile-header-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
 
 .profile-header .profile-header-content,
 .profile-header .profile-header-tab {
@@ -9119,7 +9124,7 @@ select.form-control:not([size]):not([multiple]) {
   width: 115px;
   height: 115px;
   object-fit: cover;
-  border-radius: 4px; }
+  border-radius: 50%; }
 
 .user-full-name {
   margin: 0;
@@ -9155,6 +9160,9 @@ select.form-control:not([size]):not([multiple]) {
 .profile-header-img,
 .profile-header-info {
   margin-right: 20px; }
+
+.profile-options {
+  padding-top: 1em; }
 
 .edit-profile-button {
   width: 2.5em;
@@ -9286,6 +9294,14 @@ select.form-control:not([size]):not([multiple]) {
   @media (max-width: 320px) {
     .edit-post-comment-field {
       width: 4em; } }
+
+.post-user-details-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .post-user-details-wrapper .userimage {
+    width: 46px;
+    height: 46px; }
 
 .searchbar {
   position: relative;

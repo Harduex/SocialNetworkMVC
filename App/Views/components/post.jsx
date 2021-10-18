@@ -14,7 +14,7 @@ function Post(props) {
       <div className={`timeline-body`}>
         <div className="timeline-header">
 
-          <div>
+          <div className="post-user-details-wrapper">
             {props?.user?.profilePic &&
               <span className="userimage"><img src={props?.user?.profilePic} alt="" /></span>
             }
