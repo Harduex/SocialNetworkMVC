@@ -17,6 +17,7 @@ EMAIL_TO=your.email.to.recieve.messages@mail.com
 
 ```code
 PORT=3000
+DB_PORT=27017
 DB_PREFIX=mongodb+srv
 DB_URL=some-cluster.mongodb.net
 DB_NAME=MyDb
