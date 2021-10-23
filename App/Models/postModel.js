@@ -31,7 +31,7 @@ const postSchema = new Schema({
         ref: User
     }],
     image: {
-        type: Buffer,
+        type: Object,
     },
     user: {
         type: Schema.Types.ObjectId,
