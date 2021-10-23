@@ -93,6 +93,7 @@ $(document).ready(function () {
                 let count = Number($(`#${id}_counter`).text().trim());
                 count++;
                 $(`#${id}_counter`).text(count);
+                document.querySelector('.post-comments-list').scrollTop = document.querySelector('.post-comments-list').scrollHeight;
             }
         })
     });

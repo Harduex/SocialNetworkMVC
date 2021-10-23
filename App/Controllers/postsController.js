@@ -119,22 +119,29 @@ router.post('/create', upload.single('postImage'), async (req, res) => {
     let image;
 
     if (!req.file || !req.file.path) {
-        image = '';
+        if(req.body.imageUrl) {
+            await cloudinary.v2.uploader.upload(req.body.imageUrl, async (error, result) => {
+                !error && console.log(error);
+                image = result;
+                const post = await addPost(req.body.body, user, req.body.comments, req.body.likes, image);
+            });
+        } else {
+            const post = await addPost(req.body.body, user, req.body.comments, req.body.likes, {url: ''});
+        }
     } else {
         await cloudinary.v2.uploader.upload(req.file.path, async (error, result) => {
-            console.log(result, error);
+            !error && console.log(error);
             image = result;
             const post = await addPost(req.body.body, user, req.body.comments, req.body.likes, image);
             fs.unlinkSync(req.file.path);
         });
-
     }
     res.redirect(`/profile`);
 });
 
 router.post('/delete/:id', async (req, res) => {
     cloudinary.v2.uploader.destroy(req.body.image, async (error, result) => {
-        console.log(result, error)
+        !error && console.log(error)
         const resultDelete = await deletePostById(req.params.id);
     });
     res.json({ _id: req.params.id });

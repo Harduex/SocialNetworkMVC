@@ -885,7 +885,11 @@ select.form-control:not([size]):not([multiple]) {
     }
 }
 .post-comment {
-        max-width: 100px;
+    max-width: 100px;
+}
+.post-comments-list {
+    max-height: 350px;
+    overflow-y: scroll;
 }
 .edit-post-comment-field {
     width: 34em;
