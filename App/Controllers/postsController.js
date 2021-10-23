@@ -4,6 +4,7 @@ const router = express.Router();
 const upload = multer({ dest: './public/temp' });
 import fs from 'fs';
 import { compressImage } from '../helpers/utilities/general.js';
+import cloudinary from 'cloudinary';
 
 import {
     addPost,
@@ -120,19 +121,22 @@ router.post('/create', upload.single('postImage'), async (req, res) => {
     if (!req.file || !req.file.path) {
         image = '';
     } else {
+        await cloudinary.v2.uploader.upload(req.file.path, async (error, result) => {
+            console.log(result, error);
+            image = result;
+            const post = await addPost(req.body.body, user, req.body.comments, req.body.likes, image);
+            fs.unlinkSync(req.file.path);
+        });
 
-        const compressedImg = await compressImage(req.file.path);
-        image = `data:image/jpeg;base64,${compressedImg.toString('base64')}`;
-        fs.unlinkSync(req.file.path);
     }
-
-    const post = await addPost(req.body.body, user, req.body.comments, req.body.likes, image);
-
     res.redirect(`/profile`);
 });
 
 router.post('/delete/:id', async (req, res) => {
-    const result = await deletePostById(req.params.id);
+    cloudinary.v2.uploader.destroy(req.body.image, async (error, result) => {
+        console.log(result, error)
+        const resultDelete = await deletePostById(req.params.id);
+    });
     res.json({ _id: req.params.id });
 });
 

@@ -15,6 +15,9 @@ import flash from "express-flash";
 // Database
 import useDatabase from './App/config/database.js';
 
+// Cloudinary SDK
+import cloudinary from 'cloudinary';
+
 // Router import
 import useRouters from './routes.js';
 
@@ -26,6 +29,13 @@ const app = express();
 
 // Connect to db
 useDatabase();
+
+// Cloudinary SDK
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 // Init user auth
 import initializePassport from './App/config/passport-config.js';

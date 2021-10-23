@@ -9,7 +9,7 @@ function Post(props) {
   let dateString = d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
 
   return (
-    <li id={`post_${props?.post?._id}`} className={`post-item ${props?.post?.image.toString() === '' ? 'hide-post' : ''}`} >
+    <li id={`post_${props?.post?._id}`} className={`post-item ${props?.post?.image?.url === '' ? 'hide-post' : ''}`} >
       {/* begin timeline-body */}
       <div className={`timeline-body`}>
         <div className="timeline-header">
@@ -37,6 +37,7 @@ function Post(props) {
           {props.loggedIn && (
             <>
               <form action={`/post/delete/${props?.post?._id}`} method="POST" className="delete-post-form">
+                <input type="text" name="image" value={props?.post?.image?.public_id} hidden />
                 <button type="submit" className="btn btn-secondary m-r-15 text-inverse-lighter delete-post-button">
                   <i className="fa fa-times-circle fa-fw fa-lg m-r-3" />
                 </button>
@@ -70,8 +71,8 @@ function Post(props) {
             }
           </div>
           <a href={`/post/get/${props?.post?._id}`}>
-            {props?.post?.image != '' &&
-              <img className="post-image" src={props?.post?.image || ''} />
+            {props?.post?.image?.url != '' &&
+              <img className="post-image" src={props?.post?.image?.url || ''} />
             }
           </a>
         </div>
