@@ -9,6 +9,7 @@ import * as avatarStyle from '@dicebear/avatars-jdenticon-sprites';
 import svg64 from 'svg64';
 
 import { checkAuthenticated, checkNotAuthenticated } from '../helpers/middlewares/authenticate.js';
+import { generateRandomHexColor } from '../helpers/utilities/general.js';
 
 
 router.get('/register', checkNotAuthenticated, (req, res) => {
@@ -19,6 +20,7 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
 
     let profilePicSvg = createAvatar(avatarStyle);
     let profilePic = svg64(profilePicSvg);
+    let coverColor = generateRandomHexColor();
 
     const user = new User({
         username: req.body.username,
@@ -26,6 +28,7 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
         email: req.body.email,
         password: hashedPassword,
         profilePic: profilePic,
+        coverColor: coverColor,
     });
 
     user.save()
@@ -35,14 +38,14 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
         .catch((err) => {
             let message = '';
 
-            if(err.message.includes('email')) {
+            if (err.message.includes('email')) {
                 message = "Email field is required"
             }
-            if(err.message.includes('username')) {
+            if (err.message.includes('username')) {
                 message = "Username already exists"
             }
 
-            res.render('register', { message: message});
+            res.render('register', { message: message });
         });
 });
 
