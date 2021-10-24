@@ -2,12 +2,11 @@ import express from 'express';
 const router = express.Router();
 import bcrypt from 'bcrypt';
 import multer from 'multer';
-import fs from 'fs';
 const upload = multer({ dest: './public/temp' });
 
 import { editUser, getUsersByArray } from '../Models/userModel.js';
 import { getAllPostsByUser, getPostsCount } from '../Models/postModel.js';
-import { compressImage } from '../helpers/utilities/general.js';
+import { uploadImage, deleteImage } from '../helpers/utilities/general';
 
 router.get('/', async (req, res) => {
     const user = await req.user;
@@ -74,13 +73,11 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
 
     let profilePic;
 
-    // Convert profile picture to base64
     if (!req.file || !req.file.path) {
         profilePic = currentUserProfilePic;
     } else {
-        const compressedImg = await compressImage(req.file.path);
-        profilePic = `data:image/jpeg;base64,${compressedImg.toString('base64')}`;
-        fs.unlinkSync(req.file.path);
+        await deleteImage(currentUserProfilePic.public_id);
+        profilePic = await uploadImage(req.file.path);
     }
 
     // Update password

@@ -25,7 +25,7 @@ const userSchema = new Schema({
         required: true
     },
     profilePic: {
-        type: Buffer,
+        type: Object,
         required: true
     },
     bio: {

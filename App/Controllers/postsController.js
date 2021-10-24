@@ -2,9 +2,7 @@ import express from 'express';
 import multer from 'multer';
 const router = express.Router();
 const upload = multer({ dest: './public/temp' });
-import fs from 'fs';
-import { compressImage } from '../helpers/utilities/general.js';
-import cloudinary from 'cloudinary';
+import { uploadImage, deleteImage } from '../helpers/utilities/general';
 
 import {
     addPost,
@@ -119,32 +117,40 @@ router.post('/create', upload.single('postImage'), async (req, res) => {
     let image;
 
     if (!req.file || !req.file.path) {
-        if(req.body.imageUrl) {
-            await cloudinary.v2.uploader.upload(req.body.imageUrl, async (error, result) => {
-                !error && console.log(error);
-                image = result;
-                const post = await addPost(req.body.body, user, req.body.comments, req.body.likes, image);
-            });
+        if (req.body.imageUrl) {
+            try {
+                image = await uploadImage(req.body.imageUrl);
+            } catch (error) {
+                if (error) {
+                    console.log(error);
+                    image = { url: '' }
+                }
+            }
         } else {
-            const post = await addPost(req.body.body, user, req.body.comments, req.body.likes, {url: ''});
+            image = { url: '' }
         }
     } else {
-        await cloudinary.v2.uploader.upload(req.file.path, async (error, result) => {
-            !error && console.log(error);
-            image = result;
-            const post = await addPost(req.body.body, user, req.body.comments, req.body.likes, image);
-            fs.unlinkSync(req.file.path);
-        });
+        image = await uploadImage(req.file.path);
     }
+    const post = await addPost(req.body.body, user, req.body.comments, req.body.likes, image);
     res.redirect(`/profile`);
 });
 
 router.post('/delete/:id', async (req, res) => {
-    cloudinary.v2.uploader.destroy(req.body.image, async (error, result) => {
-        !error && console.log(error)
-        const resultDelete = await deletePostById(req.params.id);
+
+    let resultDeleteImage = 'There is not image to delete';
+
+    if (req.body.image_public_id) {
+        resultDeleteImage = await deleteImage(req.body.image_public_id);
+    }
+
+    const resultDelete = await deletePostById(req.params.id);
+
+    res.json({
+        _id: req.params.id,
+        resultDeleteImage: resultDeleteImage,
+        resultDelete: resultDelete
     });
-    res.json({ _id: req.params.id });
 });
 
 

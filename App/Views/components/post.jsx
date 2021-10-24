@@ -15,8 +15,8 @@ function Post(props) {
         <div className="timeline-header">
 
           <div className="post-user-details-wrapper">
-            {props?.user?.profilePic &&
-              <span className="userimage"><img src={props?.user?.profilePic} alt="" /></span>
+            {props?.user?.profilePic?.url &&
+              <span className="userimage"><img src={props?.user?.profilePic?.url} alt="" /></span>
             }
             <div className="post-user-details">
               <div className="username">
@@ -37,7 +37,7 @@ function Post(props) {
           {props.loggedIn && (
             <>
               <form action={`/post/delete/${props?.post?._id}`} method="POST" className="delete-post-form">
-                <input type="text" name="image" value={props?.post?.image?.public_id} hidden />
+                <input type="text" name="image_public_id" value={props?.post?.image?.public_id} hidden />
                 <button type="submit" className="btn btn-secondary m-r-15 text-inverse-lighter delete-post-button">
                   <i className="fa fa-times-circle fa-fw fa-lg m-r-3" />
                 </button>
@@ -117,7 +117,7 @@ function Post(props) {
         <div className="timeline-comment-box comment-box" style={{ display: 'none' }}>
 
           <div className="new-comment">
-            <div className="user"><img src={props?.currentUser?.profilePic} /></div>
+            <div className="user"><img src={props?.currentUser?.profilePic?.url} /></div>
             <div className="input">
               <form action={`/post/comment/${props?.post?._id}`} method="POST" className="comment-post-form">
                 <div className="input-group">

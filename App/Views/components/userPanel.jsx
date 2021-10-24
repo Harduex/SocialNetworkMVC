@@ -19,7 +19,7 @@ function UserPanel(props) {
                 <div className={props?.slick ? "profile-header-content carousel-view" : "profile-header-content"} >
                   {/* BEGIN profile-header-img */}
                   <div className="profile-header-img">
-                    <img src={props?.user?.profilePic} alt="profile image" />
+                    <img src={props?.user?.profilePic?.url} alt="profile image" />
                   </div>
                   {/* END profile-header-img */}
                   {/* BEGIN profile-header-info */}
