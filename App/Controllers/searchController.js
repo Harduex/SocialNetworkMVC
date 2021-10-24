@@ -33,7 +33,9 @@ router.get('/hashtag/:keyword', async (req, res) => {
         user: postUser,
         currentUser: currentUser,
         posts: searchResults,
-        hideButtons: true
+        hideExploreSection: true,
+        hideUpdater: true,
+        hideButtons: true,
     });
 
 });
