@@ -21,6 +21,7 @@ router.get('/', checkAuthenticated, async (req, res) => {
         randomUsers: randomUsers,
         currentUser: user,
         posts: posts,
+        hideButtons: true,
     });
 
 });
