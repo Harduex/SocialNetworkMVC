@@ -45,7 +45,7 @@ $(document).ready(function () {
         }
     });
 
-    var scrollElement = document.querySelector('.user-feed');
+    var scrollElement = document.querySelector('.update-user-feed');
     var root = new Hammer(scrollElement);
     root.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 
