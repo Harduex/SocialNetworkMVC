@@ -11497,6 +11497,7 @@ $(document).ready(function () {
     //         });
     // });
 
+    // Auto update timeline on 1 minute interval
     setInterval(function () {
         $.ajax({
             url: "/posts",
@@ -11505,6 +11506,8 @@ $(document).ready(function () {
             dataType: "html"
         }).done(function (data) {
             $(".posts-container").html(data);
+            transformHashtags();
+            transformUserTags();        
         });
     }, 60 * 1000);
 
@@ -11547,6 +11550,8 @@ $(document).ready(function () {
                 dataType: "html"
             }).done(function (data) {
                 $(".posts-container").html(data);
+                transformHashtags();
+                transformUserTags();            
             });
         }
     });
