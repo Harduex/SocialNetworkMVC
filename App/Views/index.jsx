@@ -8,19 +8,17 @@ import Explore from './components/explore';
 
 function Index(props) {
   return (
-    <Layout title={props.title}>
+    <Layout title={props.title} className="user-feed">
       {props?.hideButtons ?
         <div className="index-title-container">
-          <h1>{props?.title}</h1>
+          // TODO: Add post component
         </div>
         :
         <BigButtonPanel route="javascript:;" className={"update-feed-posts"}>Update timeline</BigButtonPanel>
       }
-      <Timeline>
+      <Timeline className="feed-timeline">
         <Posts posts={props.posts} currentUser={props.currentUser} className="timeline-posts" />
-        {!props?.hideButtons &&
-          <Explore randomUsers={props.randomUsers} currentUser={props.currentUser} slick={true} />
-        }
+        <Explore randomUsers={props.randomUsers} currentUser={props.currentUser} slick={true} />
       </Timeline>
     </Layout>
   )
