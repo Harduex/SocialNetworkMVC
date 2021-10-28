@@ -34,7 +34,6 @@ router.get('/hashtag/:keyword', async (req, res) => {
         currentUser: currentUser,
         posts: searchResults,
         hideExploreSection: true,
-        hideUpdater: true,
         hideButtons: true,
     });
 
