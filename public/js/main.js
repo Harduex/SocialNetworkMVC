@@ -11515,8 +11515,8 @@ $(document).ready(function () {
     let page = 1;
 
     $(window).scroll(function () {
-        if ((window.innerHeight + Math.ceil(window.pageYOffset)) >= document.body.offsetHeight) {
-            if (window.location.pathname == '/') {
+        if (window.location.pathname == '/') {
+            if ((window.innerHeight + Math.ceil(window.pageYOffset)) >= document.body.offsetHeight) {
                 page++;
                 $.ajax({
                     url: "/posts",
@@ -11531,18 +11531,18 @@ $(document).ready(function () {
                         transformUserTags();
                     });
             }
-        }
-        if (window.scrollY == 0) {
-            $.ajax({
-                url: "/posts",
-                method: "POST",
-                data: { page: 1 },
-                dataType: "html"
-            }).done(function (data) {
-                $(".posts-container").html(data);
-                transformHashtags();
-                transformUserTags();
-            });
+            if (window.scrollY == 0) {
+                $.ajax({
+                    url: "/posts",
+                    method: "POST",
+                    data: { page: 1 },
+                    dataType: "html"
+                }).done(function (data) {
+                    $(".posts-container").html(data);
+                    transformHashtags();
+                    transformUserTags();
+                });
+            }
         }
     });
 
