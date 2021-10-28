@@ -11485,19 +11485,20 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     // Ajax
-    // $(document).on('click', '.update-feed-posts', function () {
-    //     $.ajax({
-    //         url: "/posts",
-    //         method: "POST",
-    //         data: { page: 1 },
-    //         dataType: "html"
-    //     })
-    //         .done(function (data) {
-    //             $(".posts-container").html(data);
-    //         });
-    // });
+    $(document).on('click', '.update-feed-posts', function () {
+        $.ajax({
+            url: "/posts",
+            method: "POST",
+            data: { page: 1 },
+            dataType: "html"
+        })
+            .done(function (data) {
+                $(".posts-container").html(data);
+            });
+    });
 
-    // Auto update timeline on 1 minute interval
+    // Auto update timeline on n minutes interval
+    let updateFeedIntervalMinutes = 1;
     setInterval(function () {
         $.ajax({
             url: "/posts",
@@ -11507,9 +11508,9 @@ $(document).ready(function () {
         }).done(function (data) {
             $(".posts-container").html(data);
             transformHashtags();
-            transformUserTags();        
+            transformUserTags();
         });
-    }, 60 * 1000);
+    }, updateFeedIntervalMinutes * 60 * 1000);
 
     let page = 1;
 
@@ -11531,18 +11532,7 @@ $(document).ready(function () {
                     });
             }
         }
-    });
-
-    var scrollElement = document.querySelector('.update-user-feed');
-    var root = new Hammer(scrollElement);
-    root.get('pan').set({ direction: Hammer.DIRECTION_ALL });
-
-    root.on("pandown", function (event) {
-        console.log(event.type + " gesture detected.");
-        $(scrollElement).removeClass('animate__animated animate__bounce animate__faster');
-        if (event.isFinal) {
-            console.log("Stopped pan");
-            $(scrollElement).addClass('animate__animated animate__bounce animate__faster');
+        if (window.scrollY == 0) {
             $.ajax({
                 url: "/posts",
                 method: "POST",
@@ -11551,10 +11541,33 @@ $(document).ready(function () {
             }).done(function (data) {
                 $(".posts-container").html(data);
                 transformHashtags();
-                transformUserTags();            
+                transformUserTags();
             });
         }
     });
+
+    // var scrollElement = document.querySelector('.update-user-feed');
+    // var root = new Hammer(scrollElement);
+    // root.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+
+    // root.on("pandown", function (event) {
+    //     console.log(event.type + " gesture detected.");
+    //     $(scrollElement).removeClass('animate__animated animate__bounce animate__faster');
+    //     if (event.isFinal) {
+    //         console.log("Stopped pan");
+    //         $(scrollElement).addClass('animate__animated animate__bounce animate__faster');
+    //         $.ajax({
+    //             url: "/posts",
+    //             method: "POST",
+    //             data: { page: 1 },
+    //             dataType: "html"
+    //         }).done(function (data) {
+    //             $(".posts-container").html(data);
+    //             transformHashtags();
+    //             transformUserTags();            
+    //         });
+    //     }
+    // });
 
 });
 
