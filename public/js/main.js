@@ -11500,16 +11500,18 @@ $(document).ready(function () {
     // Auto update timeline on n minutes interval
     let updateFeedIntervalMinutes = 1;
     setInterval(function () {
-        $.ajax({
-            url: "/posts",
-            method: "POST",
-            data: { page: 1 },
-            dataType: "html"
-        }).done(function (data) {
-            $(".posts-container").html(data);
-            transformHashtags();
-            transformUserTags();
-        });
+        if (window.location.pathname == '/') {
+            $.ajax({
+                url: "/posts",
+                method: "POST",
+                data: { page: 1 },
+                dataType: "html"
+            }).done(function (data) {
+                $(".posts-container").html(data);
+                transformHashtags();
+                transformUserTags();
+            });
+        }
     }, updateFeedIntervalMinutes * 60 * 1000);
 
     let page = 1;
