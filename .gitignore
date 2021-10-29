@@ -61,5 +61,8 @@ typings/
 .next
 
 # temp linux files
-
 .fuse_*
+
+# images
+public/images/*
+public/temp/*
