@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 import bcrypt from 'bcrypt';
 import multer from 'multer';
-const upload = multer({ dest: './public/temp' });
+import upload from '../helpers/middlewares/uploadImage';
 
 import { editUser, getUsersByArray } from '../Models/userModel.js';
 import { getAllPostsByUser, getPostsCount } from '../Models/postModel.js';

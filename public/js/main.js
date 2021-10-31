@@ -11493,7 +11493,11 @@ $(document).ready(function () {
             dataType: "html"
         })
             .done(function (data) {
-                $(".posts-container").html(data);
+                if (data !== '<!DOCTYPE html>') {
+                    $(".posts-container").html(data);
+                    transformHashtags();
+                    transformUserTags();
+                }
             });
     });
 
