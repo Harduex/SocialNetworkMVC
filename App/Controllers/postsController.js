@@ -131,8 +131,7 @@ router.post('/create', upload.single('postImage'), async (req, res) => {
             image = { url: '' }
         }
     } else {
-        const absPath = path.join(__dirname, '../../', req.file.path);
-        image = await uploadImage(absPath);
+        image = await uploadImage(req.file.path);
     }
     const post = await addPost(req.body.body, user, req.body.comments, req.body.likes, image);
     res.redirect(`/profile`);

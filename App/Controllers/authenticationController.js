@@ -6,8 +6,8 @@ import passport from 'passport';
 import { User } from '../Models/userModel.js';
 import { createAvatar } from '@dicebear/avatars';
 import * as avatarStyle from '@dicebear/avatars-jdenticon-sprites';
+import svg64 from 'svg64';
 import fs from 'fs';
-import path from 'path';
 import { uploadImage, deleteImage } from '../helpers/utilities/general';
 
 import { checkAuthenticated, checkNotAuthenticated } from '../helpers/middlewares/authenticate.js';
@@ -22,12 +22,11 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
 
     let profilePicSvg = createAvatar(avatarStyle);
     let profilePic = '';
-    let filePath = 'public/temp/profilePic.svg';
-    let absPath = path.join(__dirname, '../../', filePath);
+    let path = 'public/temp/profilePic.svg';
 
-    fs.writeFileSync(absPath, profilePicSvg);
-    if (fs.existsSync(absPath)) {
-        profilePic = await uploadImage(absPath);
+    fs.writeFileSync(path, profilePicSvg);
+    if (fs.existsSync(path)) {
+        profilePic = await uploadImage(path);
     }
 
     let coverColor = generateRandomHexColor();

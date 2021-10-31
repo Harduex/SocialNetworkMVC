@@ -3,11 +3,12 @@ import path from "path";
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './public/temp');
+        const absPath = path.join(__dirname, '../../../', 'public/temp');
+        cb(null, absPath);
     },
     filename: function (req, file, cb) {
         const extension = path.extname(file.originalname);
-        cb(null, `temp${extension}`);
+        cb(null, `tempImg${extension}`);
     },
 });
 
