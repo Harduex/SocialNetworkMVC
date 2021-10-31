@@ -4,7 +4,6 @@ import cloudinary from 'cloudinary';
 import multer from 'multer';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
-// axios.defaults.headers.post['api-key'] = process.env.IMAGES_CDN_API_KEY;
 import FormData from 'form-data';
 
 function compressImage(img, path) {
@@ -23,12 +22,6 @@ function generateRandomHexColor() {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-//  = custom_cdn
-// IMAGES_PROVIDER = cloudinary
-// IMAGES_PROVIDER = local_folder
-
-
-// Cloudinary
 async function uploadImage(tempPath) {
     const imagesProvider = process.env.IMAGES_PROVIDER || 'cloudinary';
 

@@ -1,7 +1,6 @@
 import express from 'express';
 import multer from 'multer';
 const router = express.Router();
-// const upload = multer({ dest: './public/temp' });
 import upload from '../helpers/middlewares/uploadImage';
 import { uploadImage, deleteImage } from '../helpers/utilities/general';
 
