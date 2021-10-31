@@ -7,6 +7,7 @@ import { User } from '../Models/userModel.js';
 import { createAvatar } from '@dicebear/avatars';
 import * as avatarStyle from '@dicebear/avatars-jdenticon-sprites';
 import svg64 from 'svg64';
+import fs from 'fs';
 import { uploadImage, deleteImage } from '../helpers/utilities/general';
 
 import { checkAuthenticated, checkNotAuthenticated } from '../helpers/middlewares/authenticate.js';
@@ -20,8 +21,14 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
     let profilePicSvg = createAvatar(avatarStyle);
-    let profilePicSvg64 = svg64(profilePicSvg);
-    let profilePic = await uploadImage(profilePicSvg64);
+    let profilePic = '';
+    let path = 'public/temp/profilePic.svg';
+
+    fs.writeFileSync(path, profilePicSvg);
+    if (fs.existsSync(path)) {
+        profilePic = await uploadImage(path);
+    }
+
     let coverColor = generateRandomHexColor();
 
     const user = new User({

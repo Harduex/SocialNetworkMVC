@@ -50,7 +50,7 @@ async function uploadImage(tempPath) {
         const imageCdnUrl = `${process.env.IMAGES_CDN_API_URL}/image/upload`;
         const imageCdnApiKey = process.env.IMAGES_CDN_API_KEY;
 
-        const form = new FormData();
+        let form = new FormData();
         form.append('image', fs.createReadStream(tempPath));
 
         const options = {
@@ -75,19 +75,21 @@ async function uploadImage(tempPath) {
         }
     }
 
-    const imgName = uuidv4();
-    const uploadPath = `public/images/${imgName}.png`;
-    const imgPath = `images/${imgName}.png`;
+    if (imagesProvider === 'local_folder') {
+        const imgName = uuidv4();
+        const uploadPath = `public/images/${imgName}.png`;
+        const imgPath = `images/${imgName}.png`;
 
-    await compressImage(tempPath, uploadPath);
+        await compressImage(tempPath, uploadPath);
 
-    if (fs.existsSync(tempPath)) {
-        fs.unlinkSync(tempPath);
-    }
+        if (fs.existsSync(tempPath)) {
+            fs.unlinkSync(tempPath);
+        }
 
-    return {
-        url: imgPath,
-        public_id: imgName,
+        return {
+            url: imgPath,
+            public_id: imgName,
+        }
     }
 
 }
@@ -126,11 +128,14 @@ async function deleteImage(public_id) {
         }
     }
 
-    const path = `public/images/${public_id}.png`;
-    if (fs.existsSync(path)) {
-        fs.unlinkSync(path);
-        return true;
+    if (imagesProvider === 'local_folder') {
+        const path = `public/images/${public_id}.png`;
+        if (fs.existsSync(path)) {
+            fs.unlinkSync(path);
+            return true;
+        }
     }
+
 }
 
 export { compressImage, generateRandomHexColor, uploadImage, deleteImage }
