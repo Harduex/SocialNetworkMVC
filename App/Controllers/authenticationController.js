@@ -6,7 +6,7 @@ import passport from 'passport';
 import { User } from '../Models/userModel.js';
 import { createAvatar } from '@dicebear/avatars';
 import * as avatarStyle from '@dicebear/avatars-jdenticon-sprites';
-import svg64 from 'svg64';
+import path from 'path';
 import fs from 'fs';
 import { uploadImage, deleteImage } from '../helpers/utilities/general';
 
@@ -22,7 +22,8 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
 
     let profilePicSvg = createAvatar(avatarStyle);
     let profilePic = '';
-    let tempDir = 'public/temp';
+    // let tempDir = 'public/temp';
+    let tempDir = path.join(__dirname, '../../public/temp');
     let profilePicName = 'profilePic.svg';
     let fullPath = `${tempDir}/${profilePicName}`;
 
