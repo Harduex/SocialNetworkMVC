@@ -22,11 +22,18 @@ router.post('/register', checkNotAuthenticated, async (req, res) => {
 
     let profilePicSvg = createAvatar(avatarStyle);
     let profilePic = '';
-    let path = 'public/temp/profilePic.svg';
+    let tempDir = 'public/temp';
+    let profilePicName = 'profilePic.svg';
+    let fullPath = `${tempDir}/${profilePicName}`;
 
-    fs.writeFileSync(path, profilePicSvg);
-    if (fs.existsSync(path)) {
-        profilePic = await uploadImage(path);
+    if (!fs.existsSync(tempDir)) {
+        fs.mkdirSync(tempDir)
+    }
+
+    fs.writeFileSync(fullPath, profilePicSvg);
+
+    if (fs.existsSync(fullPath)) {
+        profilePic = await uploadImage(fullPath);
     }
 
     let coverColor = generateRandomHexColor();
