@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 import bcrypt from 'bcrypt';
 import multer from 'multer';
+import path from 'path';
 import upload from '../helpers/middlewares/uploadImage';
 
 import { editUser, getUsersByArray } from '../Models/userModel.js';
@@ -77,7 +78,8 @@ router.post('/edit', upload.single('profilePic'), async (req, res) => {
         profilePic = currentUserProfilePic;
     } else {
         await deleteImage(currentUserProfilePic.public_id);
-        profilePic = await uploadImage(req.file.path);
+        const absPath = path.join(__dirname, '../../', req.file.path);
+        profilePic = await uploadImage(absPath);
     }
 
     // Update password

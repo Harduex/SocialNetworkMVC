@@ -43,17 +43,17 @@ async function uploadImage(tempPath) {
         const imageCdnUrl = `${process.env.IMAGES_CDN_API_URL}/image/upload`;
         const imageCdnApiKey = process.env.IMAGES_CDN_API_KEY;
 
-        let form = new FormData();
-        form.append('image', fs.createReadStream(tempPath));
-
-        const options = {
-            headers: {
-                'api-key': imageCdnApiKey,
-                ...form.getHeaders()
-            }
-        };
-
         try {
+            let form = new FormData();
+            form.append('image', fs.createReadStream(tempPath));
+
+            const options = {
+                headers: {
+                    'api-key': imageCdnApiKey,
+                    ...form.getHeaders()
+                }
+            };
+
             const resp = await axios.post(imageCdnUrl, form, options);
             console.log(resp.data);
             if (fs.existsSync(tempPath)) {

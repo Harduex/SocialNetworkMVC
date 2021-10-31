@@ -2,6 +2,7 @@ import express from 'express';
 import multer from 'multer';
 const router = express.Router();
 import upload from '../helpers/middlewares/uploadImage';
+import path from 'path';
 import { uploadImage, deleteImage } from '../helpers/utilities/general';
 
 import {
@@ -130,7 +131,8 @@ router.post('/create', upload.single('postImage'), async (req, res) => {
             image = { url: '' }
         }
     } else {
-        image = await uploadImage(req.file.path);
+        const absPath = path.join(__dirname, '../../', req.file.path);
+        image = await uploadImage(absPath);
     }
     const post = await addPost(req.body.body, user, req.body.comments, req.body.likes, image);
     res.redirect(`/profile`);
