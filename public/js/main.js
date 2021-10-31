@@ -12016,7 +12016,6 @@ function transformUserTags() {
         }
     }
 }
-
 // New profile image preview
 function loadFile(event) {
     // console.log('called');
