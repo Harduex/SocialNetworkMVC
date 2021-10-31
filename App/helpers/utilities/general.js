@@ -3,6 +3,9 @@ import fs from 'fs';
 import cloudinary from 'cloudinary';
 import multer from 'multer';
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
+// axios.defaults.headers.post['api-key'] = process.env.IMAGES_CDN_API_KEY;
+import FormData from 'form-data';
 
 function compressImage(img, path) {
 
@@ -20,51 +23,114 @@ function generateRandomHexColor() {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-function uploadImage(path) {
-    return new Promise((resolve, reject) => {
-        cloudinary.v2.uploader.upload(path, (error, result) => {
-            if (error) return reject(error);
+//  = custom_cdn
+// IMAGES_PROVIDER = cloudinary
+// IMAGES_PROVIDER = local_folder
 
-            if (fs.existsSync(path)) {
-                fs.unlinkSync(path);
-            }
 
-            return resolve(result);
-        })
-    });
-}
+// Cloudinary
+async function uploadImage(tempPath) {
+    const imagesProvider = process.env.IMAGES_PROVIDER || 'cloudinary';
 
-function deleteImage(public_id) {
-    return new Promise((resolve, reject) => {
-        cloudinary.v2.uploader.destroy(public_id, (error, result) => {
-            if (error) return reject(error);
-            return resolve(result);
+    if (imagesProvider === 'cloudinary') {
+        return new Promise((resolve, reject) => {
+            cloudinary.v2.uploader.upload(tempPath, (error, result) => {
+                if (error) return reject(error);
+
+                if (fs.existsSync(tempPath)) {
+                    fs.unlinkSync(tempPath);
+                }
+
+                return resolve(result);
+            })
         });
-    });
+    }
+
+    if (imagesProvider === 'custom_cdn') {
+        const imageCdnUrl = `${process.env.IMAGES_CDN_API_URL}/image/upload`;
+        const imageCdnApiKey = process.env.IMAGES_CDN_API_KEY;
+
+        const form = new FormData();
+        form.append('image', fs.createReadStream(tempPath));
+
+        const options = {
+            headers: {
+                'api-key': imageCdnApiKey,
+                ...form.getHeaders()
+            }
+        };
+
+        try {
+            const resp = await axios.post(imageCdnUrl, form, options);
+            console.log(resp.data);
+            if (fs.existsSync(tempPath)) {
+                fs.unlinkSync(tempPath);
+            }
+            return {
+                url: resp.data.url,
+                public_id: resp.data.filename,
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    const imgName = uuidv4();
+    const uploadPath = `public/images/${imgName}.png`;
+    const imgPath = `images/${imgName}.png`;
+
+    await compressImage(tempPath, uploadPath);
+
+    if (fs.existsSync(tempPath)) {
+        fs.unlinkSync(tempPath);
+    }
+
+    return {
+        url: imgPath,
+        public_id: imgName,
+    }
+
 }
 
-// async function uploadImage(tempPath) {
-//     const imgName = uuidv4();
-//     const uploadPath = `public/images/${imgName}.png`;
-//     const imgPath = `images/${imgName}.png`;
+async function deleteImage(public_id) {
+    const imagesProvider = process.env.IMAGES_PROVIDER || 'local_folder';
 
-//     await compressImage(tempPath, uploadPath);
+    if (imagesProvider === 'cloudinary') {
+        return new Promise((resolve, reject) => {
+            cloudinary.v2.uploader.destroy(public_id, (error, result) => {
+                if (error) return reject(error);
+                return resolve(result);
+            });
+        });
+    }
 
-//     if (fs.existsSync(tempPath)) {
-//         fs.unlinkSync(tempPath);
-//     }
+    if (imagesProvider === 'custom_cdn') {
+        const imageCdnUrl = `${process.env.IMAGES_CDN_API_URL}/image/delete`;
+        const imageCdnApiKey = process.env.IMAGES_CDN_API_KEY;
 
-//     return {
-//         url: imgPath,
-//         public_id: imgName,
-//     }
-// }
+        const form = {
+            image: public_id,
+        }
 
-// function deleteImage(public_id) {
-//     const path = `public/images/${public_id}.png`;
-//     if (fs.existsSync(path)) {
-//         fs.unlinkSync(path);
-//     }
-// }
+        const options = {
+            headers: {
+                'api-key': imageCdnApiKey,
+            }
+        }
+
+        try {
+            const resp = await axios.post(imageCdnUrl, form, options);
+            return resp.data;
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    const path = `public/images/${public_id}.png`;
+    if (fs.existsSync(path)) {
+        fs.unlinkSync(path);
+        return true;
+    }
+}
 
 export { compressImage, generateRandomHexColor, uploadImage, deleteImage }
