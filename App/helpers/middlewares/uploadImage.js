@@ -5,10 +5,7 @@ const storage = multer.diskStorage({
         cb(null, './public/temp');
     },
     filename: function (req, file, cb) {
-        const extArray = file.mimetype.split("/");
-        const extension = extArray[extArray.length - 1];
-
-        cb(null, `${file.filename}.${extension}`);
+        cb(null, file.originalname);
     },
 });
 
