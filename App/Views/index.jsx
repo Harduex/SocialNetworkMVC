@@ -18,10 +18,10 @@ function Index(props) {
       }
       <Timeline className="feed-timeline">
         <Posts posts={props.posts} currentUser={props.currentUser} className="timeline-posts" />
-        {!props?.hideExploreSection &&
-          <Explore randomUsers={props.randomUsers} currentUser={props.currentUser} slick={true} />
-        }
       </Timeline>
+      {!props?.hideExploreSection &&
+        <Explore randomUsers={props.randomUsers} currentUser={props.currentUser} slick={true} />
+      }
     </Layout>
   )
 }
