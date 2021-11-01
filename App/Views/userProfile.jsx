@@ -11,10 +11,10 @@ import Following from './components/following';
 function Profile(props) {
 
   return (
-    <Layout title={props.title}>
+    <Layout title={props.title} className="pl-0 pr-0">
       <UserPanel user={props.user} follow={props.follow} posts={props.posts} postsCount={props?.postsCount} mainPanel />
 
-      <div className="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+      <div className="tab-content p-0" id="nav-tabContent">
 
         <div className="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="nav-home-tab">
 
