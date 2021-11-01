@@ -1,7 +1,7 @@
 #contact {
   background: #4e5d6c;
   padding: 25px;
-  margin: 150px 0;
+  margin: 80px 0;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
@@ -26,7 +26,7 @@
 #contact textarea {
   width: 100%;
   border: 1px solid #ccc;
-  background: #FFF;
+  background: #fff;
   margin: 0 0 20px;
   padding: 10px;
 }
@@ -52,4 +52,10 @@
 #contact textarea:focus {
   outline: 0;
   border: 1px solid #aaa;
+}
+
+#contact {
+  @include responsive(768px) {
+    margin: 30px 0;
+  }
 }
