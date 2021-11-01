@@ -40,12 +40,12 @@ async function uploadImage(tempPath) {
     }
 
     if (imagesProvider === 'custom_cdn') {
-        const imageCdnUrl = `${process.env.IMAGES_CDN_API_URL}/image/upload`;
+        const imageCdnUrl = `${process.env.IMAGES_CDN_API_URL}/media/upload`;
         const imageCdnApiKey = process.env.IMAGES_CDN_API_KEY;
 
         try {
             let form = new FormData();
-            form.append('image', fs.createReadStream(tempPath));
+            form.append('media', fs.createReadStream(tempPath));
 
             const options = {
                 headers: {
@@ -59,10 +59,7 @@ async function uploadImage(tempPath) {
             if (fs.existsSync(tempPath)) {
                 fs.unlinkSync(tempPath);
             }
-            return {
-                url: resp.data.url,
-                public_id: resp.data.filename,
-            }
+            return resp.data;
         } catch (err) {
             console.error(err);
         }
@@ -100,11 +97,11 @@ async function deleteImage(public_id) {
     }
 
     if (imagesProvider === 'custom_cdn') {
-        const imageCdnUrl = `${process.env.IMAGES_CDN_API_URL}/image/delete`;
+        const imageCdnUrl = `${process.env.IMAGES_CDN_API_URL}/media/delete`;
         const imageCdnApiKey = process.env.IMAGES_CDN_API_KEY;
 
         const form = {
-            image: public_id,
+            public_id: public_id,
         }
 
         const options = {
