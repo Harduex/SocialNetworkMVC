@@ -958,7 +958,12 @@ select.form-control:not([size]):not([multiple]) {
 
 .hover-button {
     @include responsive(425px) {
-    
         padding: 0 !important;
+    }
+}
+
+.credentials-form-main {
+    @include responsive(575px) {
+        margin-top: 48px;
     }
 }
