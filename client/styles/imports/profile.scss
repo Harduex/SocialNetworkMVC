@@ -825,6 +825,13 @@ select.form-control:not([size]):not([multiple]) {
     column-gap: 1em;
     row-gap: 1em;
     padding-bottom: 1em;
+    padding: 0 10em 10em;
+    @include responsive(768px) {
+        padding: 0 0.5em 2em;
+    }
+    @include responsive(525px) {
+        padding: 0 1em 1em;
+    }
     .post-item {
         .timeline-body {
             margin: 0;
@@ -860,6 +867,7 @@ select.form-control:not([size]):not([multiple]) {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 6px;
 }
 .edit-post-fields {
     margin-bottom: 10px;
@@ -938,3 +946,19 @@ select.form-control:not([size]):not([multiple]) {
     }
 }
 
+.user-panel-button {
+    @include responsive(388px) {
+        padding: 6px;
+    }
+}
+
+.post-container-main {
+    padding: 48px 0 0 0;
+}
+
+.hover-button {
+    @include responsive(425px) {
+    
+        padding: 0 !important;
+    }
+}

@@ -7,7 +7,7 @@ import BigButtonPanel from './components/bigButtonPanel';
 
 function PostPreview(props) {
   return (
-    <Layout title={props.title}>
+    <Layout title={props.title} className="post-container-main">
       <Timeline>
         <Post post={props?.post} currentUser={props?.currentUser} user={props?.user} />
       </Timeline>

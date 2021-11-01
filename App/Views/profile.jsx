@@ -12,7 +12,7 @@ import Following from './components/following';
 function Profile(props) {
 
   return (
-    <Layout title={props.title} className="p-0">
+    <Layout title={props.title} className="pl-0 pr-0">
 
       <UserPanel user={props.user} follow={props.follow} posts={props.posts} postsCount={props?.postsCount} loggedIn mainPanel />
 

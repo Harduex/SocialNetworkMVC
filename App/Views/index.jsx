@@ -9,11 +9,7 @@ import Explore from './components/explore';
 function Index(props) {
   return (
     <Layout title={props.title} className="user-feed">
-      {props?.hideButtons ?
-        <div className="index-title-container">
-          {/* TODO: */}
-        </div>
-        :
+      {!props?.hideButtons &&
         <BigButtonPanel route="javascript:;" className={"update-feed-posts"}>Update timeline</BigButtonPanel>
       }
       <Timeline className="feed-timeline">

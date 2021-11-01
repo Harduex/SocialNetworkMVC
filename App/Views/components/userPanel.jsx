@@ -7,7 +7,7 @@ function UserPanel(props) {
   return (
     <div className="container user-panel" id={`user_${props?.user?.username}`}>
       <div className="row">
-        <div className="col-md-12">
+        <div className="col-md-12 p-0">
           <div id="content" className="content content-full-width">
             {/* begin profile */}
             <div className="profile">
@@ -58,12 +58,12 @@ function UserPanel(props) {
               {props?.mainPanel &&
                 <div className="profile-header-tab-settings">
                   < ul className="profile-header-tab nav nav-tabs">
-                    <li className="nav-item"><a href="#posts" className="nav-link text-white" data-toggle="tab">Posts {(props?.postsCount || 0)}</a></li>
-                    <li className="nav-item"><a href="#followers" className="nav-link text-white" data-toggle="tab">Followers {(props?.user?.followers?.length || 0)}</a></li>
-                    <li className="nav-item"><a href="#following" className="nav-link text-white" data-toggle="tab">Following {(props?.user?.following?.length || 0)}</a></li>
+                    <li className="nav-item"><a href="#posts" className="nav-link text-white user-panel-button" data-toggle="tab">Posts {(props?.postsCount || 0)}</a></li>
+                    <li className="nav-item"><a href="#followers" className="nav-link text-white user-panel-button" data-toggle="tab">Followers {(props?.user?.followers?.length || 0)}</a></li>
+                    <li className="nav-item"><a href="#following" className="nav-link text-white user-panel-button" data-toggle="tab">Follows {(props?.user?.following?.length || 0)}</a></li>
                   </ul>
                   <div className="gallery-view-toggle">
-                    <span className="gallery-view-toggle__label">Gallery</span>
+                    <i class="fas fa-image"></i>
                     <label class="switch">
                       <input type="checkbox" className="toggle-timeline" />
                       <span class="slider round"></span>
