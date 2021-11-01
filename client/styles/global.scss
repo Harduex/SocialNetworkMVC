@@ -12,6 +12,9 @@ body {
 
 .main {
     padding-top: 80px;
+    @include responsive(575px) {
+        padding-top: 48px;
+    }
 }
 
 ::-webkit-scrollbar-track {
