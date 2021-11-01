@@ -4,7 +4,7 @@ import Layout from './layouts/layout';
 
 function Register(props) {
     return (
-        <Layout title={props.message} logged={props?.logged === false}>
+        <Layout title={props.message} logged={props?.logged === false} className="credentials-form-main">
             <div className="container">
                 <form action="/auth/register" method="post" id="registration-form">
                     <fieldset>

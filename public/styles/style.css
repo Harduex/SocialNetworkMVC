@@ -12466,6 +12466,10 @@ select.form-control:not([size]):not([multiple]) {
   .hover-button {
     padding: 0 !important; } }
 
+@media (max-width: 575px) {
+  .credentials-form-main {
+    margin-top: 48px; } }
+
 .searchbar {
   position: relative;
   min-width: 35px;

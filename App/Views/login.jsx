@@ -4,7 +4,7 @@ import Layout from './layouts/layout';
 
 function Login(props) {
     return (
-        <Layout title={props.message} logged={false}>
+        <Layout title={props.message} logged={false} className="credentials-form-main">
             <div className="container">
                 <form action="/auth/login" method="post">
                     <fieldset>
