@@ -43,8 +43,8 @@ function NewPost(props) {
                           <div role="tabpanel" class="tab-pane active" id="uploadTab">
                             <button className="btn btn-primary change-profile-pic__button" type="button">
                               <i className="fa fa-fw fa-camera" />
-                              <span>Choose Image</span>
-                              <input type="file" name="postImage" accept="image/*" className="change-profile-pic__input" />
+                              <span>Choose Media</span>
+                              <input type="file" name="postImage" className="change-profile-pic__input" />
                             </button>
                           </div>
                           <div role="tabpanel" class="tab-pane" id="linkTab">
