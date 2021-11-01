@@ -4,7 +4,7 @@ import React from 'react';
 function BigButtonPanel(props) {
 
   return (
-    <div className="container mt-4 mb-4">
+    <div className="container mb-1">
       <div className="row">
         <div className="col-md-12 p-0">
           <div id="content" className="content content-full-width">
