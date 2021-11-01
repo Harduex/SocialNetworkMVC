@@ -45,7 +45,11 @@ async function uploadImage(tempPath) {
 
         try {
             let form = new FormData();
-            form.append('media', fs.createReadStream(tempPath));
+            if (isValidUrl(tempPath)) {
+                form.append('url', tempPath);
+            } else {
+                form.append('media', fs.createReadStream(tempPath));
+            }
 
             const options = {
                 headers: {
@@ -55,10 +59,11 @@ async function uploadImage(tempPath) {
             };
 
             const resp = await axios.post(imageCdnUrl, form, options);
-            console.log(resp.data);
+
             if (fs.existsSync(tempPath)) {
                 fs.unlinkSync(tempPath);
             }
+
             return resp.data;
         } catch (err) {
             console.error(err);
@@ -128,4 +133,16 @@ async function deleteImage(public_id) {
 
 }
 
-export { compressImage, generateRandomHexColor, uploadImage, deleteImage }
+function isValidUrl(string) {
+    let url;
+
+    try {
+        url = new URL(string);
+    } catch (_) {
+        return false;
+    }
+
+    return url.protocol === "http:" || url.protocol === "https:";
+}
+
+export { compressImage, generateRandomHexColor, uploadImage, deleteImage, isValidUrl }
