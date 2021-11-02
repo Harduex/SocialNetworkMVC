@@ -11209,6 +11209,9 @@ video {
   width: 100%;
   height: auto; }
 
+.loading {
+  background: transparent url(../images/loading.gif) center no-repeat; }
+
 :root {
   --dark-color-a: #5463c9;
   --dark-color-b: #4e5d6c;
@@ -11459,6 +11462,11 @@ video {
   width: 100%;
   background-color: #fff;
   animation: loader-inner 2s infinite ease-in; }
+
+.create-post-form-loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 @keyframes loader {
   0% {
@@ -12645,6 +12653,15 @@ select.form-control:not([size]):not([multiple]) {
 @media (max-width: 575px) {
   .credentials-form-main {
     margin-top: 48px; } }
+
+.create-new-post-modal-body {
+  min-height: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+#create-post-form {
+  width: 100%; }
 
 .searchbar {
   position: relative;

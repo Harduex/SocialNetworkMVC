@@ -967,3 +967,14 @@ select.form-control:not([size]):not([multiple]) {
         margin-top: 48px;
     }
 }
+
+.create-new-post-modal-body {
+    min-height: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#create-post-form {
+    width: 100%;
+}

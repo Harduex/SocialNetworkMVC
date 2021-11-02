@@ -20,7 +20,7 @@ function Layout(props) {
         <title>{props?.title}</title>
       </head>
       <body>
-        <Header title={props?.title} logged={props?.logged === false} loader={props?.logged} />
+        <Header title={props?.title} logged={props?.logged === false} loader={props?.loader} />
         <div className={`container main ${props?.className || ''}`} id="root">
           {props.children}
         </div>

@@ -23141,6 +23141,18 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on('click', '#submit-post-modal-button', function (e) {
+        $(`#create-post-form`).trigger("submit");
+
+        $(`#create-post-form`).html(`
+            <div class="create-post-form-loader-wrapper">
+                <span class="loader">
+                    <span class="loader-inner"></span>
+                </span>
+            </div>
+        `);
+    });
+
     // Create links from hashtags
     transformHashtags();
     transformUserTags();
