@@ -12260,6 +12260,8 @@ select.form-control:not([size]):not([multiple]) {
   padding: 20px 0;
   border-radius: 6px;
   margin-bottom: 30px; }
+  .timeline .timeline-body.hover-button {
+    margin-bottom: 0; }
   @media (max-width: 1000px) {
     .timeline .timeline-body {
       margin-left: 0;

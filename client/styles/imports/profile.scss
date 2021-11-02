@@ -501,6 +501,10 @@ select.form-control:not([size]):not([multiple]) {
     border-radius: 6px;
     margin-bottom: 30px;
 
+    &.hover-button {
+        margin-bottom: 0;
+    }
+
     @include responsive(1000px) {
         margin-left: 0;
         margin-right: 0;
