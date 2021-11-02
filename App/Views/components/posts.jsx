@@ -6,7 +6,6 @@ import Timeline from './timeline';
 function Posts(props) {
 
   return (
-    // <Timeline className={props.className}>
     <>
       {props?.user ?
         <>
@@ -22,7 +21,6 @@ function Posts(props) {
         </>
       }
     </>
-    // </Timeline>
   )
 }
 
