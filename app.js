@@ -50,10 +50,10 @@ app.engine('jsx', require('express-react-views').createEngine(viewEngineOptions)
 // Session
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(flash());
 app.use(session({
-  secret: uuidv4(),
+  secret: process.env.SESSION_SECRET || 'secret',
   resave: false,
   saveUninitialized: false
 }));
