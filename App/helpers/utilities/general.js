@@ -55,7 +55,9 @@ async function uploadImage(tempPath) {
                 headers: {
                     'api-key': imageCdnApiKey,
                     ...form.getHeaders()
-                }
+                },
+                maxContentLength: 100000000,
+                maxBodyLength: 1000000000,
             };
 
             const resp = await axios.post(imageCdnUrl, form, options);
