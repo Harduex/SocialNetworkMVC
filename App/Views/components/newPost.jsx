@@ -17,7 +17,7 @@ function NewPost(props) {
                     <span aria-hidden="true">×</span>{" "}
                   </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body create-new-post-modal-body">
                   <form method="POST" action="post/create" enctype="multipart/form-data" id="create-post-form">
                     <div class="form-group">
                       {/* <label for="recipient-name" class="col-form-label">
@@ -62,7 +62,7 @@ function NewPost(props) {
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" class="btn btn-success" form="create-post-form">
+                  <button type="button" class="btn btn-success" id="submit-post-modal-button">
                     Publish
                   </button>
                   <button type="button" class="btn btn-light" data-dismiss="modal">

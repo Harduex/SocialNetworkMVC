@@ -70,18 +70,17 @@ function Post(props) {
               </>
             }
           </div>
-          {/* <a href={`/post/get/${props?.post?._id}`}> */}
+
           {props?.post?.image?.url &&
             (!!props?.post?.image?.url.match(/\w+\.(jpg|jpeg|gif|png|tiff|bmp|svg)$/gi) ?
               <a href={props?.post?.image?.url} data-lightbox="gallery" data-title={props?.post?.body || ''}>
-                <img src={props?.post?.image?.url} className="post-image" alt="Post Image" />
+                <img src={props?.post?.image?.url} className="post-image loading" alt="Post Image" />
               </a>
               :
               <video src={props?.post?.image?.url} controls></video>
             )
           }
 
-          {/* </a> */}
         </div>
 
         <div className="timeline-likes">
